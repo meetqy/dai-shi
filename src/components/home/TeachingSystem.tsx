@@ -20,8 +20,8 @@ export function TeachingSystem() {
 							className="rounded-xl border border-slate-100 p-8 transition-shadow hover:shadow-lg"
 							key={f.title}
 						>
-							<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
-								<div className="h-8 w-8 rounded-lg bg-blue-500" />
+							<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+								<div className="h-8 w-8 rounded-lg bg-primary" />
 							</div>
 							<h3 className="mb-4 font-bold text-xl">{f.title}</h3>
 							<p className="text-slate-600">{f.desc}</p>

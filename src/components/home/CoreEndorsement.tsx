@@ -12,7 +12,7 @@ export function CoreEndorsement() {
 				<div className="grid grid-cols-2 gap-8 md:grid-cols-4">
 					{stats.map((stat) => (
 						<div className="text-center" key={stat.label}>
-							<div className="mb-2 font-bold text-4xl text-blue-600 md:text-5xl">
+							<div className="mb-2 font-bold text-4xl text-primary md:text-5xl">
 								{stat.value}
 							</div>
 							<div className="font-medium text-slate-600">{stat.label}</div>

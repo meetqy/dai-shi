@@ -13,7 +13,7 @@ export function HeroBanner() {
 					围绕学生目标、学科基础与学习状态，提供更系统的高考备考解决方案。
 				</p>
 				<button
-					className="mt-8 rounded-full bg-blue-600 px-8 py-3 font-semibold text-lg text-white transition-all hover:bg-blue-700"
+					className="mt-8 rounded-full bg-primary px-8 py-3 font-semibold text-lg text-primary-foreground transition-all hover:bg-primary/90"
 					type="button"
 				>
 					了解课程项目

@@ -68,6 +68,14 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
+									href="/zhao-sheng-jian-zhang"
+								>
+									招生简章
+								</Link>
+							</li>
+							<li>
+								<Link
+									className="transition-colors hover:text-white"
 									href="/news"
 								>
 									考试资讯

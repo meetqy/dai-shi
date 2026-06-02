@@ -105,7 +105,7 @@ export function GlobalHeader() {
 					<div className="hidden items-center sm:flex">
 						<Button
 							asChild
-							className="bg-[#1d4ed8] hover:bg-[#1e40af]"
+							className="bg-primary hover:bg-primary/90"
 							size="lg"
 						>
 							<Link href={SITE_HOTLINE_TEL}>立即咨询</Link>

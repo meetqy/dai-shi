@@ -1,6 +1,6 @@
 export function HomeSchoolService() {
 	return (
-		<section className="bg-blue-600 py-20 text-white">
+		<section className="bg-primary py-20 text-primary-foreground">
 			<div className="container mx-auto px-4 text-center">
 				<h2 className="mb-8 font-bold text-3xl md:text-4xl">家校共育服务</h2>
 				<p className="mx-auto mb-12 max-w-3xl text-xl opacity-90">
@@ -9,7 +9,7 @@ export function HomeSchoolService() {
 				<div className="grid gap-8 md:grid-cols-3">
 					{["考勤动态同步", "周度学习反馈", "家长沟通指导"].map((item) => (
 						<div
-							className="rounded-xl bg-white/10 p-6 backdrop-blur-sm"
+							className="rounded-xl bg-primary-foreground/10 p-6 backdrop-blur-sm"
 							key={item}
 						>
 							<div className="font-semibold text-lg">{item}</div>

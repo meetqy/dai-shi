@@ -22,7 +22,7 @@ export function FacultyTeam() {
 							</div>
 							<div className="p-6">
 								<h3 className="mb-1 font-bold text-lg">骨干教师 {i}</h3>
-								<p className="mb-3 text-blue-600 text-sm">10 年以上教学经验</p>
+								<p className="mb-3 text-primary text-sm">10 年以上教学经验</p>
 								<p className="text-slate-500 text-sm italic">
 									关注学生基础、方法与状态，让每一次进步都更有方向。
 								</p>

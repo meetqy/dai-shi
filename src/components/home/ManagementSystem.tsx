@@ -17,7 +17,7 @@ export function ManagementSystem() {
 						<div className="grid gap-6 sm:grid-cols-2">
 							{points.map((p) => (
 								<div className="rounded-xl bg-slate-50 p-6" key={p.title}>
-									<h3 className="mb-2 font-bold text-blue-700">{p.title}</h3>
+									<h3 className="mb-2 font-bold text-primary">{p.title}</h3>
 									<p className="text-slate-600 text-sm">{p.desc}</p>
 								</div>
 							))}

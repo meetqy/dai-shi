@@ -32,7 +32,7 @@ export function ExamNews() {
 						</p>
 					</div>
 					<Link
-						className="font-semibold text-blue-600 hover:underline"
+						className="font-semibold text-primary hover:underline"
 						href="/news"
 					>
 						查看更多
@@ -46,12 +46,12 @@ export function ExamNews() {
 								资讯配图占位
 							</div>
 							<div className="mb-2 flex items-center gap-3">
-								<span className="font-bold text-blue-600 text-xs uppercase tracking-wider">
+								<span className="font-bold text-primary text-xs uppercase tracking-wider">
 									{item.category}
 								</span>
 								<span className="text-slate-400 text-xs">{item.date}</span>
 							</div>
-							<h3 className="font-bold text-lg leading-tight transition-colors group-hover:text-blue-600">
+							<h3 className="font-bold text-lg leading-tight transition-colors group-hover:text-primary">
 								{item.title}
 							</h3>
 						</div>

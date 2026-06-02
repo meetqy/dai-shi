@@ -34,7 +34,7 @@ export const PRIMARY_LINKS: HeaderNavItem[] = [
 	{
 		items: [
 			{ href: "/#campus-life", label: "校区环境" },
-			{ href: "/#brochure", label: "招生简章" },
+			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
 			{ href: "/#campuses", label: "校区查询" },
 			{ href: "/#faq", label: "家长问答" },
 		],
@@ -51,7 +51,7 @@ export const MOBILE_PRIMARY_LINKS: NavLink[] = [
 	{ href: "/#faculty", label: "师资团队" },
 	{ href: "/#management", label: "教学管理" },
 	{ href: "/#campus-life", label: "校区环境" },
-	{ href: "/#brochure", label: "招生简章" },
+	{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
 	{ href: "/#news", label: "考试资讯" },
 	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];
