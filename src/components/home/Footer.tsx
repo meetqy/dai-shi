@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_HOTLINE_TEL, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 
 export function Footer() {
 	return (
@@ -89,7 +90,14 @@ export function Footer() {
 							联系我们
 						</h4>
 						<ul className="space-y-4 text-slate-400">
-							<li>咨询热线：4444-028-222</li>
+							<li>
+								<Link
+									className="transition-colors hover:text-white"
+									href={SITE_HOTLINE_TEL}
+								>
+									咨询热线：{SITE_HOTLINE_TEXT}
+								</Link>
+							</li>
 							<li>联系邮箱：info@daishi.cn</li>
 							<li>联系地址：四川省成都市</li>
 						</ul>
