@@ -15,7 +15,7 @@ export function BrochureTopNav({
 	title,
 }: BrochureTopNavProps) {
 	return (
-		<div className="sticky top-0 z-70 border-slate-200/80 border-b bg-white/95 backdrop-blur">
+		<div className="sticky top-0 z-40 border-slate-200/80 border-b bg-white/95 backdrop-blur">
 			<div className="container mx-auto flex h-14 items-center justify-between gap-4 px-4">
 				<Link
 					className="flex shrink-0 items-center font-medium text-slate-600 text-sm transition-colors hover:text-primary"

@@ -15,7 +15,7 @@ export function TopUtilityBar() {
 					>
 						校区查询
 					</Link>
-					<Link className="transition-colors hover:text-primary" href="/faq">
+					<Link className="transition-colors hover:text-primary" href="/faqs">
 						常见问题
 					</Link>
 				</div>

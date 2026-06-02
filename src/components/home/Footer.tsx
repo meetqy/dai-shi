@@ -54,7 +54,7 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
-									href="/faq"
+									href="/faqs"
 								>
 									常见问题
 								</Link>

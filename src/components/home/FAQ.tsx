@@ -1,18 +1,26 @@
+import Link from "next/link";
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "~/components/ui/accordion";
+import { Button } from "~/components/ui/button";
+import { FAQ_DATA } from "~/lib/constants/faqs";
+
+const HOME_FAQ_QUESTIONS = [
+	"戴氏教育办学多少年了？",
+	"戴氏教育主要覆盖哪些学龄段辅导？",
+	"戴氏所有授课老师都持有教师资格证吗？",
+	"高三全日制班级采用全封闭式管理模式吗？",
+	"戴氏能够提供真实的往届学生提分案例吗？",
+];
+
+const HOME_FAQS = FAQ_DATA.flatMap((category) => category.items).filter((item) =>
+	HOME_FAQ_QUESTIONS.includes(item.question),
+);
+
 export function FAQ() {
-	const faqs = [
-		{
-			q: "招生时间是怎么安排的？",
-			a: "学校全年接受咨询，主要开班节点集中在暑期和寒假，具体以当期招生安排为准。",
-		},
-		{
-			q: "是否提供住宿？",
-			a: "提供学生宿舍与生活管理服务，宿舍配套完善，并有老师进行日常管理。",
-		},
-		{
-			q: "班级人数大概多少？",
-			a: "采用相对精细化的小班教学模式，便于老师及时关注每位学生的学习进度。",
-		},
-	];
 
 	return (
 		<section className="bg-white py-20" id="faq">
@@ -20,13 +28,26 @@ export function FAQ() {
 				<h2 className="mb-16 text-center font-bold text-3xl md:text-4xl">
 					常见问题
 				</h2>
-				<div className="space-y-6">
-					{faqs.map((faq) => (
-						<div className="rounded-xl border border-slate-200 p-6" key={faq.q}>
-							<h3 className="mb-3 font-bold text-lg text-slate-900">{faq.q}</h3>
-							<p className="text-slate-600">{faq.a}</p>
-						</div>
+				<Accordion collapsible type="single">
+					{HOME_FAQS.map((faq) => (
+						<AccordionItem key={faq.question} value={faq.question}>
+							<AccordionTrigger className="py-5 text-base text-slate-900 hover:no-underline">
+								<span className="pr-4 font-medium text-slate-900">
+									{faq.question}
+								</span>
+							</AccordionTrigger>
+							<AccordionContent>
+								<p className="max-w-none pb-2 text-slate-600 leading-7">
+									{faq.answer}
+								</p>
+							</AccordionContent>
+						</AccordionItem>
 					))}
+				</Accordion>
+				<div className="mt-10 text-center">
+					<Button asChild size="lg">
+						<Link href="/faqs">查看全部常见问题</Link>
+					</Button>
 				</div>
 			</div>
 		</section>
