@@ -1,6 +1,7 @@
 import { ChevronLeftIcon, PhoneIcon } from "lucide-react";
 import Link from "next/link";
-import { SITE_HOTLINE_TEL, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import { PhoneLink } from "~/components/phone-action";
+import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 
 type BrochureTopNavProps = {
 	backHref: string;
@@ -28,14 +29,11 @@ export function BrochureTopNav({
 						{title}
 					</div>
 				</div>
-				<Link
-					className="flex shrink-0 items-center gap-2 font-semibold text-primary text-sm transition-opacity hover:opacity-80"
-					href={SITE_HOTLINE_TEL}
-				>
+				<PhoneLink className="flex shrink-0 items-center gap-2 font-semibold text-primary text-sm transition-opacity hover:opacity-80">
 					<PhoneIcon className="size-4" />
 					<span className="hidden sm:inline">{SITE_HOTLINE_TEXT}</span>
 					<span className="sm:hidden">拨打电话</span>
-				</Link>
+				</PhoneLink>
 			</div>
 		</div>
 	);

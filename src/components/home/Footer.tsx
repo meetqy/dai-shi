@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { SITE_HOTLINE_TEL, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import { PhoneLink } from "~/components/phone-action";
+import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 
 export function Footer() {
 	return (
@@ -91,12 +92,9 @@ export function Footer() {
 						</h4>
 						<ul className="space-y-4 text-slate-400">
 							<li>
-								<Link
-									className="transition-colors hover:text-white"
-									href={SITE_HOTLINE_TEL}
-								>
+								<PhoneLink className="transition-colors hover:text-white">
 									咨询热线：{SITE_HOTLINE_TEXT}
-								</Link>
+								</PhoneLink>
 							</li>
 							<li>联系邮箱：info@daishi.cn</li>
 							<li>联系地址：四川省成都市</li>

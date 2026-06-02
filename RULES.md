@@ -3,3 +3,5 @@
 - 所有的文案必须用中文
 - 所有的路由都用拼音
 - 不使用大量 CARD 风格
+- 所有与咨询、预约、电话相关的按钮或链接，必须使用 PhoneButton 或 PhoneLink 组件
+- PhoneButton 和 PhoneLink 组件会自动使用配置在 site.ts 中的 SITE_HOTLINE_TEL 作为电话链接

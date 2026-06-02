@@ -1,6 +1,7 @@
 import { ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { PhoneButton, PhoneLink } from "~/components/phone-action";
 import { Button } from "~/components/ui/button";
 import {
 	DropdownMenu,
@@ -12,7 +13,6 @@ import {
 	MOBILE_PRIMARY_LINKS,
 	PRIMARY_LINKS,
 	SITE_BRAND_NAME,
-	SITE_HOTLINE_TEL,
 	SITE_HOTLINE_TEXT,
 	UTILITY_LINKS,
 } from "~/lib/constants/site";
@@ -42,12 +42,9 @@ export function GlobalHeader() {
 							</Link>
 						))}
 					</nav>
-					<Link
-						className="text-left text-slate-500 text-xs transition-colors hover:text-slate-950 sm:text-sm lg:text-right"
-						href={SITE_HOTLINE_TEL}
-					>
+					<PhoneLink className="text-left text-slate-500 text-xs transition-colors hover:text-slate-950 sm:text-sm lg:text-right">
 						24 小时免费热线：{SITE_HOTLINE_TEXT}
-					</Link>
+					</PhoneLink>
 				</div>
 			</div>
 			<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -103,13 +100,9 @@ export function GlobalHeader() {
 					</nav>
 
 					<div className="hidden items-center sm:flex">
-						<Button
-							asChild
-							className="bg-primary hover:bg-primary/90"
-							size="lg"
-						>
-							<Link href={SITE_HOTLINE_TEL}>立即咨询</Link>
-						</Button>
+						<PhoneButton className="bg-primary hover:bg-primary/90" size="lg">
+							立即咨询
+						</PhoneButton>
 					</div>
 				</div>
 
