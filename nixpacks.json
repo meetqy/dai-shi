@@ -1,0 +1,18 @@
+{
+  "variables": {
+    "NPM_CONFIG_REGISTRY": "https://registry.npmmirror.com",
+    "npm_config_registry": "https://registry.npmmirror.com",
+    "COREPACK_NPM_REGISTRY": "https://registry.npmmirror.com"
+  },
+  "phases": {
+    "install": {
+      "cmds": ["corepack enable", "corepack prepare pnpm@10.21.0 --activate", "pnpm install --frozen-lockfile"]
+    },
+    "build": {
+      "cmds": ["pnpm run build"]
+    }
+  },
+  "start": {
+    "cmd": "pnpm run start"
+  }
+}
