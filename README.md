@@ -1,29 +1,45 @@
-# Create T3 App
+# 戴氏教育官网
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+本项目是基于 [T3 Stack](https://create.t3.gg/) 构建的戴氏教育高考全日制与升学服务官网。
 
-## What's next? How do I make an app with this?
+## 项目简介
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+戴氏教育专注个性化教学与高考备考服务，围绕教学、管理、陪伴与规划，为学生提供系统的成长支持。本项目旨在通过现代化的 Web 技术，展示戴氏教育的核心项目、教学体系、师资力量及校园环境。
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## 技术栈
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+本项目使用了以下技术：
 
-## Learn More
+- [Next.js](https://nextjs.org) - React 框架
+- [Tailwind CSS](https://tailwindcss.com) - 样式管理
+- [Lucide React](https://lucide.dev) - 图标库
+- [Radix UI](https://www.radix-ui.com/) - 无样式组件库
+- [Biome](https://biomejs.dev/) - 代码格式化与规范
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## 开发指南
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### 快速开始
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+1. 安装依赖：
+   ```bash
+   pnpm install
+   ```
 
-## How do I deploy this?
+2. 启动开发服务器：
+   ```bash
+   pnpm dev
+   ```
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+3. 访问项目：
+   打开浏览器访问 [http://localhost:3000](http://localhost:3000)。
+
+### 目录结构
+
+- `src/app`: 页面路由
+- `src/components`: 业务组件与 UI 组件
+- `src/lib`: 工具函数与常量
+- `src/styles`: 全局样式
+
+## 部署
+
+本项目支持在 Vercel、Netlify 或 Docker 上进行部署。详情请参考 T3 Stack 的部署指南。
