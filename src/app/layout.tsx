@@ -3,13 +3,16 @@ import "~/styles/globals.css";
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import { GlobalHeader } from "~/components/global-header";
+import { env } from "~/env";
 import { cn } from "~/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const siteUrl = new URL(`https://${env.NEXT_PUBLIC_SITE_DOMAIN}`);
 
 export const metadata: Metadata = {
 	title: "戴氏教育",
 	description: "戴氏教育高考全日制与升学服务官网",
+	metadataBase: siteUrl,
 	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 

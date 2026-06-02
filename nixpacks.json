@@ -1,8 +1,14 @@
 {
+  "providers": {
+    "node": {
+      "version": "24.13.0"
+    }
+  },
   "variables": {
     "NPM_CONFIG_REGISTRY": "https://registry.npmmirror.com",
     "npm_config_registry": "https://registry.npmmirror.com",
-    "COREPACK_NPM_REGISTRY": "https://registry.npmmirror.com"
+    "COREPACK_NPM_REGISTRY": "https://registry.npmmirror.com",
+    "NEXT_PUBLIC_SITE_DOMAIN": "dai-shi.cn"
   },
   "phases": {
     "install": {
