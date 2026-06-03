@@ -8,8 +8,8 @@ import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 import { cn } from "~/lib/utils";
 
 export const metadata: Metadata = {
-  title: "常见问题 - 戴氏教育",
-  description: "戴氏教育常见问题解答，包括品牌资质、收费课时、师资、班型、教学提分、管理服务、校区选择等方面的问题。",
+  title: "成都戴氏教育常见问题 FAQ - 高考全日制/中高考补习/艺考文化课",
+  description: "为您解答成都戴氏教育办学资质、收费标准、全封闭管理、高考全日制复读、艺考文化课冲刺及校区选择等常见疑问。深耕成都33年，助力孩子高效提分。",
 };
 
 const FAQ_PAGE_CTAS = {
@@ -102,12 +102,29 @@ export default function FaqPage() {
     title: category.title,
   })).filter((category) => category.items.length > 0);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: visibleSections.flatMap((category) =>
+      category.items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    ),
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 py-12">
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Used for JSON-LD structured data which is required for SEO */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h1 className="mb-4 font-bold text-4xl text-slate-900 md:text-5xl">常见问题 FAQ</h1>
-          <p className="mx-auto max-w-2xl text-lg text-slate-600">关于戴氏教育的各类疑问解答，如有其他问题欢迎随时咨询我们</p>
+          <p className="mx-auto max-w-2xl text-lg text-slate-600">关于成都戴氏教育的各类疑问解答，涵盖收费标准、全封闭管理、校区地址及提分效果。如有其他问题欢迎随时咨询我们。</p>
         </div>
 
         <div className="space-y-12">
