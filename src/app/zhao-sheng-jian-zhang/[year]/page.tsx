@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { BrochureTemplate2026 } from "~/components/brochures/BrochureTemplate2026";
 import { BrochureTemplate2027 } from "~/components/brochures/BrochureTemplate2027";
 import { BrochureTemplateGeneric } from "~/components/brochures/BrochureTemplateGeneric";
-import { BrochureTopNav } from "~/components/brochures/BrochureTopNav";
+import { PageTopNav } from "~/components/PageTopNav";
 import { getBrochureByYear } from "~/lib/brochures";
 
 interface PageProps {
@@ -41,7 +41,7 @@ export default async function BrochureDetailPage({ params }: PageProps) {
 
 	return (
 		<div className="min-h-screen">
-			<BrochureTopNav
+			<PageTopNav
 				backHref="/zhao-sheng-jian-zhang"
 				backLabel="返回招生简章列表"
 				title={brochure.title}

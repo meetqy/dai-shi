@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
-import { BrochureTopNav } from "~/components/brochures/BrochureTopNav";
+import { PageTopNav } from "~/components/PageTopNav";
 import { getAllBrochures } from "~/lib/brochures";
 
 export const metadata = {
@@ -13,7 +13,7 @@ export default function BrochuresPage() {
 
 	return (
 		<div className="bg-slate-50 pb-12 md:pb-20">
-			<BrochureTopNav backHref="/" backLabel="返回首页" title="招生简章" />
+			<PageTopNav backHref="/" backLabel="返回首页" title="招生简章" />
 			<div className="container mx-auto px-4 pt-8 md:pt-12">
 				<div className="mb-12 text-center">
 					<h1 className="mb-4 font-bold text-3xl text-slate-900 md:text-5xl">
@@ -40,7 +40,7 @@ export default function BrochuresPage() {
 										{brochure.title}
 									</h2>
 									<p className="text-slate-500">
-										发布日期：{brochure.year}-01-01
+										发布日期：{Number(brochure.year) - 1}-01-01
 									</p>
 								</div>
 							</div>

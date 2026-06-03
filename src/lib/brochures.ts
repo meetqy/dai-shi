@@ -1,7 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const BROCHURES_PATH = path.join(process.cwd(), "招生简章");
+const BROCHURE_PATH_CANDIDATES = [
+	path.join(process.cwd(), "素材资源", "招生简章"),
+	path.join(process.cwd(), "招生简章"),
+];
+
+function getBrochuresPath() {
+	return BROCHURE_PATH_CANDIDATES.find((candidate) => fs.existsSync(candidate));
+}
 
 export interface Brochure {
 	year: string;
@@ -11,11 +18,13 @@ export interface Brochure {
 }
 
 export function getAllBrochures(): Omit<Brochure, "content">[] {
-	if (!fs.existsSync(BROCHURES_PATH)) {
+	const brochuresPath = getBrochuresPath();
+
+	if (!brochuresPath) {
 		return [];
 	}
 
-	const files = fs.readdirSync(BROCHURES_PATH);
+	const files = fs.readdirSync(brochuresPath);
 	return files
 		.filter((file) => file.endsWith(".md"))
 		.map((file) => {
@@ -30,7 +39,13 @@ export function getAllBrochures(): Omit<Brochure, "content">[] {
 }
 
 export function getBrochureByYear(year: string): Brochure | null {
-	const filePath = path.join(BROCHURES_PATH, `${year}.md`);
+	const brochuresPath = getBrochuresPath();
+
+	if (!brochuresPath) {
+		return null;
+	}
+
+	const filePath = path.join(brochuresPath, `${year}.md`);
 	if (!fs.existsSync(filePath)) {
 		return null;
 	}
