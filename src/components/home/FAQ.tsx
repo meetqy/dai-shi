@@ -16,12 +16,11 @@ const HOME_FAQ_QUESTIONS = [
 	"戴氏能够提供真实的往届学生提分案例吗？",
 ];
 
-const HOME_FAQS = FAQ_DATA.flatMap((category) => category.items).filter((item) =>
-	HOME_FAQ_QUESTIONS.includes(item.question),
+const HOME_FAQS = FAQ_DATA.flatMap((category) => category.items).filter(
+	(item) => HOME_FAQ_QUESTIONS.includes(item.question),
 );
 
 export function FAQ() {
-
 	return (
 		<section className="bg-white py-20" id="faq">
 			<div className="container mx-auto max-w-4xl px-4">

@@ -1,6 +1,6 @@
 "use client";
 
-import { PhoneIcon, ArrowUpIcon } from "lucide-react";
+import { ArrowUpIcon, PhoneIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { PhoneLink } from "~/components/phone-action";
 import { Button } from "~/components/ui/button";
@@ -32,7 +32,9 @@ export function FloatingToolbar() {
 				<div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white shadow-lg transition-all hover:scale-105 hover:bg-primary/90">
 					<div className="flex flex-col items-center">
 						<PhoneIcon className="size-6" />
-						<span className="mt-1 text-[10px] font-bold leading-none">咨询</span>
+						<span className="mt-1 font-bold text-[10px] leading-none">
+							咨询
+						</span>
 					</div>
 				</div>
 				{/* 悬浮文字提示 */}
@@ -54,7 +56,7 @@ export function FloatingToolbar() {
 			>
 				<div className="flex flex-col items-center">
 					<ArrowUpIcon className="size-6" />
-					<span className="mt-1 text-[10px] font-bold leading-none">顶部</span>
+					<span className="mt-1 font-bold text-[10px] leading-none">顶部</span>
 				</div>
 			</Button>
 		</div>

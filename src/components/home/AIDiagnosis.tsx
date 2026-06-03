@@ -39,7 +39,7 @@ export function AIDiagnosis() {
 									<BrainCircuitIcon className="size-5" />
 								</div>
 								<span className="font-bold text-primary text-sm uppercase tracking-wider">
-									AI Intelligence
+									AI 智能诊断
 								</span>
 							</div>
 

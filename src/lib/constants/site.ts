@@ -11,8 +11,8 @@ export type DropdownNavLink = {
 export type HeaderNavItem = NavLink | DropdownNavLink;
 
 export const SITE_BRAND_NAME = "戴氏教育";
-export const SITE_HOTLINE_TEXT = "4444-028-222";
-export const SITE_HOTLINE_TEL = "tel:4444028222";
+export const SITE_HOTLINE_TEXT = "400-9875-211";
+export const SITE_HOTLINE_TEL = "tel:4009875211";
 
 export const UTILITY_LINKS: NavLink[] = [
 	{ href: "/#news", label: "考试资讯" },

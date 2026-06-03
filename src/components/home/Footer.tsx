@@ -96,8 +96,16 @@ export function Footer() {
 									咨询热线：{SITE_HOTLINE_TEXT}
 								</PhoneLink>
 							</li>
-							<li>联系邮箱：info@daishi.cn</li>
-							<li>联系地址：四川省成都市</li>
+							<li>
+								<a
+									className="transition-colors hover:text-white"
+									href="https://www.amap.com/search?query=戴氏教育总部（成都市青羊区顺城大街252号顺基大厦）"
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									总部地址：戴氏教育总部（成都市青羊区顺城大街 252 号顺基大厦）
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>

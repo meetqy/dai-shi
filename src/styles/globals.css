@@ -136,5 +136,5 @@
 
 /* 在招生简章页面禁用全局 Header 的吸顶效果，避免遮挡顶部的返回栏 */
 body:has(.brochure-page-container) header {
-	position: relative !important;
+	position: relative;
 }
