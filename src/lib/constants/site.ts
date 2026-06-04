@@ -18,7 +18,7 @@ export const UTILITY_LINKS: NavLink[] = [
 	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
 	{ href: "/#xin-wen", label: "考试资讯" },
 	{ href: "/#xiao-qu", label: "校区查询" },
-	{ href: "/#chang-jian-wen-ti", label: "家长问答" },
+	{ href: "/#jia-chang-wen-da", label: "家长问答" },
 ];
 
 export const PRIMARY_LINKS: HeaderNavItem[] = [
@@ -37,7 +37,7 @@ export const PRIMARY_LINKS: HeaderNavItem[] = [
 			{ href: "/#xiao-qu", label: "校区环境" },
 			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
 			{ href: "/#xiao-qu", label: "校区查询" },
-			{ href: "/#chang-jian-wen-ti", label: "家长问答" },
+			{ href: "/#jia-chang-wen-da", label: "家长问答" },
 		],
 		label: "校园招生",
 	},

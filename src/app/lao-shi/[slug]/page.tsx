@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { env } from "~/env";
 import { Footer } from "~/components/home/Footer";
 import { PageTopNav } from "~/components/PageTopNav";
 import { PhoneButton } from "~/components/phone-action";
-import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import { SITE_BRAND_NAME, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 import { getTeacherBySlug, TEACHERS } from "~/lib/constants/teachers";
 
 type PageProps = {
@@ -53,6 +54,32 @@ function TeacherSection({ items, title }: { items: string[]; title: string }) {
   );
 }
 
+function TeacherStructuredData({ teacher, url }: { teacher: (typeof TEACHERS)[0]; url: string }) {
+  const siteUrl = new URL(`https://${env.NEXT_PUBLIC_SITE_DOMAIN}`);
+  const imageUrl = new URL(teacher.image, siteUrl).toString();
+  const pageUrl = new URL(url, siteUrl).toString();
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: teacher.name,
+    jobTitle: teacher.title,
+    description: teacher.summary,
+    image: imageUrl,
+    url: pageUrl,
+    worksFor: {
+      "@type": "Organization",
+      name: SITE_BRAND_NAME,
+      url: siteUrl.toString(),
+    },
+    sameAs: [],
+    knowsAbout: ["高考", "高中教育", "教学研究", "升学指导"],
+    honorificPrefix: "老师",
+  };
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />;
+}
+
 export default async function TeacherDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const teacher = getTeacherBySlug(slug);
@@ -67,6 +94,7 @@ export default async function TeacherDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <TeacherStructuredData teacher={teacher} url={`/lao-shi/${teacher.slug}`} />
       <PageTopNav backHref="/lao-shi" backLabel="返回老师团队" title={teacher.name} />
       <main className="pb-16">
         <section className="bg-white">
