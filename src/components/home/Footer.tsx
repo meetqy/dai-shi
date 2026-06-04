@@ -22,7 +22,7 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
-									href="#program"
+									href="/#gao-kao-quan-ri-zhi"
 								>
 									高考全日制
 								</Link>
@@ -30,7 +30,7 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
-									href="#teaching"
+									href="/#jiao-xue-jiao-yan"
 								>
 									教学教研
 								</Link>
@@ -38,7 +38,7 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
-									href="#faculty"
+									href="/#lao-shi-tuan-dui"
 								>
 									师资团队
 								</Link>
@@ -54,7 +54,7 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
-									href="/faqs"
+									href="/chang-jian-wen-ti"
 								>
 									常见问题
 								</Link>
@@ -62,7 +62,7 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
-									href="/campuses"
+									href="/#xiao-qu"
 								>
 									校区查询
 								</Link>
@@ -78,7 +78,7 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
-									href="/news"
+									href="/#xin-wen"
 								>
 									考试资讯
 								</Link>

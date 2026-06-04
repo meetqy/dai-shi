@@ -22,7 +22,7 @@ const HOME_FAQS = FAQ_DATA.flatMap((category) => category.items).filter(
 
 export function FAQ() {
 	return (
-		<section className="bg-white py-20" id="faq">
+		<section className="bg-white py-20" id="chang-jian-wen-ti">
 			<div className="container mx-auto max-w-4xl px-4">
 				<h2 className="mb-16 text-center font-bold text-3xl md:text-4xl">
 					常见问题
@@ -45,7 +45,7 @@ export function FAQ() {
 				</Accordion>
 				<div className="mt-10 text-center">
 					<Button asChild size="lg">
-						<Link href="/faqs">查看全部常见问题</Link>
+						<Link href="/chang-jian-wen-ti">查看全部常见问题</Link>
 					</Button>
 				</div>
 			</div>

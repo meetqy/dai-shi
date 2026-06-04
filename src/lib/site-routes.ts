@@ -23,14 +23,14 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	{
 		changeFrequency: "weekly",
 		description: "查看戴氏教育高考总部荣誉证书、资质认证与品牌背书内容。",
-		path: "/honors",
+		path: "/rong-yu-zi-zhi",
 		priority: 0.8,
 		title: "荣誉资质",
 	},
 	{
 		changeFrequency: "weekly",
 		description: "查看成都戴氏教育办学、收费、师资、管理与升学相关常见问题。",
-		path: "/faqs",
+		path: "/chang-jian-wen-ti",
 		priority: 0.8,
 		title: "常见问题",
 	},

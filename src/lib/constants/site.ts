@@ -15,46 +15,46 @@ export const SITE_HOTLINE_TEXT = "400-9875-211";
 export const SITE_HOTLINE_TEL = "tel:4009875211";
 
 export const UTILITY_LINKS: NavLink[] = [
-	{ href: "/honors", label: "荣誉资质" },
-	{ href: "/#news", label: "考试资讯" },
-	{ href: "/#campuses", label: "校区查询" },
-	{ href: "/#faq", label: "家长问答" },
+	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
+	{ href: "/#xin-wen", label: "考试资讯" },
+	{ href: "/#xiao-qu", label: "校区查询" },
+	{ href: "/#chang-jian-wen-ti", label: "家长问答" },
 ];
 
 export const PRIMARY_LINKS: HeaderNavItem[] = [
 	{ href: "/", label: "首页" },
-	{ href: "/#program", label: "高考全日制" },
+	{ href: "/#gao-kao-quan-ri-zhi", label: "高考全日制" },
 	{
 		items: [
-			{ href: "/#teaching", label: "教学教研" },
+			{ href: "/#jiao-xue-jiao-yan", label: "教学教研" },
 			{ href: "/lao-shi", label: "老师团队" },
-			{ href: "/#management", label: "教学管理" },
+			{ href: "/#jiao-xue-guan-li", label: "教学管理" },
 		],
 		label: "教学体系",
 	},
 	{
 		items: [
-			{ href: "/#campus-life", label: "校区环境" },
+			{ href: "/#xiao-qu", label: "校区环境" },
 			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
-			{ href: "/#campuses", label: "校区查询" },
-			{ href: "/#faq", label: "家长问答" },
+			{ href: "/#xiao-qu", label: "校区查询" },
+			{ href: "/#chang-jian-wen-ti", label: "家长问答" },
 		],
 		label: "校园招生",
 	},
-	{ href: "/honors", label: "荣誉资质" },
-	{ href: "/#news", label: "考试资讯" },
+	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
+	{ href: "/#xin-wen", label: "考试资讯" },
 	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];
 
 export const MOBILE_PRIMARY_LINKS: NavLink[] = [
 	{ href: "/", label: "首页" },
-	{ href: "/#program", label: "高考全日制" },
-	{ href: "/#teaching", label: "教学教研" },
+	{ href: "/#gao-kao-quan-ri-zhi", label: "高考全日制" },
+	{ href: "/#jiao-xue-jiao-yan", label: "教学教研" },
 	{ href: "/lao-shi", label: "老师团队" },
-	{ href: "/#management", label: "教学管理" },
-	{ href: "/#campus-life", label: "校区环境" },
+	{ href: "/#jiao-xue-guan-li", label: "教学管理" },
+	{ href: "/#xiao-qu", label: "校区环境" },
 	{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
-	{ href: "/honors", label: "荣誉资质" },
-	{ href: "/#news", label: "考试资讯" },
+	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
+	{ href: "/#xin-wen", label: "考试资讯" },
 	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];

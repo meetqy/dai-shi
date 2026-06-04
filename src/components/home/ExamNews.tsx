@@ -24,14 +24,14 @@ export function ExamNews() {
   ];
 
   return (
-    <section className="bg-white py-20" id="news">
+    <section className="bg-white py-20" id="xin-wen">
       <div className="container mx-auto px-4">
         <div className="mb-12 flex items-end justify-between">
           <div>
             <h2 className="mb-2 font-bold text-3xl text-slate-900 md:text-4xl">考试资讯</h2>
             <p className="text-slate-600">及时掌握高考政策、备考动态与升学信息。</p>
           </div>
-          <Link className="font-semibold text-primary hover:underline" href="/news">
+          <Link className="font-semibold text-primary hover:underline" href="/#xin-wen">
             查看更多
           </Link>
         </div>

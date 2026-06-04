@@ -26,7 +26,7 @@ function HonorCard({ index }: { index: number }) {
   const contentWrapperClassName = isReversed ? "lg:order-1" : undefined;
 
   return (
-    <article className="border-slate-200 border-b py-10 md:py-14" id={`honor-${honor.id}`}>
+    <article className="border-slate-200 border-b py-10 md:py-14" id={`rong-yu-${honor.id}`}>
       <div className={gridClassName}>
         <div className={imageWrapperClassName}>
           <a className="group block" href={honor.imageSrc} rel="noopener noreferrer" target="_blank">
@@ -94,7 +94,7 @@ export default function HonorsPage() {
               <PhoneButton className="h-12 rounded-xl px-6 font-semibold">立即咨询：{SITE_HOTLINE_TEXT}</PhoneButton>
               <Link
                 className="inline-flex h-12 items-center justify-center rounded-xl border border-slate-200 bg-white px-6 font-semibold text-slate-800 transition-colors hover:border-slate-300 hover:text-slate-950"
-                href="/#honors"
+                href="/#rong-yu-zi-zhi"
               >
                 返回首页荣誉区
               </Link>

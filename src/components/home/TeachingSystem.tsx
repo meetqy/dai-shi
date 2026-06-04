@@ -20,7 +20,7 @@ export function TeachingSystem() {
 	];
 
 	return (
-		<section className="bg-white py-20" id="teaching">
+		<section className="bg-white py-20" id="jiao-xue-jiao-yan">
 			<div className="container mx-auto px-4 text-center">
 				<h2 className="mb-12 font-bold text-3xl text-slate-900 md:text-4xl">
 					教学教研体系

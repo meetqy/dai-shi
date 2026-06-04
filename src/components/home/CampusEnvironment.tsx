@@ -11,7 +11,7 @@ const campusImages = [
 
 export function CampusEnvironment() {
 	return (
-		<section className="bg-slate-50 py-20" id="campus-life">
+		<section className="bg-slate-50 py-20" id="xiao-qu">
 			<div className="container mx-auto px-4">
 				<div className="mb-16 text-center">
 					<h2 className="mb-4 font-bold text-3xl text-slate-900 md:text-4xl">

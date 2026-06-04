@@ -9,7 +9,7 @@ export function ManagementSystem() {
   ];
 
   return (
-    <section className="bg-white py-20" id="management">
+    <section className="bg-white py-20" id="jiao-xue-guan-li">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center gap-12 md:flex-row-reverse">
           <div className="flex-1">

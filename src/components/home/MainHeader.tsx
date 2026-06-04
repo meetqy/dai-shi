@@ -18,25 +18,25 @@ export function MainHeader() {
 					</Link>
 					<Link
 						className="text-slate-600 transition-colors hover:text-primary"
-						href="#program"
+						href="#gao-kao-quan-ri-zhi"
 					>
 						高考全日制
 					</Link>
 					<Link
 						className="text-slate-600 transition-colors hover:text-primary"
-						href="#teaching"
+						href="#jiao-xue-jiao-yan"
 					>
 						教学体系
 					</Link>
 					<Link
 						className="text-slate-600 transition-colors hover:text-primary"
-						href="#faculty"
+						href="#lao-shi-tuan-dui"
 					>
 						师资团队
 					</Link>
 					<Link
 						className="text-slate-600 transition-colors hover:text-primary"
-						href="#campus-life"
+						href="#xiao-qu"
 					>
 						校区环境
 					</Link>

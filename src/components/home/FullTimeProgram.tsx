@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function FullTimeProgram() {
 	return (
-		<section className="bg-slate-50 py-20" id="program">
+		<section className="bg-slate-50 py-20" id="gao-kao-quan-ri-zhi">
 			<div className="container mx-auto px-4">
 				<div className="flex flex-col items-center gap-12 md:flex-row">
 					<div className="flex-1">
