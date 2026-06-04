@@ -56,8 +56,8 @@ export function AIDiagnosis() {
 
 							<div className="grid gap-6">
 								{features.map((f) => (
-									<div className="group flex gap-4" key={f.title}>
-										<div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+									<div className="flex gap-4" key={f.title}>
+										<div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 text-primary">
 											{f.icon}
 										</div>
 										<div>

@@ -1,3 +1,14 @@
+import Image from "next/image";
+
+const campusImages = [
+	{ src: "/assets/校区环境1.png", alt: "校区环境展示一" },
+	{ src: "/assets/校区环境2.jpg", alt: "校区环境展示二" },
+	{ src: "/assets/校区环境3.jpg", alt: "校区环境展示三" },
+	{ src: "/assets/校区环境4.jpg", alt: "校区环境展示四" },
+	{ src: "/assets/校区环境5.jpg", alt: "校区环境展示五" },
+	{ src: "/assets/校区环境6.png", alt: "校区环境展示六" },
+];
+
 export function CampusEnvironment() {
 	return (
 		<section className="bg-slate-50 py-20" id="campus-life">
@@ -12,12 +23,18 @@ export function CampusEnvironment() {
 				</div>
 
 				<div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-					{[1, 2, 3, 4, 5, 6].map((i) => (
+					{campusImages.map((image) => (
 						<div
-							className="flex aspect-video items-center justify-center rounded-lg bg-slate-200 text-slate-400"
-							key={i}
+							className="relative aspect-video overflow-hidden rounded-lg"
+							key={image.src}
 						>
-							校区环境图片占位 {i}
+							<Image
+								alt={image.alt}
+								className="object-cover"
+								fill
+								sizes="(min-width: 768px) 33vw, 50vw"
+								src={image.src}
+							/>
 						</div>
 					))}
 				</div>

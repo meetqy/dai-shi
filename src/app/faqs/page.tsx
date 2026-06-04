@@ -113,10 +113,10 @@ function InlineFaqCta({
 	icon: LucideIcon;
 }) {
 	return (
-		<div className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-1 shadow-sm transition-all hover:shadow-md">
+		<div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-1 shadow-sm">
 			<div className="flex flex-col gap-6 rounded-[calc(1.5rem-1px)] bg-slate-50/50 p-6 md:flex-row md:items-center md:justify-between md:p-8">
 				<div className="flex items-start gap-5">
-					<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+					<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
 						<Icon className="size-6" />
 					</div>
 					<div className="max-w-xl">

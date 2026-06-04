@@ -1,3 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
+import { TEACHERS } from "~/lib/constants/teachers";
+
 export function FacultyTeam() {
 	return (
 		<section className="bg-slate-50 py-20" id="faculty">
@@ -12,23 +16,41 @@ export function FacultyTeam() {
 				</div>
 
 				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-					{[1, 2, 3, 4].map((i) => (
-						<div
-							className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm"
-							key={i}
+					{TEACHERS.map((teacher) => (
+						<Link
+							className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+							href={`/lao-shi/${teacher.slug}`}
+							key={teacher.slug}
 						>
-							<div className="flex h-64 items-center justify-center bg-slate-200 text-slate-400">
-								教师照片占位 {i}
+							<div className="relative h-64">
+								<Image
+									alt={`${teacher.name}老师`}
+									className="object-cover object-top"
+									fill
+									sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+									src={teacher.image}
+								/>
 							</div>
 							<div className="p-6">
-								<h3 className="mb-1 font-bold text-lg">骨干教师 {i}</h3>
-								<p className="mb-3 text-primary text-sm">10 年以上教学经验</p>
+								<h3 className="mb-1 font-bold text-lg">{teacher.name}</h3>
+								<p className="mb-3 text-primary text-sm">{teacher.title}</p>
 								<p className="text-slate-500 text-sm italic">
-									关注学生基础、方法与状态，让每一次进步都更有方向。
+									{teacher.summary}
+								</p>
+								<p className="mt-4 font-medium text-primary text-sm">
+									查看老师详情
 								</p>
 							</div>
-						</div>
+						</Link>
 					))}
+				</div>
+				<div className="mt-10 text-center">
+					<Link
+						className="font-semibold text-primary transition-opacity hover:opacity-80"
+						href="/lao-shi"
+					>
+						查看全部老师详情
+					</Link>
 				</div>
 			</div>
 		</section>

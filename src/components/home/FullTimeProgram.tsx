@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function FullTimeProgram() {
 	return (
 		<section className="bg-slate-50 py-20" id="program">
@@ -27,8 +29,14 @@ export function FullTimeProgram() {
 							))}
 						</ul>
 					</div>
-					<div className="flex h-100 w-full flex-1 items-center justify-center rounded-2xl bg-slate-200 text-slate-400">
-						项目配图占位（600 x 400）
+					<div className="relative h-100 w-full flex-1 overflow-hidden rounded-2xl">
+						<Image
+							alt="高考全日制项目介绍"
+							className="object-cover"
+							fill
+							sizes="(min-width: 768px) 50vw, 100vw"
+							src="/assets/高考全日制项目介绍600x400.jpg"
+						/>
 					</div>
 				</div>
 			</div>

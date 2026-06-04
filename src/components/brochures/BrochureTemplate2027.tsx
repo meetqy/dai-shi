@@ -14,6 +14,7 @@ import {
 	SparklesIcon,
 	UsersIcon,
 } from "lucide-react";
+import Image from "next/image";
 import { PhoneButton, PhoneLink } from "~/components/phone-action";
 import { Button } from "~/components/ui/button";
 import type { Brochure } from "~/lib/brochures";
@@ -248,15 +249,21 @@ function AccentCard({
 function ImagePlaceholder({
 	label,
 	notes,
-	tag = "图片占位",
+	tag = "图片展示",
 	ratioClass = "aspect-[4/3]",
 	tone = "light",
+	src,
+	alt,
+	objectPosition = "center",
 }: {
 	label: string;
 	notes: string;
 	tag?: string;
 	ratioClass?: string;
 	tone?: "light" | "dark";
+	src?: string;
+	alt?: string;
+	objectPosition?: string;
 }) {
 	const toneClass =
 		tone === "dark" ? "bg-white/8 text-white" : "bg-slate-100 text-slate-700";
@@ -267,17 +274,38 @@ function ImagePlaceholder({
 			: "border-slate-200 bg-white text-slate-500";
 
 	return (
-		<div
-			className={`flex ${ratioClass} items-end rounded-2xl px-6 py-6 ${toneClass}`}
-		>
-			<div>
+		<div className={`relative overflow-hidden rounded-2xl ${ratioClass}`}>
+			{src ? (
+				<>
+					<Image
+						alt={alt ?? label}
+						className="object-cover"
+						fill
+						sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+						src={src}
+						style={{ objectPosition }}
+					/>
+					<div
+						className={`absolute inset-0 ${
+							tone === "dark" ? "bg-slate-950/35" : "bg-slate-950/18"
+						}`}
+					/>
+				</>
+			) : null}
+			<div
+				className={`relative flex h-full items-end px-6 py-6 ${src ? "text-white" : toneClass}`}
+			>
+				<div>
 				<div
 					className={`inline-flex rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.18em] ${tagClass}`}
 				>
 					{tag}
 				</div>
 				<div className="mt-4 font-semibold">{label}</div>
-				<div className={`mt-2 text-sm leading-6 ${noteClass}`}>{notes}</div>
+				<div className={`mt-2 text-sm leading-6 ${src ? "text-slate-200" : noteClass}`}>
+					{notes}
+				</div>
+				</div>
 			</div>
 		</div>
 	);
@@ -351,9 +379,11 @@ export function BrochureTemplate2027({ brochure }: { brochure: Brochure }) {
 								继续下滑查看完整简章
 							</div>
 							<ImagePlaceholder
-								label="封面主视觉占位"
+								alt="2027 招生简章主视觉"
+								label="主视觉"
 								notes="可放品牌主视觉 / 校区航拍 / 教学场景合成海报"
 								ratioClass="aspect-[5/4]"
+								src="/assets/2027招生简章封面主视觉占位.jpg"
 								tag="主视觉"
 								tone="dark"
 							/>
@@ -548,13 +578,17 @@ export function BrochureTemplate2027({ brochure }: { brochure: Brochure }) {
 								</div>
 								<div className="grid gap-4 md:grid-cols-2">
 									<ImagePlaceholder
-										label="校园环境图占位"
+										alt="校园环境实拍"
+										label="校园环境"
 										notes="可放教室 / 食堂 / 宿舍 / 校区实拍"
+										src="/assets/校园环境图占位.jpg"
 										tag="校区实景"
 									/>
 									<ImagePlaceholder
-										label="四馆场景图占位"
+										alt="四馆场景实拍"
+										label="四馆场景"
 										notes="可放图书馆 / 自习馆 / 体能馆 / 心能馆"
+										src="/assets/四馆场景图占位.jpg"
 										tag="学习空间"
 									/>
 								</div>

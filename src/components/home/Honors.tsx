@@ -30,7 +30,7 @@ export function Honors() {
 
 						return (
 							<div
-								className="rounded-2xl border border-slate-100 bg-slate-50 p-6 transition-all hover:border-primary/20 hover:bg-white hover:shadow-lg hover:shadow-primary/5"
+								className="rounded-2xl border border-slate-100 bg-slate-50 p-6"
 								key={honor.title}
 							>
 								<div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">

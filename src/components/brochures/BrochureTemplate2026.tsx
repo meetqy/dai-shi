@@ -309,7 +309,7 @@ function SectionHeading({
 function ImagePlaceholder({
 	label,
 	notes,
-	tag = "图片占位",
+	tag = "图片展示",
 	ratioClass = "aspect-16/10",
 	tone = "light",
 	align = "center",
@@ -422,8 +422,8 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
 							<ImagePlaceholder
 								align="left"
 								className="mt-8"
-								label="封面主视觉占位"
-								notes="可放品牌主视觉 / 校区航拍 / 视频封面"
+								label="主视觉"
+								notes="可放品牌主视觉 / 校区航拍 / 视频主视觉"
 								tag="主视觉"
 								tone="dark"
 							/>
@@ -513,7 +513,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
 									</div>
 								</div>
 								<ImagePlaceholder
-									label="师资展示图占位"
+									label="师资展示"
 									notes="可放名师合影 / 教研现场 / 讲课实拍"
 									ratioClass="aspect-[4/5]"
 									tag="师资实拍"
@@ -648,7 +648,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
 							<div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
 								<ImagePlaceholder
 									align="left"
-									label="命题研究图占位"
+									label="命题研究"
 									notes="可放内部资料、教研会议、命题研究过程"
 									ratioClass="aspect-[4/5]"
 									tag="教研资料"
@@ -754,7 +754,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
 									</p>
 								</div>
 								<ImagePlaceholder
-									label="家校沟通图占位"
+									label="家校沟通"
 									notes="可放家长群播报截图 / 直播间海报 / 学习反馈图"
 									ratioClass="aspect-[4/5]"
 									tag="沟通反馈"
@@ -771,25 +771,25 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
 							<div className="space-y-8">
 								<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
 									<ImagePlaceholder
-										label="教室实景占位"
+										label="教室实景"
 										notes="明亮教室 / 上课场景"
 										ratioClass="aspect-[3/2]"
 										tag="校区实景"
 									/>
 									<ImagePlaceholder
-										label="食堂实景占位"
+										label="食堂实景"
 										notes="餐食陈列 / 用餐环境"
 										ratioClass="aspect-[3/2]"
 										tag="校区实景"
 									/>
 									<ImagePlaceholder
-										label="住宿实景占位"
+										label="住宿实景"
 										notes="宿舍环境 / 生活空间"
 										ratioClass="aspect-[3/2]"
 										tag="校区实景"
 									/>
 									<ImagePlaceholder
-										label="校区总览占位"
+										label="校区总览"
 										notes="校区外立面 / 校园航拍"
 										ratioClass="aspect-[3/2]"
 										tag="校区实景"
@@ -825,25 +825,25 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
 							<div className="space-y-8">
 								<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
 									<ImagePlaceholder
-										label="图书馆占位"
+										label="图书馆"
 										notes="资料墙 / 阅览区"
 										ratioClass="aspect-[3/2]"
 										tag="学习空间"
 									/>
 									<ImagePlaceholder
-										label="自习馆占位"
+										label="自习馆"
 										notes="自习座位 / 督导场景"
 										ratioClass="aspect-[3/2]"
 										tag="学习空间"
 									/>
 									<ImagePlaceholder
-										label="体能馆占位"
+										label="体能馆"
 										notes="运动训练 / 体能课程"
 										ratioClass="aspect-[3/2]"
 										tag="学习空间"
 									/>
 									<ImagePlaceholder
-										label="心能馆占位"
+										label="心能馆"
 										notes="心理课程 / 减压活动"
 										ratioClass="aspect-[3/2]"
 										tag="学习空间"

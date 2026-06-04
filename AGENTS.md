@@ -3,6 +3,8 @@
 - 所有的文案必须用中文
 - 所有的路由都用拼音
 - 不使用大量 CARD 风格
+- 不可点击的元素不要添加 hover 效果或其他会暗示可交互的视觉反馈
 - 所有与咨询、预约、电话相关的按钮或链接，必须使用 PhoneButton 或 PhoneLink 组件
 - PhoneButton 和 PhoneLink 组件会自动使用配置在 site.ts 中的 SITE_HOTLINE_TEL 作为电话链接
 - 二级页面顶部返回条统一使用网站通用的 `PageTopNav` 组件，不再使用页面或模块专属命名的顶部导航组件
+- 后续如果新增、删除或调整可访问页面路由，必须同步更新 `llms.txt` 与 `sitemap.xml`，确保站点清单与实际页面一致

@@ -27,7 +27,7 @@ export const PRIMARY_LINKS: HeaderNavItem[] = [
 	{
 		items: [
 			{ href: "/#teaching", label: "教学教研" },
-			{ href: "/#faculty", label: "师资团队" },
+			{ href: "/lao-shi", label: "老师团队" },
 			{ href: "/#management", label: "教学管理" },
 		],
 		label: "教学体系",
@@ -50,7 +50,7 @@ export const MOBILE_PRIMARY_LINKS: NavLink[] = [
 	{ href: "/", label: "首页" },
 	{ href: "/#program", label: "高考全日制" },
 	{ href: "/#teaching", label: "教学教研" },
-	{ href: "/#faculty", label: "师资团队" },
+	{ href: "/lao-shi", label: "老师团队" },
 	{ href: "/#management", label: "教学管理" },
 	{ href: "/#campus-life", label: "校区环境" },
 	{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
