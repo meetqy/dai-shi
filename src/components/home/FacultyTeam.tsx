@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { TeacherCard } from "~/components/teachers/TeacherCard";
 import { TEACHERS } from "~/lib/constants/teachers";
 
 export function FacultyTeam() {
@@ -17,31 +17,7 @@ export function FacultyTeam() {
 
 				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
 					{TEACHERS.map((teacher) => (
-						<Link
-							className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
-							href={`/lao-shi/${teacher.slug}`}
-							key={teacher.slug}
-						>
-							<div className="relative h-64">
-								<Image
-									alt={`${teacher.name}老师`}
-									className="object-cover object-top"
-									fill
-									sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-									src={teacher.image}
-								/>
-							</div>
-							<div className="p-6">
-								<h3 className="mb-1 font-bold text-lg">{teacher.name}</h3>
-								<p className="mb-3 text-primary text-sm">{teacher.title}</p>
-								<p className="text-slate-500 text-sm italic">
-									{teacher.summary}
-								</p>
-								<p className="mt-4 font-medium text-primary text-sm">
-									查看老师详情
-								</p>
-							</div>
-						</Link>
+						<TeacherCard key={teacher.slug} teacher={teacher} />
 					))}
 				</div>
 				<div className="mt-10 text-center">

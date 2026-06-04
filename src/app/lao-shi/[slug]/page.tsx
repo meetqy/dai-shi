@@ -1,4 +1,3 @@
-import { MedalIcon, SchoolIcon, SparklesIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -34,22 +33,33 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function InfoBlock({ icon: Icon, title, items }: { icon: typeof MedalIcon; title: string; items: string[] }) {
+function ProfileMeta({ label, value }: { label: string; value?: string }) {
+  if (!value) {
+    return null;
+  }
+
+  return (
+    <div className="border-slate-200 border-b py-4 last:border-b-0">
+      <dt className="text-slate-500 text-sm">{label}</dt>
+      <dd className="mt-1 font-medium text-slate-900 leading-7">{value}</dd>
+    </div>
+  );
+}
+
+function TeacherSection({ items, title }: { items: string[]; title: string }) {
   if (items.length === 0) {
     return null;
   }
 
   return (
-    <section className="rounded-3xl border border-slate-200 bg-white p-6 md:p-8">
-      <div className="flex items-center gap-3">
-        <div className="flex size-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-          <Icon className="size-5" />
-        </div>
-        <h2 className="font-bold text-2xl text-slate-950">{title}</h2>
-      </div>
-      <ul className="mt-6 space-y-3 text-slate-700 leading-8">
+    <section className="border-slate-200 border-t pt-10">
+      <h2 className="font-bold text-2xl text-slate-950">{title}</h2>
+      <ul className="mt-6 space-y-4 text-slate-700 leading-8">
         {items.map((item) => (
-          <li key={item}>{item}</li>
+          <li className="flex gap-3" key={item}>
+            <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+            <span>{item}</span>
+          </li>
         ))}
       </ul>
     </section>
@@ -69,44 +79,50 @@ export default async function TeacherDetailPage({ params }: PageProps) {
       <PageTopNav backHref="/lao-shi" backLabel="返回老师团队" title={teacher.name} />
       <main className="pb-16">
         <section className="bg-white">
-          <div className="container mx-auto grid gap-8 px-4 py-10 md:grid-cols-[320px_minmax(0,1fr)] md:py-14">
-            <div className="relative h-105 overflow-hidden rounded-3xl bg-slate-100">
-              <Image alt={`${teacher.name}老师`} className="object-cover object-top" fill priority sizes="(max-width: 768px) 100vw, 320px" src={teacher.image} />
-            </div>
-            <div>
-              <p className="font-semibold text-primary text-sm">老师详情</p>
-              <h1 className="mt-3 font-bold text-4xl text-slate-950 md:text-5xl">{teacher.name}</h1>
-              <p className="mt-3 font-medium text-primary text-xl">{teacher.title}</p>
-              <p className="mt-6 max-w-3xl text-lg text-slate-600 leading-8">{teacher.summary}</p>
-              <div className="mt-8 grid gap-3 md:grid-cols-2">
-                {teacher.education ? <div className="rounded-2xl bg-slate-50 px-4 py-4 text-slate-700">毕业院校：{teacher.education}</div> : null}
-                {teacher.experience ? <div className="rounded-2xl bg-slate-50 px-4 py-4 text-slate-700">{teacher.experience}</div> : null}
+          <div className="container mx-auto px-4 py-10 md:py-14">
+            <div className="grid gap-8 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-12">
+              <div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-slate-100">
+                <Image alt={`${teacher.name}老师`} className="object-cover object-top" fill priority sizes="(max-width: 1024px) 100vw, 360px" src={teacher.image} />
               </div>
-              <div className="mt-8">
-                <PhoneButton className="h-12 rounded-xl px-6 font-semibold">电话咨询老师安排：{SITE_HOTLINE_TEXT}</PhoneButton>
+
+              <div className="flex flex-col justify-center">
+                <p className="font-semibold text-primary text-sm">老师详情</p>
+                <h1 className="mt-3 font-bold text-4xl text-slate-950 leading-tight md:text-5xl">{teacher.name}</h1>
+                <p className="mt-3 font-medium text-primary text-xl">{teacher.title}</p>
+                <p className="mt-6 max-w-3xl text-lg text-slate-600 leading-8">{teacher.summary}</p>
+
+                <dl className="mt-8 max-w-2xl border-slate-200 border-t border-b">
+                  <ProfileMeta label="毕业院校" value={teacher.education} />
+                  <ProfileMeta label="教学经历" value={teacher.experience} />
+                </dl>
+
+                <div className="mt-8">
+                  <PhoneButton className="h-12 rounded-xl px-6 font-semibold">电话咨询老师安排：{SITE_HOTLINE_TEXT}</PhoneButton>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="container mx-auto px-4 pt-6 md:pt-8">
-          <div className="grid gap-6">
-            <section className="rounded-3xl border border-slate-200 bg-white p-6 md:p-8">
-              <div className="flex items-center gap-3">
-                <div className="flex size-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <SparklesIcon className="size-5" />
-                </div>
-                <h2 className="font-bold text-2xl text-slate-950">老师简介</h2>
-              </div>
+        <section className="bg-white">
+          <div className="container mx-auto px-4 pb-2">
+            <div className="mx-auto max-w-5xl border-slate-200 border-t pt-10">
+              <h2 className="font-bold text-2xl text-slate-950">老师简介</h2>
               <div className="mt-6 space-y-4 text-slate-700 leading-8">
                 {teacher.introduction.map((item) => (
                   <p key={item}>{item}</p>
                 ))}
               </div>
-            </section>
+            </div>
+          </div>
+        </section>
 
-            <InfoBlock icon={MedalIcon} items={teacher.honors} title="荣誉与任职" />
-            <InfoBlock icon={SchoolIcon} items={teacher.achievements} title="教学成果与经验" />
+        <section className="bg-white">
+          <div className="container mx-auto px-4 pt-8 pb-16">
+            <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:gap-12">
+              <TeacherSection items={teacher.honors} title="荣誉与任职" />
+              <TeacherSection items={teacher.achievements} title="教学成果与经验" />
+            </div>
           </div>
         </section>
       </main>
