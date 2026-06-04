@@ -10,7 +10,8 @@ export const HONORS: Honor[] = [
 		title: "中国最具影响力教育集团",
 		issuer: "新浪教育",
 		year: "2023",
-		description: "在年度教育盛典中，凭借卓越的教学质量和品牌影响力荣获此项殊荣。",
+		description:
+			"在年度教育盛典中，凭借卓越的教学质量和品牌影响力荣获此项殊荣。",
 	},
 	{
 		title: "全国AAA级信用示范单位",

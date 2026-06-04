@@ -23,26 +23,30 @@ export const UTILITY_LINKS: NavLink[] = [
 
 export const PRIMARY_LINKS: HeaderNavItem[] = [
 	{ href: "/", label: "首页" },
-	{ href: "/#gao-kao-quan-ri-zhi", label: "高考全日制" },
 	{
 		items: [
+			{ href: "/#gao-kao-quan-ri-zhi", label: "高考全日制" },
 			{ href: "/#jiao-xue-jiao-yan", label: "教学教研" },
-			{ href: "/lao-shi", label: "老师团队" },
 			{ href: "/#jiao-xue-guan-li", label: "教学管理" },
 		],
-		label: "教学体系",
+		label: "课程体系",
 	},
 	{
 		items: [
+			{ href: "/lao-shi", label: "老师团队" },
+			{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
 			{ href: "/#xiao-qu", label: "校区环境" },
-			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
-			{ href: "/#xiao-qu", label: "校区查询" },
-			{ href: "/#jia-chang-wen-da", label: "家长问答" },
 		],
-		label: "校园招生",
+		label: "关于我们",
 	},
-	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
-	{ href: "/#xin-wen", label: "考试资讯" },
+	{
+		items: [
+			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
+			{ href: "/#jia-chang-wen-da", label: "家长问答" },
+			{ href: "/#xin-wen", label: "考试资讯" },
+		],
+		label: "招生服务",
+	},
 	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];
 
@@ -50,11 +54,12 @@ export const MOBILE_PRIMARY_LINKS: NavLink[] = [
 	{ href: "/", label: "首页" },
 	{ href: "/#gao-kao-quan-ri-zhi", label: "高考全日制" },
 	{ href: "/#jiao-xue-jiao-yan", label: "教学教研" },
-	{ href: "/lao-shi", label: "老师团队" },
 	{ href: "/#jiao-xue-guan-li", label: "教学管理" },
+	{ href: "/lao-shi", label: "老师团队" },
+	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
 	{ href: "/#xiao-qu", label: "校区环境" },
 	{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
-	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
+	{ href: "/#jia-chang-wen-da", label: "家长问答" },
 	{ href: "/#xin-wen", label: "考试资讯" },
 	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];

@@ -296,15 +296,17 @@ function ImagePlaceholder({
 				className={`relative flex h-full items-end px-6 py-6 ${src ? "text-white" : toneClass}`}
 			>
 				<div>
-				<div
-					className={`inline-flex rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.18em] ${tagClass}`}
-				>
-					{tag}
-				</div>
-				<div className="mt-4 font-semibold">{label}</div>
-				<div className={`mt-2 text-sm leading-6 ${src ? "text-slate-200" : noteClass}`}>
-					{notes}
-				</div>
+					<div
+						className={`inline-flex rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.18em] ${tagClass}`}
+					>
+						{tag}
+					</div>
+					<div className="mt-4 font-semibold">{label}</div>
+					<div
+						className={`mt-2 text-sm leading-6 ${src ? "text-slate-200" : noteClass}`}
+					>
+						{notes}
+					</div>
 				</div>
 			</div>
 		</div>

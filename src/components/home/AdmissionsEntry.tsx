@@ -2,7 +2,10 @@ import Link from "next/link";
 
 export function AdmissionsEntry() {
 	return (
-		<section className="bg-primary py-20 text-primary-foreground" id="zhao-sheng-jian-zhang">
+		<section
+			className="bg-primary py-20 text-primary-foreground"
+			id="zhao-sheng-jian-zhang"
+		>
 			<div className="container mx-auto px-4 text-center">
 				<h2 className="mb-6 font-bold text-3xl md:text-5xl">招生简章入口</h2>
 				<p className="mx-auto mb-10 max-w-2xl text-xl opacity-90">
