@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps) {
 	const brochure = getBrochureByYear(year);
 	if (!brochure) return { title: "未找到页面" };
 	return {
-		title: `${brochure.title} - 戴氏教育`,
+		title: brochure.title,
 		description: brochure.content.slice(0, 150),
 	};
 }

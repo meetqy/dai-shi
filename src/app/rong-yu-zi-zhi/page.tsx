@@ -9,7 +9,7 @@ import { HONOR_CERTIFICATES } from "~/lib/constants/honor-certificates";
 import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 
 export const metadata: Metadata = {
-	title: "荣誉资质 - 戴氏教育高考总部",
+	title: "荣誉资质",
 	description:
 		"查看戴氏教育高考总部荣誉证书、版权登记、办学资质、质量认证、媒体报道与行业任职等真实展示内容。",
 };

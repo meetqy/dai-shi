@@ -4,7 +4,7 @@ import { PageTopNav } from "~/components/PageTopNav";
 import { getAllBrochures } from "~/lib/brochures";
 
 export const metadata = {
-	title: "招生简章列表 - 戴氏教育",
+	title: "招生简章列表",
 	description: "查看戴氏教育历年高考全日制招生简章",
 };
 

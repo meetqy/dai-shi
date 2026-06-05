@@ -7,7 +7,7 @@ import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 import { TEACHERS } from "~/lib/constants/teachers";
 
 export const metadata: Metadata = {
-	title: "老师团队 - 戴氏教育",
+	title: "老师团队",
 	description:
 		"查看戴氏教育高考团队核心老师介绍，了解老师履历、教学成果与教研方向。",
 };

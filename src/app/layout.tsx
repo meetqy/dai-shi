@@ -11,7 +11,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const siteUrl = new URL(`https://${env.NEXT_PUBLIC_SITE_DOMAIN}`);
 
 export const metadata: Metadata = {
-  title: "戴氏教育",
+  title: {
+    default: "戴氏教育高考中心总部官方网站 | 戴氏教育",
+    template: "%s｜戴氏教育",
+  },
   description: "戴氏教育高考全日制与升学服务官网",
   metadataBase: siteUrl,
   icons: [{ rel: "icon", url: "/favicon.ico" }],

@@ -31,7 +31,7 @@ export async function generateMetadata({
 	}
 
 	return {
-		title: `${teacher.name}老师介绍 - 戴氏教育`,
+		title: `${teacher.name}老师介绍`,
 		description: teacher.summary,
 	};
 }
