@@ -17,8 +17,6 @@ export function getAllJiaZhangArticles(): JiaZhangArticleSummary[] {
 /**
  * 根据 slug 获取单篇文章
  */
-export function getJiaZhangArticleBySlug(
-	slug: string,
-): JiaZhangArticle | null {
+export function getJiaZhangArticleBySlug(slug: string): JiaZhangArticle | null {
 	return JIA_ZHANG_ARTICLES.find((article) => article.slug === slug) ?? null;
 }

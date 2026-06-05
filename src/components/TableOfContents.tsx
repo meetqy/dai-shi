@@ -34,7 +34,7 @@ export function TableOfContents({
 	return (
 		<aside className={cn("lg:sticky lg:top-48 lg:self-start", className)}>
 			<div className="rounded-xl border border-slate-100 bg-slate-50/50 p-6">
-				<div className="mb-4 font-bold text-slate-900 text-sm tracking-wider uppercase">
+				<div className="mb-4 font-bold text-slate-900 text-sm uppercase tracking-wider">
 					{title}
 				</div>
 				<nav className="flex flex-col gap-y-3.5 text-sm">

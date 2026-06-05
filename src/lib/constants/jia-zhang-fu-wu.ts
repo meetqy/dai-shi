@@ -12,68 +12,6 @@ import {
 	UsersIcon,
 } from "lucide-react";
 
-// =========================== 分类体系 ===========================
-
-export type JiaZhangCategoryId =
-	| "xue-guan" // 学管服务
-	| "jiao-xue" // 教学管理
-	| "jia-zhang" // 家长指南
-	| "xue-xi" // 学习方法
-	| "bei-kao" // 备考攻略
-	| "zi-xun"; // 高考资讯
-
-export type JiaZhangCategory = {
-	id: JiaZhangCategoryId;
-	label: string;
-	description: string;
-};
-
-export const JIA_ZHANG_CATEGORIES: JiaZhangCategory[] = [
-	{
-		id: "xue-guan",
-		label: "学管服务",
-		description: "学员日常管理与服务流程",
-	},
-	{
-		id: "jiao-xue",
-		label: "教学管理",
-		description: "教学体系、教研与师资管理",
-	},
-	{
-		id: "jia-zhang",
-		label: "家长指南",
-		description: "家长沟通、亲子关系与心理支持",
-	},
-	{
-		id: "xue-xi",
-		label: "学习方法",
-		description: "学习习惯、时间管理与提分技巧",
-	},
-	{
-		id: "bei-kao",
-		label: "备考攻略",
-		description: "复习计划、模考策略与冲刺方案",
-	},
-	{
-		id: "zi-xun",
-		label: "高考资讯",
-		description: "政策解读、招生动态与考试新闻",
-	},
-];
-
-export function getCategoryLabel(id: JiaZhangCategoryId): string {
-	return (
-		JIA_ZHANG_CATEGORIES.find((category) => category.id === id)?.label ?? ""
-	);
-}
-
-export function getCategoryDescription(id: JiaZhangCategoryId): string {
-	return (
-		JIA_ZHANG_CATEGORIES.find((category) => category.id === id)
-			?.description ?? ""
-	);
-}
-
 // =========================== FAQ 类型 ===========================
 
 export type FaqItem = {
@@ -131,7 +69,6 @@ export type ArticleBlock =
 export type JiaZhangArticle = {
 	slug: string;
 	title: string;
-	category: JiaZhangCategoryId;
 	summary: string;
 	publishedAt: string; // ISO 日期
 	highlighted?: boolean;
@@ -431,7 +368,8 @@ const FAQ_SECTIONS: FaqSection[] = [
 			},
 			{
 				question: "班主任的主要工作职责是什么？",
-				answer: "日常纪律管理、作息管控、手机管理、家校沟通、学员日常状态跟踪。",
+				answer:
+					"日常纪律管理、作息管控、手机管理、家校沟通、学员日常状态跟踪。",
 			},
 			{
 				question: "学管师的主要工作职责是什么？",
@@ -736,7 +674,8 @@ const FAQ_SECTIONS: FaqSection[] = [
 			},
 			{
 				question: "考前阶段机构开设考点冲刺专项课程吗？",
-				answer: "开设的！考前专项冲刺聚焦高频考点、重难点、压轴题，助力短期高效提分。",
+				answer:
+					"开设的！考前专项冲刺聚焦高频考点、重难点、压轴题，助力短期高效提分。",
 			},
 			{
 				question: "考前冲刺课程包含中高考考点押题内容吗？",
@@ -754,7 +693,6 @@ export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
 	{
 		slug: "xue-guan-fu-wu-liu-cheng",
 		title: "成都高考全日制学管服务流程",
-		category: "xue-guan",
 		summary:
 			"围绕成都戴氏教育高考中心学员入学后的建档、排课、首课回访、日常管理、家校沟通与预警干预，系统说明高考全日制与复读学员的学管服务流程，让家长清楚知道孩子入学后如何被跟进、反馈与支持。",
 		publishedAt: "2026-06-05",
@@ -883,7 +821,6 @@ export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
 	{
 		slug: "jia-zhang-wen-ti",
 		title: "家长问答",
-		category: "jia-zhang",
 		summary:
 			"关于戴氏教育的品牌资质、收费课时、师资、班型、提分效果、管理食宿、校区环境、人群适配、负面顾虑、升学增值等 10 大类 100+ 个家长最关心的问题集中解答。",
 		publishedAt: "2026-05-20",
@@ -901,15 +838,6 @@ export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
 		},
 	},
 ];
-
-// =========================== 列表分类（仅展示已有文章的分类） ===========================
-
-export function getCategoriesWithArticles(): JiaZhangCategory[] {
-	const usedIds = new Set(
-		JIA_ZHANG_ARTICLES.map((article) => article.category),
-	);
-	return JIA_ZHANG_CATEGORIES.filter((category) => usedIds.has(category.id));
-}
 
 // =========================== 兼容旧接口：所有 FAQ 项扁平化 ===========================
 

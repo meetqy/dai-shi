@@ -11,7 +11,9 @@ export function Honors() {
 			<div className="container mx-auto px-4">
 				<div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 					<div className="max-w-2xl">
-						<p className="mb-3 font-semibold text-primary text-sm">戴氏教育获得过哪些认可</p>
+						<p className="mb-3 font-semibold text-primary text-sm">
+							戴氏教育获得过哪些认可
+						</p>
 						<h2 className="mb-3 font-bold text-2xl text-slate-900 md:text-3xl">
 							真实荣誉，看得见的办学积累
 						</h2>
