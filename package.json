@@ -13,6 +13,7 @@
     "preview": "next build && next start",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "pull": "git pull && pnpm i && rm -rf /www/server/nginx/proxy_cache_dir/*",
     "upgrade:next": "npx @next/codemod@canary upgrade latest"
   },
   "dependencies": {

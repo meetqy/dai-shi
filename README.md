@@ -21,11 +21,13 @@
 ### 快速开始
 
 1. 安装依赖：
+
    ```bash
    pnpm install
    ```
 
 2. 启动开发服务器：
+
    ```bash
    pnpm dev
    ```
@@ -43,3 +45,5 @@
 ## 部署
 
 本项目支持在 Vercel、Netlify 或 Docker 上进行部署。详情请参考 T3 Stack 的部署指南。
+
+rm -rf /www/server/nginx/proxy_cache_dir/\*
