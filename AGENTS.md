@@ -7,4 +7,5 @@
 - 所有与咨询、预约、电话相关的按钮或链接，必须使用 PhoneButton 或 PhoneLink 组件
 - PhoneButton 和 PhoneLink 组件会自动使用配置在 site.ts 中的 SITE_HOTLINE_TEL 作为电话链接
 - 二级页面顶部返回条统一使用网站通用的 `PageTopNav` 组件，不再使用页面或模块专属命名的顶部导航组件
+- 二级页面（除首页外的所有页面）一律全屏布局：宽度由 `container mx-auto px-4` 控制，**内容层（卡片 / 章节 / CTA / 正文等）不要再加 `max-w-Xxl` 二次约束**，与首页 section 视觉保持一致；如需在视觉上居中，使用 `text-center` 或 `mx-auto` 配合具体场景
 - 后续如果新增、删除或调整可访问页面路由，必须同步更新 `llms.txt` 与 `sitemap.xml`，确保站点清单与实际页面一致

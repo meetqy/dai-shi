@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "~/components/ui/accordion";
 import { Button } from "~/components/ui/button";
-import { FAQ_DATA } from "~/lib/constants/faqs";
+import { getAllJiaZhangFaqItems } from "~/lib/constants/jia-zhang-fu-wu";
 
 const HOME_FAQ_QUESTIONS = [
   "戴氏教育办学多少年了？",
@@ -11,7 +11,7 @@ const HOME_FAQ_QUESTIONS = [
   "戴氏能够提供真实的往届学生提分案例吗？",
 ];
 
-const HOME_FAQS = FAQ_DATA.flatMap((category) => category.items).filter((item) => HOME_FAQ_QUESTIONS.includes(item.question));
+const HOME_FAQS = getAllJiaZhangFaqItems().filter((item) => HOME_FAQ_QUESTIONS.includes(item.question));
 
 export function FAQ() {
   return (
@@ -33,7 +33,7 @@ export function FAQ() {
         </Accordion>
         <div className="mt-10 text-center">
           <Button asChild size="lg">
-            <Link href="/chang-jian-wen-ti">查看全部家长问答</Link>
+            <Link href="/jia-zhang-fu-wu/jia-zhang-wen-ti">查看全部家长问答</Link>
           </Button>
         </div>
       </div>

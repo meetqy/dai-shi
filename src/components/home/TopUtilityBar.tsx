@@ -20,7 +20,7 @@ export function TopUtilityBar() {
 					</Link>
 					<Link
 						className="transition-colors hover:text-primary"
-						href="/chang-jian-wen-ti"
+						href="/jia-zhang-fu-wu/jia-zhang-wen-ti"
 					>
 						常见问题
 					</Link>

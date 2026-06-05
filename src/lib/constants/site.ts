@@ -47,6 +47,7 @@ export const PRIMARY_LINKS: HeaderNavItem[] = [
 		],
 		label: "招生服务",
 	},
+	{ href: "/jia-zhang-fu-wu", label: "家长服务" },
 	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];
 
@@ -60,6 +61,7 @@ export const MOBILE_PRIMARY_LINKS: NavLink[] = [
 	{ href: "/#xiao-qu", label: "校区环境" },
 	{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
 	{ href: "/#jia-chang-wen-da", label: "家长问答" },
+	{ href: "/jia-zhang-fu-wu", label: "家长服务" },
 	{ href: "/#xin-wen", label: "考试资讯" },
 	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];

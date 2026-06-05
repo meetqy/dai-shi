@@ -1,6 +1,7 @@
 import { env } from "~/env";
 import { getAllBrochures } from "~/lib/brochures";
 import { TEACHERS } from "~/lib/constants/teachers";
+import { getAllJiaZhangArticles } from "~/lib/jia-zhang-fu-wu";
 
 export type SiteRoute = {
 	changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
@@ -29,17 +30,18 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	},
 	{
 		changeFrequency: "weekly",
-		description: "查看成都戴氏教育办学、收费、师资、管理与升学相关常见问题。",
-		path: "/chang-jian-wen-ti",
-		priority: 0.8,
-		title: "常见问题",
-	},
-	{
-		changeFrequency: "weekly",
 		description: "查看戴氏教育历年高考全日制招生简章列表。",
 		path: "/zhao-sheng-jian-zhang",
 		priority: 0.9,
 		title: "招生简章",
+	},
+	{
+		changeFrequency: "weekly",
+		description:
+			"戴氏教育家长服务中心：学管服务流程、教学管理规范、家长指南、备考攻略与高考资讯集中呈现。",
+		path: "/jia-zhang-fu-wu",
+		priority: 0.8,
+		title: "家长服务",
 	},
 	{
 		changeFrequency: "weekly",
@@ -73,5 +75,20 @@ export function getSiteRoutes(): SiteRoute[] {
 		title: `${teacher.name}老师介绍`,
 	}));
 
-	return [...STATIC_SITE_ROUTES, ...brochureRoutes, ...teacherRoutes];
+	const jiaZhangRoutes: SiteRoute[] = getAllJiaZhangArticles().map(
+		(article) => ({
+			changeFrequency: "monthly",
+			description: article.summary,
+			path: `/jia-zhang-fu-wu/${article.slug}`,
+			priority: 0.7,
+			title: article.title,
+		}),
+	);
+
+	return [
+		...STATIC_SITE_ROUTES,
+		...brochureRoutes,
+		...teacherRoutes,
+		...jiaZhangRoutes,
+	];
 }

@@ -1,15 +1,199 @@
+import type { LucideIcon } from "lucide-react";
+import {
+	Building2Icon,
+	CoinsIcon,
+	GraduationCapIcon,
+	HomeIcon,
+	MapPinIcon,
+	ShieldCheckIcon,
+	SparklesIcon,
+	TargetIcon,
+	TrophyIcon,
+	UsersIcon,
+} from "lucide-react";
+
+// =========================== 分类体系 ===========================
+
+export type JiaZhangCategoryId =
+	| "xue-guan" // 学管服务
+	| "jiao-xue" // 教学管理
+	| "jia-zhang" // 家长指南
+	| "xue-xi" // 学习方法
+	| "bei-kao" // 备考攻略
+	| "zi-xun"; // 高考资讯
+
+export type JiaZhangCategory = {
+	id: JiaZhangCategoryId;
+	label: string;
+	description: string;
+};
+
+export const JIA_ZHANG_CATEGORIES: JiaZhangCategory[] = [
+	{
+		id: "xue-guan",
+		label: "学管服务",
+		description: "学员日常管理与服务流程",
+	},
+	{
+		id: "jiao-xue",
+		label: "教学管理",
+		description: "教学体系、教研与师资管理",
+	},
+	{
+		id: "jia-zhang",
+		label: "家长指南",
+		description: "家长沟通、亲子关系与心理支持",
+	},
+	{
+		id: "xue-xi",
+		label: "学习方法",
+		description: "学习习惯、时间管理与提分技巧",
+	},
+	{
+		id: "bei-kao",
+		label: "备考攻略",
+		description: "复习计划、模考策略与冲刺方案",
+	},
+	{
+		id: "zi-xun",
+		label: "高考资讯",
+		description: "政策解读、招生动态与考试新闻",
+	},
+];
+
+export function getCategoryLabel(id: JiaZhangCategoryId): string {
+	return (
+		JIA_ZHANG_CATEGORIES.find((category) => category.id === id)?.label ?? ""
+	);
+}
+
+export function getCategoryDescription(id: JiaZhangCategoryId): string {
+	return (
+		JIA_ZHANG_CATEGORIES.find((category) => category.id === id)
+			?.description ?? ""
+	);
+}
+
+// =========================== FAQ 类型 ===========================
+
 export type FaqItem = {
 	question: string;
 	answer: string;
 	isNegative?: boolean; // 是否负面/顾虑问题，加红色背景
 };
 
-export type FaqCategory = {
+export type FaqSectionCta = {
 	title: string;
-	items: FaqItem[];
+	description: string;
+	buttonText: string;
+	icon: LucideIcon;
 };
 
-export const FAQ_DATA: FaqCategory[] = [
+export type FaqSection = {
+	title: string;
+	items: FaqItem[];
+	cta?: FaqSectionCta;
+};
+
+export type BottomCta = {
+	badge: string;
+	title: string;
+	description: string;
+	buttonText: string;
+};
+
+// =========================== 文章内容块 ===========================
+
+export type ArticleBlock =
+	| { kind: "faq"; sections: FaqSection[]; bottomCta?: BottomCta };
+
+// =========================== 文章 ===========================
+
+export type JiaZhangArticle = {
+	slug: string;
+	title: string;
+	category: JiaZhangCategoryId;
+	summary: string;
+	publishedAt: string; // ISO 日期
+	highlighted?: boolean;
+	content: ArticleBlock;
+};
+
+// =========================== 家长问答 - FAQ 章节数据 ===========================
+
+const FAQ_PAGE_CTAS: Record<string, FaqSectionCta> = {
+	"一、品牌资质类": {
+		buttonText: "预约实地考察",
+		description:
+			"33 年办学沉淀，欢迎您预约到访校区，实地查看办学资质与教学环境。",
+		icon: Building2Icon,
+		title: "想实地考察办学实力？",
+	},
+	"二、收费课时类": {
+		buttonText: "咨询费用详情",
+		description:
+			"根据孩子的具体情况（年级、科目、基础），我们可以为您提供更精准的费用预算和班型建议。",
+		icon: CoinsIcon,
+		title: "想快速了解收费和课程怎么选？",
+	},
+	"三、师资相关类": {
+		buttonText: "了解师资安排",
+		description:
+			"您可以电话说明孩子目前的薄弱点，我们为您匹配最擅长该领域的资深老师。",
+		icon: UsersIcon,
+		title: "想了解具体的授课老师？",
+	},
+	"四、班型课程体系类": {
+		buttonText: "预约入学测评",
+		description:
+			"我们将通过专业的入学测评，为孩子量身定制最合适的学习方案和班型配置。",
+		icon: GraduationCapIcon,
+		title: "不确定孩子适合哪种班型？",
+	},
+	"五、教学提分效果类": {
+		buttonText: "获取案例分享",
+		description:
+			"我们可以根据孩子目前的成绩情况，为您分享类似的成功提分案例和学习路径。",
+		icon: TrophyIcon,
+		title: "想看更多真实的提分案例？",
+	},
+	"六、管理食宿家校服务类": {
+		buttonText: "咨询生活管理",
+		description: "全封闭式管理、食宿标准、作息安排等，直接沟通能了解得更细致。",
+		icon: HomeIcon,
+		title: "关心孩子的在校生活细节？",
+	},
+	"七、校区环境选择类": {
+		buttonText: "获取校区指引",
+		description:
+			"成都四大直营旗舰校区，地理位置与硬件设施各有特色，帮您选择最方便的一个。",
+		icon: MapPinIcon,
+		title: "正在比较校区和学习环境？",
+	},
+	"八、不同人群适配问题": {
+		buttonText: "咨询适配方案",
+		description:
+			"无论是艺考生、偏科生还是高分冲刺生，我们都有成熟的教学案例可供参考。",
+		icon: TargetIcon,
+		title: "想确认孩子是否适合这里的教学？",
+	},
+	"九、顾虑负面问题": {
+		buttonText: "电话确认细节",
+		description:
+			"对于退费、管理、教学效果这类顾虑，建议结合孩子当前阶段直接沟通，信息会更完整也更准确。",
+		icon: ShieldCheckIcon,
+		title: "有些问题更适合结合具体情况来判断",
+	},
+	"十、升学增值服务类": {
+		buttonText: "预约规划咨询",
+		description:
+			"除了课外辅导，我们还提供志愿填报指导、考前押题等全方位升学支持。",
+		icon: SparklesIcon,
+		title: "需要专业的升学规划建议？",
+	},
+};
+
+const FAQ_SECTIONS: FaqSection[] = [
 	{
 		title: "一、品牌资质类",
 		items: [
@@ -32,6 +216,7 @@ export const FAQ_DATA: FaqCategory[] = [
 					"戴氏教育常规校区部分有幼小衔接，小学到高中都可以就近分配；高考中心（4个校区）主要是全日制课程，包含高三、复读、艺体生、单招、初三，还有单科/一对一/寒暑假班课程，覆盖初一到高三。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["一、品牌资质类"],
 	},
 	{
 		title: "二、收费课时类",
@@ -41,6 +226,7 @@ export const FAQ_DATA: FaqCategory[] = [
 				answer: "不包含，教材费需要单独缴纳。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["二、收费课时类"],
 	},
 	{
 		title: "三、师资相关类",
@@ -50,6 +236,7 @@ export const FAQ_DATA: FaqCategory[] = [
 				answer: "有的，戴氏所有授课老师都持有教师资格证，教学资质有保障。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["三、师资相关类"],
 	},
 	{
 		title: "四、班型课程体系类",
@@ -84,6 +271,7 @@ export const FAQ_DATA: FaqCategory[] = [
 				answer: "是的，戴氏教育课堂使用的教材是机构自主研发的。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["四、班型课程体系类"],
 	},
 	{
 		title: "五、教学提分效果类",
@@ -151,6 +339,7 @@ export const FAQ_DATA: FaqCategory[] = [
 					"学员按约完成课业未达标，对教学不满意，可按比例退费，售后无忧。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["五、教学提分效果类"],
 	},
 	{
 		title: "六、管理食宿家校服务类",
@@ -198,8 +387,7 @@ export const FAQ_DATA: FaqCategory[] = [
 			},
 			{
 				question: "班主任的主要工作职责是什么？",
-				answer:
-					"日常纪律管理、作息管控、手机管理、家校沟通、学员日常状态跟踪。",
+				answer: "日常纪律管理、作息管控、手机管理、家校沟通、学员日常状态跟踪。",
 			},
 			{
 				question: "学管师的主要工作职责是什么？",
@@ -258,6 +446,7 @@ export const FAQ_DATA: FaqCategory[] = [
 				answer: "暂无接送服务。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["六、管理食宿家校服务类"],
 	},
 	{
 		title: "七、校区环境选择类",
@@ -321,6 +510,7 @@ export const FAQ_DATA: FaqCategory[] = [
 				answer: "便利的！核心校区均临近地铁、公交枢纽，通勤便捷。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["七、校区环境选择类"],
 	},
 	{
 		title: "八、不同人群适配问题",
@@ -376,6 +566,7 @@ export const FAQ_DATA: FaqCategory[] = [
 					"可以的！通过心理疏导+分层教学+正向激励，逐步纠正厌学心态，重建学习信心。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["八、不同人群适配问题"],
 	},
 	{
 		title: "九、顾虑负面问题",
@@ -384,50 +575,61 @@ export const FAQ_DATA: FaqCategory[] = [
 				question: "网络上评价戴氏收费价格虚高，这个说法属实吗？",
 				answer:
 					"不属实！校区收费透明，食宿、教材、模考全包无隐形消费；价格略高源于优质师资与精细化服务，性价比匹配价值。",
+				isNegative: true,
 			},
 			{
 				question: "戴氏课程整体性价比偏低是普遍情况吗？",
 				answer: "不是！中高考全日制、艺考文化课，提分效果显著。",
+				isNegative: true,
 			},
 			{
 				question: "戴氏加盟校区普遍存在退费办理困难的问题吗？",
 				answer: "总部退费流程公开透明，按合同执行。",
+				isNegative: true,
 			},
 			{
 				question: "戴氏加盟校区班级日常管理普遍松散吗？",
 				answer: "加盟校区管理标准不一。",
+				isNegative: true,
 			},
 			{
 				question: "有什么办法避开不靠谱的戴氏加盟校区？",
 				answer:
 					"家长可优先选顺吉、世贸、金牛、顺风，四大直营旗舰；报名前核验办学许可证、试听课程、查看师资资质。",
+				isNegative: true,
 			},
 			{
 				question: "大班课学生人数过多，老师无法兼顾普通学生吗？",
 				answer:
 					"不会的！大班课配备助教辅助管理，课堂互动+课后答疑全覆盖，基础薄弱学生可同步小班/一对一补弱。",
+				isNegative: true,
 			},
 			{
 				question: "部分学生补习之后成绩不升反降，是什么原因？",
 				answer:
 					"多为学生配合度不足、缺课漏学、未完成作业或学习态度消极；机构教学与管理为核心保障，学生主动性同样关键。",
+				isNegative: true,
 			},
 			{
 				question: "全日制课程每日学习时长很长，学生身体能否承受？",
 				answer:
 					"可以的！作息科学劳逸结合，每日预留休息与运动时间，配备生活老师与心理老师，保障身心状态。",
+				isNegative: true,
 			},
 			{
 				question: "机构老师会在上课期间推销续报课时包吗？",
 				answer:
 					"不会的！回访以学情反馈为主，续费建议客观透明，尊重家长自主选择。",
+				isNegative: true,
 			},
 			{
 				question: "学管师电话回访时会强制劝说家长续费吗？",
 				answer:
 					"不会的！回访以学情反馈为主，续费建议客观透明，尊重家长自主选择。",
+				isNegative: true,
 			},
 		],
+		cta: FAQ_PAGE_CTAS["九、顾虑负面问题"],
 	},
 	{
 		title: "十、升学增值服务类",
@@ -462,8 +664,7 @@ export const FAQ_DATA: FaqCategory[] = [
 			},
 			{
 				question: "考前阶段机构开设考点冲刺专项课程吗？",
-				answer:
-					"开设的！考前专项冲刺聚焦高频考点、重难点、压轴题，助力短期高效提分。",
+				answer: "开设的！考前专项冲刺聚焦高频考点、重难点、压轴题，助力短期高效提分。",
 			},
 			{
 				question: "考前冲刺课程包含中高考考点押题内容吗？",
@@ -471,5 +672,53 @@ export const FAQ_DATA: FaqCategory[] = [
 					"包含的！由资深教研专家、特级教师结合历年考情趋势，提供精准押题与应试技巧指导。",
 			},
 		],
+		cta: FAQ_PAGE_CTAS["十、升学增值服务类"],
 	},
 ];
+
+// =========================== 文章列表 ===========================
+
+export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
+	{
+		slug: "jia-zhang-wen-ti",
+		title: "家长问答",
+		category: "jia-zhang",
+		summary:
+			"关于戴氏教育的品牌资质、收费课时、师资、班型、提分效果、管理食宿、校区环境、人群适配、负面顾虑、升学增值等 10 大类 100+ 个家长最关心的问题集中解答。",
+		publishedAt: "2026-05-20",
+		highlighted: true,
+		content: {
+			kind: "faq",
+			sections: FAQ_SECTIONS,
+			bottomCta: {
+				badge: "没找到想要的答案？",
+				title: "让专业的老师为您解答",
+				description:
+					"每个孩子的情况都是唯一的。无论是课程安排、收费细节还是升学规划，我们都建议您直接电话咨询，获取最准确的建议。",
+				buttonText: "立即电话咨询",
+			},
+		},
+	},
+];
+
+// =========================== 列表分类（仅展示已有文章的分类） ===========================
+
+export function getCategoriesWithArticles(): JiaZhangCategory[] {
+	const usedIds = new Set(
+		JIA_ZHANG_ARTICLES.map((article) => article.category),
+	);
+	return JIA_ZHANG_CATEGORIES.filter((category) => usedIds.has(category.id));
+}
+
+// =========================== 兼容旧接口：所有 FAQ 项扁平化 ===========================
+
+/**
+ * 把所有家长问答详情里的 FAQ 项扁平化为一个数组，
+ * 供首页"家长最常问的几个问题"组件复用。
+ */
+export function getAllJiaZhangFaqItems(): FaqItem[] {
+	return JIA_ZHANG_ARTICLES.flatMap((article) => {
+		if (article.content.kind !== "faq") return [];
+		return article.content.sections.flatMap((section) => section.items);
+	});
+}

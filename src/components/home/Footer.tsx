@@ -54,9 +54,9 @@ export function Footer() {
 							<li>
 								<Link
 									className="transition-colors hover:text-white"
-									href="/chang-jian-wen-ti"
+									href="/jia-zhang-fu-wu/jia-zhang-wen-ti"
 								>
-									常见问题
+									家长问答
 								</Link>
 							</li>
 							<li>
