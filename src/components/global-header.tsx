@@ -3,7 +3,6 @@
 import { ChevronDownIcon, MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 import { PhoneButton, PhoneLink } from "~/components/phone-action";
 import { Button } from "~/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "~/components/ui/dropdown-menu";
@@ -11,20 +10,9 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHe
 import { PRIMARY_LINKS, SITE_BRAND_NAME, SITE_HOTLINE_TEXT, UTILITY_LINKS } from "~/lib/constants/site";
 
 export function GlobalHeader() {
-  const isFirstRender = useRef(true);
-
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
-    if (window.location.hash) {
-      return;
-    }
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  const handlePrimaryTriggerMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
 
   return (
     <header className="sticky top-0 z-80 border-slate-200/80 border-b bg-white/90 backdrop-blur">
@@ -54,12 +42,22 @@ export function GlobalHeader() {
               "items" in link ? (
                 <DropdownMenu key={`primary-dropdown-${link.label}`}>
                   <DropdownMenuTrigger asChild>
-                    <Button className="rounded-full px-4 py-2 font-medium text-slate-700 text-sm hover:bg-slate-100 hover:text-slate-950" variant="ghost">
+                    <Button
+                      className="rounded-full px-4 py-2 font-medium text-slate-700 text-sm hover:bg-slate-100 hover:text-slate-950"
+                      onMouseDown={handlePrimaryTriggerMouseDown}
+                      variant="ghost"
+                    >
                       {link.label}
                       <ChevronDownIcon className="size-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="center" className="w-56">
+                  <DropdownMenuContent
+                    align="center"
+                    className="w-56"
+                    onCloseAutoFocus={(event) => {
+                      event.preventDefault();
+                    }}
+                  >
                     {link.items.map((item) => (
                       <DropdownMenuItem asChild key={`primary-item-${item.label}`}>
                         <Link href={item.href}>{item.label}</Link>
