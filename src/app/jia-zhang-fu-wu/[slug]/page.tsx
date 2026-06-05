@@ -1,10 +1,13 @@
-import type { LucideIcon } from "lucide-react";
-import { notFound } from "next/navigation";
+import { ArrowRightIcon, type LucideIcon } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { PageTopNav } from "~/components/PageTopNav";
-import { PhoneButton } from "~/components/phone-action";
+import { PhoneButton, PhoneLink } from "~/components/phone-action";
+import { TableOfContents } from "~/components/TableOfContents";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "~/components/ui/accordion";
-import { type BottomCta, type JiaZhangArticle } from "~/lib/constants/jia-zhang-fu-wu";
+import { Button } from "~/components/ui/button";
+import { type BottomCta, getCategoryLabel, type JiaZhangArticle } from "~/lib/constants/jia-zhang-fu-wu";
 import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 import { getAllJiaZhangArticles, getJiaZhangArticleBySlug } from "~/lib/jia-zhang-fu-wu";
 import { cn } from "~/lib/utils";
@@ -86,14 +89,27 @@ function FaqBlock({ article }: { article: JiaZhangArticle }) {
               <h2 className="border-red-500 border-l-4 pl-4 font-semibold text-slate-800 text-xl">{section.title}</h2>
               <Accordion collapsible type="single">
                 {section.items.map((item) => (
-                  <AccordionItem className={cn(item.isNegative && "bg-red-50/40")} key={`${section.title}-${item.question}`} value={`${section.title}-${item.question}`}>
-                    <AccordionTrigger className="py-4 text-base text-slate-900 hover:no-underline">
-                      <span className="pr-4 font-medium text-slate-900">{item.question}</span>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="max-w-none text-slate-600 leading-7">{item.answer}</div>
-                    </AccordionContent>
-                  </AccordionItem>
+                  <div className="scroll-mt-48" id={item.id} key={`${section.title}-${item.question}`}>
+                    <AccordionItem className={cn(item.isNegative && "bg-red-50/40")} value={`${section.title}-${item.question}`}>
+                      <AccordionTrigger className="py-4 text-base text-slate-900 hover:no-underline">
+                        <span className="pr-4 font-medium text-slate-900">{item.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="max-w-none text-slate-600 leading-7">{item.answer}</div>
+                        {item.quickLink ? (
+                          <div className="mt-4">
+                            <Link
+                              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 font-medium text-primary text-sm transition-colors hover:bg-primary/10"
+                              href={item.quickLink.href}
+                            >
+                              <span>{item.quickLink.label}</span>
+                              <ArrowRightIcon className="size-4" />
+                            </Link>
+                          </div>
+                        ) : null}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </div>
                 ))}
               </Accordion>
             </section>
@@ -102,6 +118,165 @@ function FaqBlock({ article }: { article: JiaZhangArticle }) {
         ))}
       </div>
       {bottomCta ? <BottomCtaBlock cta={bottomCta} /> : null}
+    </>
+  );
+}
+
+function GuideBlock({ article }: { article: JiaZhangArticle }) {
+  if (article.content.kind !== "guide") return null;
+  const { intro, sections, relatedQuestions, bottomCta } = article.content;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    articleSection: sections.map((section) => section.title),
+    description: article.summary,
+    headline: article.title,
+  };
+
+  const guideLabels: Record<string, string> = {
+    "jia-xiao-gou-tong": "家校沟通",
+    "pai-ke-kai-ban": "排课开班",
+    "ri-chang-guan-li": "日常管理",
+    "ru-xue-jian-dang": "入学建档",
+    "shou-ke-hui-fang": "首课关注",
+    "yu-jing-gan-yu": "预警干预",
+  };
+
+  return (
+    <>
+      <script dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} type="application/ld+json" />
+      <article className="bg-white">
+        <section className="border-slate-800 border-b bg-slate-950 py-16 text-white md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.15fr)_340px]">
+              <div>
+                <div className="mb-4 text-primary text-sm tracking-[0.24em]">家长服务专题</div>
+                <h1 className="max-w-4xl font-black text-4xl leading-tight tracking-tight md:text-6xl">{article.title}</h1>
+                <p className="mt-6 max-w-3xl text-lg text-slate-300 leading-8">{article.summary}</p>
+                <div className="mt-8 max-w-3xl space-y-4">
+                  {intro.map((paragraph) => (
+                    <p className="text-slate-300 leading-8" key={paragraph}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                  <PhoneButton className="h-11 px-6 text-base">立即电话咨询</PhoneButton>
+                  <Button asChild className="h-11 border-white/20 bg-transparent px-6 text-white hover:border-white/35 hover:bg-white/10 hover:text-white" variant="outline">
+                    <PhoneLink>咨询热线：{SITE_HOTLINE_TEXT}</PhoneLink>
+                  </Button>
+                </div>
+                <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+                  {[
+                    ["服务节点", `${sections.length} 个`],
+                    ["家校反馈", "常规反馈"],
+                    ["重点支持", "习惯与情绪"],
+                    ["适用阶段", "全日制 / 复读"],
+                  ].map(([label, value]) => (
+                    <div className="py-2" key={label}>
+                      <div className="text-slate-400 text-xs">{label}</div>
+                      <div className="mt-2 font-bold text-2xl text-primary md:text-3xl">{value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl bg-white/6 p-6 backdrop-blur">
+                <div className="pb-4">
+                  <div className="text-slate-400 text-xs">服务流程目录</div>
+                  <div className="mt-2 text-lg leading-8">{sections.map((section) => section.title).join("、")}</div>
+                </div>
+                <div className="space-y-3 border-white/10 border-t pt-4 text-slate-300 text-sm">
+                  <p>从入学建档到预警干预，按节点说明学管如何持续跟进孩子。</p>
+                  <p>家长可以结合左侧目录，快速定位自己当前最关心的环节。</p>
+                </div>
+                <div className="mt-6 flex items-center gap-2 text-primary text-sm">
+                  <span className="size-1.5 rounded-full bg-primary" />
+                  继续下滑查看完整流程
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="container mx-auto px-4 py-12 md:py-16">
+          <div className="grid gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
+            <TableOfContents
+              extraItems={relatedQuestions && relatedQuestions.length > 0 ? [{ id: "xiang-guan-wen-da", title: "相关家长问答" }] : undefined}
+              items={sections.map((s) => ({ id: s.id, title: s.title }))}
+              title="服务流程目录"
+            />
+
+            <div className="space-y-20">
+              {sections.map((section, sectionIndex) => (
+                <section className={cn("scroll-mt-48 py-2", sectionIndex % 2 === 1 && "bg-slate-50/70 px-6 py-10 md:px-8")} id={section.id} key={section.id}>
+                  <div className="relative mb-10 overflow-hidden">
+                    <div className="pointer-events-none absolute -top-4 right-0 font-black text-[72px] text-slate-200 leading-none md:text-[96px]">{String(sectionIndex + 1).padStart(2, "0")}</div>
+                    <div className="relative max-w-3xl">
+                      <div className="mb-4 inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-slate-600 text-sm">{guideLabels[section.id] ?? "服务流程"}</div>
+                      <h2 className="font-bold text-3xl text-slate-900 leading-tight md:text-[2rem]">{section.title}</h2>
+                      <p className="mt-4 max-w-2xl text-slate-500 leading-7">{section.description}</p>
+                    </div>
+                  </div>
+                  <div className="border-slate-200 border-t">
+                    {section.items.map((item, index) => (
+                      <div className="grid gap-4 border-slate-200 border-b py-5 md:grid-cols-[72px_minmax(0,1fr)]" key={item}>
+                        <div className="text-primary text-sm">{String(index + 1).padStart(2, "0")}</div>
+                        <p className="text-slate-700 leading-8">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ))}
+
+              {relatedQuestions && relatedQuestions.length > 0 ? (
+                <section className="scroll-mt-48 py-2" id="xiang-guan-wen-da">
+                  <div className="relative mb-10 overflow-hidden">
+                    <div className="pointer-events-none absolute -top-4 right-0 font-black text-[72px] text-slate-300 leading-none md:text-[96px]">{String(sections.length + 1).padStart(2, "0")}</div>
+                    <div className="relative max-w-3xl">
+                      <div className="mb-4 inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-slate-600 text-sm">延伸阅读</div>
+                      <h2 className="font-bold text-3xl text-slate-900 leading-tight md:text-[2rem]">相关家长问答</h2>
+                      <p className="mt-4 max-w-2xl text-slate-500 leading-7">如果您还想从问答角度快速了解重点问题，可以继续查看下面这些关联内容。</p>
+                    </div>
+                  </div>
+                  <div className="border-slate-200 border-t">
+                    {relatedQuestions.map((item) => (
+                      <Link
+                        className="group flex items-center justify-between gap-6 border-slate-200 border-b py-5 text-slate-700 transition-colors hover:text-primary"
+                        href={item.href}
+                        key={item.href}
+                      >
+                        <span className="leading-7">{item.question}</span>
+                        <ArrowRightIcon className="size-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
+              {bottomCta ? (
+                <section className="py-2">
+                  <div className="border-slate-200 border-t pt-10">
+                    <div className="max-w-3xl">
+                      <div className="text-primary text-sm tracking-[0.18em]">{bottomCta.badge}</div>
+                      <h2 className="mt-4 font-bold text-3xl text-slate-900 leading-tight md:text-4xl">{bottomCta.title}</h2>
+                      <p className="mt-5 text-slate-600 leading-8">{bottomCta.description}</p>
+                      <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                        <PhoneButton className="h-11 px-6">{bottomCta.buttonText}</PhoneButton>
+                        <Button asChild className="h-11 px-6" variant="outline">
+                          <PhoneLink>咨询热线：{SITE_HOTLINE_TEXT}</PhoneLink>
+                        </Button>
+                      </div>
+                      <p className="mt-5 text-slate-400 text-sm">服务时间：周一至周日 09:00 - 21:00</p>
+                    </div>
+                  </div>
+                </section>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </article>
     </>
   );
 }
@@ -136,16 +311,23 @@ export default async function JiaZhangArticleDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className={`min-h-screen ${article.content.kind === "guide" ? "bg-white" : "bg-slate-50"}`}>
       <PageTopNav backHref="/jia-zhang-fu-wu" backLabel="返回家长服务" title={article.title} />
-      <div className="container mx-auto px-4 py-12">
-        <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl text-slate-900 md:text-5xl">家长问答</h1>
-          <p className="mx-auto max-w-2xl text-lg text-slate-600">关于成都戴氏教育的各类家长疑问解答，涵盖收费标准、全封闭管理、校区地址及提分效果。如有其他问题欢迎随时咨询我们。</p>
-        </div>
+      {article.content.kind === "guide" ? <GuideBlock article={article} /> : null}
 
-        {/* 文章内容 */}
-        {article.content.kind === "faq" ? <FaqBlock article={article} /> : null}
+      <div className="container mx-auto px-4">
+        {article.content.kind === "faq" ? (
+          <div className="py-12">
+            <div className="mb-12 text-center">
+              <div className="mb-4 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 font-medium text-primary text-sm">
+                戴氏教育 · {getCategoryLabel(article.category)}
+              </div>
+              <h1 className="mb-4 font-bold text-4xl text-slate-900 md:text-5xl">{article.title}</h1>
+              <p className="mx-auto max-w-3xl text-lg text-slate-600 leading-8">{article.summary}</p>
+            </div>
+            <FaqBlock article={article} />
+          </div>
+        ) : null}
       </div>
     </div>
   );

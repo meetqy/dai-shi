@@ -77,9 +77,14 @@ export function getCategoryDescription(id: JiaZhangCategoryId): string {
 // =========================== FAQ 类型 ===========================
 
 export type FaqItem = {
+	id?: string;
 	question: string;
 	answer: string;
 	isNegative?: boolean; // 是否负面/顾虑问题，加红色背景
+	quickLink?: {
+		label: string;
+		href: string;
+	};
 };
 
 export type FaqSectionCta = {
@@ -102,10 +107,24 @@ export type BottomCta = {
 	buttonText: string;
 };
 
+export type GuideSection = {
+	id: string;
+	title: string;
+	description: string;
+	items: string[];
+};
+
 // =========================== 文章内容块 ===========================
 
 export type ArticleBlock =
-	| { kind: "faq"; sections: FaqSection[]; bottomCta?: BottomCta };
+	| { kind: "faq"; sections: FaqSection[]; bottomCta?: BottomCta }
+	| {
+			kind: "guide";
+			intro: string[];
+			sections: GuideSection[];
+			relatedQuestions?: { question: string; href: string }[];
+			bottomCta?: BottomCta;
+	  };
 
 // =========================== 文章 ===========================
 
@@ -192,6 +211,8 @@ const FAQ_PAGE_CTAS: Record<string, FaqSectionCta> = {
 		title: "需要专业的升学规划建议？",
 	},
 };
+
+const XUE_GUAN_FLOW_PAGE_HREF = "/jia-zhang-fu-wu/xue-guan-fu-wu-liu-cheng";
 
 const FAQ_SECTIONS: FaqSection[] = [
 	{
@@ -299,11 +320,20 @@ const FAQ_SECTIONS: FaqSection[] = [
 					"自律性差、在家不愿完成作业的学生，全日制班级可以约束管理吗？",
 				answer:
 					"可以的！全封闭作息加班主任全程督学，当日任务当日清，从习惯根源改善拖延厌学问题。",
+				quickLink: {
+					label: "查看日常管理流程",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#ri-chang-guan-li`,
+				},
 			},
 			{
 				question: "日常频繁使用手机、自控力弱的学生，全日制班级如何管控？",
 				answer:
 					"入校统一寄存电子产品、校区全域禁手机、宿舍无外网，辅以心理引导，帮助学生养成自主学习习惯。",
+				id: "shou-ji-guan-kong",
+				quickLink: {
+					label: "查看手机与纪律管理",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#ri-chang-guan-li`,
+				},
 			},
 			{
 				question: "文化课550分以上高分学生，补习后冲刺985院校提升空间大吗？",
@@ -348,16 +378,30 @@ const FAQ_SECTIONS: FaqSection[] = [
 				question: "高三全日制班级采用全封闭式管理模式吗？",
 				answer:
 					"采用的！高三复读、艺考文化课统一全寄宿封闭式管理，吃住学在校一体化，隔绝外界干扰，让家长更放心。",
+				id: "feng-bi-guan-li",
+				quickLink: {
+					label: "查看全流程管理说明",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#ri-chang-guan-li`,
+				},
 			},
 			{
 				question: "全日制校区如何管控学生手机使用？",
 				answer:
 					"入学统一收纳保管，周末统一领取，校区不定时巡检，全方位杜绝电子产品干扰学习。",
+				quickLink: {
+					label: "查看手机管理细则",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#ri-chang-guan-li`,
+				},
 			},
 			{
 				question: "高三全日制班级完整每日作息时间表是什么？",
 				answer:
 					"标准化作息：6:30起床早读→8:00–12:00正课→14:00–18:00正课刷题→19:00–22:30晚辅答疑→22:30熄灯。",
+				id: "mei-ri-zuo-xi",
+				quickLink: {
+					label: "查看作息与日常管理",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#ri-chang-guan-li`,
+				},
 			},
 			{
 				question: "全日制校区是否配套学生宿舍？",
@@ -392,6 +436,11 @@ const FAQ_SECTIONS: FaqSection[] = [
 			{
 				question: "学管师的主要工作职责是什么？",
 				answer: "课时统筹、学情档案更新、阶段性测评规划、课程调整协调。",
+				id: "xue-guan-zhi-ze",
+				quickLink: {
+					label: "查看学管服务流程",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#ru-xue-jian-dang`,
+				},
 			},
 			{
 				question: "课程结束后提供免费学科答疑服务吗？",
@@ -405,15 +454,29 @@ const FAQ_SECTIONS: FaqSection[] = [
 				question: "机构多久向家长同步一次学生在校学习情况？",
 				answer:
 					"常规周反馈+月考专项汇报，重要节点第一时间同步在校状态到群，让家长及时了解孩子情况。",
+				id: "jia-zhang-fan-kui-pin-ci",
+				quickLink: {
+					label: "查看家校沟通机制",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#jia-xiao-gou-tong`,
+				},
 			},
 			{
 				question: "机构会定期发送学生课堂学习记录给家长吗？",
 				answer:
 					"会的！常态化同步课堂表现、出勤、作业完成情况，透明化教学管理。",
+				quickLink: {
+					label: "查看课堂反馈方式",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#jia-xiao-gou-tong`,
+				},
 			},
 			{
 				question: "机构每月会出具学生成绩单同步给家长吗？",
 				answer: "会的！每月正规模拟考试，成绩单同步家长，直观查看分数涨跌。",
+				id: "cheng-ji-tong-bu",
+				quickLink: {
+					label: "查看成绩反馈机制",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#jia-xiao-gou-tong`,
+				},
 			},
 			{
 				question: "校区内配备专业心理疏导老师吗？",
@@ -423,10 +486,19 @@ const FAQ_SECTIONS: FaqSection[] = [
 			{
 				question: "学生出现厌学情绪，机构有对应的处理方案吗？",
 				answer: "有的！心理疏导+学习方案微调+家校联动，分层引导纠正厌学心态。",
+				id: "yan-xue-gan-yu",
+				quickLink: {
+					label: "查看预警干预流程",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#yu-jing-gan-yu`,
+				},
 			},
 			{
 				question: "学生学习压力过大，机构会提供疏导帮助吗？",
 				answer: "会的！常态化心理班会+一对一心理辅导，缓释学生备考压力。",
+				quickLink: {
+					label: "查看心理支持机制",
+					href: `${XUE_GUAN_FLOW_PAGE_HREF}#yu-jing-gan-yu`,
+				},
 			},
 			{
 				question: "戴氏校区整体消防安全措施完善吗？",
@@ -679,6 +751,123 @@ const FAQ_SECTIONS: FaqSection[] = [
 // =========================== 文章列表 ===========================
 
 export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
+	{
+		slug: "xue-guan-fu-wu-liu-cheng",
+		title: "成都高考全日制学管服务流程",
+		category: "xue-guan",
+		summary:
+			"围绕成都戴氏教育高考中心学员入学后的建档、排课、首课回访、日常管理、家校沟通与预警干预，系统说明高考全日制与复读学员的学管服务流程，让家长清楚知道孩子入学后如何被跟进、反馈与支持。",
+		publishedAt: "2026-06-05",
+		highlighted: true,
+		content: {
+			kind: "guide",
+			intro: [
+				"这是一份面向家长的对外版说明，用更清楚的方式介绍成都戴氏教育高考中心学员入学后的学管服务流程。",
+				"重点帮助家长看懂孩子从入学建档、排课开班到首课回访、日常管理、家校沟通、预警干预的完整跟进机制。",
+			],
+			sections: [
+				{
+					id: "ru-xue-jian-dang",
+					title: "入学建档与信息交接",
+					description:
+						"孩子正式入学后，学管老师会先完成基础建档和学情确认，确保后续教学安排建立在完整、真实、可追踪的信息基础上。",
+					items: [
+						"核对学生年级、学校、成绩基础、科目薄弱点、班型与开课安排，形成学员基础档案。",
+						"同步孩子的学习目标、阶段预期、家庭关注点和需要特别留意的个性情况。",
+						"把首阶段需要重点关注的问题提前标记，方便后续排课、带班和家校沟通持续跟进。",
+					],
+				},
+				{
+					id: "pai-ke-kai-ban",
+					title: "排课开班与老师协同",
+					description:
+						"排课不是简单安排时间，而是结合班型、基础、科目需求和老师匹配度，尽量让孩子一开始就进入更合适的学习节奏。",
+					items: [
+						"根据班型和学情完成课表确认，明确首课时间、授课科目和老师安排。",
+						"在开课前把孩子的学习基础、性格特点和注意事项同步给相关老师，提高首课匹配度。",
+						"针对需要重点关注的学员，提前召开沟通或研讨，减少开课初期的不适应和信息断层。",
+					],
+				},
+				{
+					id: "shou-ke-hui-fang",
+					title: "首课准备与适应期回访",
+					description:
+						"孩子刚入学的前几天，是观察适应状态、课堂反馈和沟通感受的关键阶段，学管会重点跟进。",
+					items: [
+						"首课前再次确认到校时间、上课科目、校区位置和基础注意事项，帮助家长与学生顺利衔接。",
+						"开班初期重点关注课堂表现、课后状态、老师反馈和学生适应度，及时识别潜在风险。",
+						"围绕首课体验、学习节奏、作业落实和情绪状态做阶段回访，必要时及时协调优化。",
+					],
+				},
+				{
+					id: "ri-chang-guan-li",
+					title: "日常学习管理与作息执行",
+					description:
+						"对高三全日制和复读阶段来说，稳定作息、课堂纪律、作业闭环和执行力管理，是提分的基础保障。",
+					items: [
+						"围绕到校、早读、正课、晚自习、作业和阶段测试建立日常管理节奏。",
+						"对迟到、请假、课堂纪律、电子产品使用、作业落实和错题整理进行持续跟进。",
+						"通过巡课、课后检查、周复盘和阶段总结，帮助学生逐步建立更稳定的学习习惯。",
+					],
+				},
+				{
+					id: "jia-xiao-gou-tong",
+					title: "家校沟通与学习反馈",
+					description:
+						"家长最关心的往往不是一句“孩子在上课”，而是孩子是否适应、是否在进步、出现问题后有没有人持续跟进。",
+					items: [
+						"围绕出勤、课堂状态、作业完成、阶段成绩和学习变化，建立常规反馈机制。",
+						"重要节点及时和家长沟通，包括首课适应、阶段考试、情绪波动和策略调整。",
+						"在沟通中既反馈问题，也同步解决方向，帮助家长更稳地参与孩子高三阶段的陪伴。",
+					],
+				},
+				{
+					id: "yu-jing-gan-yu",
+					title: "预警干预与习惯养成支持",
+					description:
+						"对于高三常见的拖延、厌学、焦虑、亲子冲突、自控力弱等问题，学管工作的重点不只是发现，更是尽快干预。",
+					items: [
+						"从学习状态、情绪波动、手机依赖、作息混乱和家庭沟通压力等方面做持续观察。",
+						"对出现风险信号的学员，联合老师、班主任和家长及时沟通，尽早介入处理。",
+						"围绕习惯重建、情绪疏导、亲子沟通和阶段目标拆解，帮助孩子逐步回到稳定备考轨道。",
+					],
+				},
+			],
+			relatedQuestions: [
+				{
+					question: "高三全日制班级采用全封闭式管理模式吗？",
+					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#feng-bi-guan-li",
+				},
+				{
+					question: "高三全日制班级完整每日作息时间表是什么？",
+					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#mei-ri-zuo-xi",
+				},
+				{
+					question: "学管师的主要工作职责是什么？",
+					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#xue-guan-zhi-ze",
+				},
+				{
+					question: "机构多久向家长同步一次学生在校学习情况？",
+					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#jia-zhang-fan-kui-pin-ci",
+				},
+				{
+					question: "机构每月会出具学生成绩单同步给家长吗？",
+					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#cheng-ji-tong-bu",
+				},
+				{
+					question: "学生出现厌学情绪，机构有对应的处理方案吗？",
+					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#yan-xue-gan-yu",
+				},
+			],
+			bottomCta: {
+				badge: "想进一步了解孩子入学后的具体安排？",
+				title: "直接沟通，比看流程更高效",
+				description:
+					"每个孩子的基础、目标和家庭关注点都不同。欢迎直接电话咨询，我们会结合孩子当前情况，说明更适合的班型、管理方式与跟进节奏。",
+				buttonText: "立即电话咨询",
+			},
+		},
+	},
 	{
 		slug: "jia-zhang-wen-ti",
 		title: "家长问答",
