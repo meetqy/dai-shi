@@ -12,12 +12,6 @@
     "dev": "next dev --turbo",
     "preview": "next build && next start",
     "start": "next start",
-    "pm2:start": "pm2 start ecosystem.config.cjs",
-    "pm2:restart": "pm2 restart ecosystem.config.cjs",
-    "pm2:reload": "pm2 reload ecosystem.config.cjs",
-    "pm2:stop": "pm2 stop ecosystem.config.cjs",
-    "pm2:logs": "pm2 logs",
-    "deploy": "git pull && pnpm install && pnpm build && pnpm pm2:reload",
     "typecheck": "tsc --noEmit",
     "upgrade:next": "npx @next/codemod@canary upgrade latest"
   },
@@ -41,7 +35,6 @@
     "@types/node": "^20.14.10",
     "@types/react": "19.2.16",
     "@types/react-dom": "19.2.3",
-    "pm2": "^7.0.1",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.15",
     "typescript": "^5.8.2"
