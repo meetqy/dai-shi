@@ -400,8 +400,8 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
                   <div className="grid gap-4 md:grid-cols-2">
                     {teacherStandards.map((item, index) => (
                       <div className="flex gap-4" key={item}>
-                        <div className="w-8 shrink-0 font-semibold text-primary">{String(index + 1).padStart(2, "0")}</div>
-                        <div className="text-slate-700">{item}</div>
+                        <div className="w-8 shrink-0 font-semibold text-primary leading-7">{String(index + 1).padStart(2, "0")}</div>
+                        <div className="text-slate-700 leading-7">{item}</div>
                       </div>
                     ))}
                   </div>
@@ -446,8 +446,8 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
               <div className="space-y-6">
                 {sixSystems.map((item, index) => (
                   <div className="grid gap-4 md:grid-cols-[40px_220px_minmax(0,1fr)]" key={item.title}>
-                    <div className="font-semibold text-primary">{index + 1}</div>
-                    <div className="font-semibold text-slate-900">{item.title}</div>
+                    <div className="font-semibold text-primary leading-7">{index + 1}</div>
+                    <div className="font-semibold text-slate-900 leading-7">{item.title}</div>
                     <div className="text-slate-600 leading-7">{item.desc}</div>
                   </div>
                 ))}
@@ -508,7 +508,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
               <div className="space-y-6">
                 {managementRules.map((item) => (
                   <div className="grid gap-3 md:grid-cols-[180px_minmax(0,1fr)]" key={item.title}>
-                    <div className="font-semibold text-slate-900">{item.title}</div>
+                    <div className="font-semibold text-slate-900 leading-7">{item.title}</div>
                     <div className="text-slate-600 leading-7">{item.desc}</div>
                   </div>
                 ))}
@@ -520,7 +520,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
               <div className="space-y-6">
                 {classroomSteps.map((item) => (
                   <div className="grid gap-3 md:grid-cols-[180px_minmax(0,1fr)]" key={item.title}>
-                    <div className="font-semibold text-slate-900">{item.title}</div>
+                    <div className="font-semibold text-slate-900 leading-7">{item.title}</div>
                     <div className="text-slate-600 leading-7">{item.desc}</div>
                   </div>
                 ))}
@@ -558,7 +558,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
                 <div className="space-y-6">
                   {campusScenes.map((item) => (
                     <div className="grid gap-3 md:grid-cols-[120px_minmax(0,1fr)]" key={item.title}>
-                      <div className="font-semibold text-slate-900">{item.title}</div>
+                      <div className="font-semibold text-slate-900 leading-7">{item.title}</div>
                       <div className="text-slate-600 leading-7">{item.desc}</div>
                     </div>
                   ))}
@@ -578,7 +578,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
                 <div className="space-y-6">
                   {growthSpaces.map((item) => (
                     <div className="grid gap-3 md:grid-cols-[120px_minmax(0,1fr)]" key={item.title}>
-                      <div className="font-semibold text-slate-900">{item.title}</div>
+                      <div className="font-semibold text-slate-900 leading-7">{item.title}</div>
                       <div className="text-slate-600 leading-7">{item.desc}</div>
                     </div>
                   ))}

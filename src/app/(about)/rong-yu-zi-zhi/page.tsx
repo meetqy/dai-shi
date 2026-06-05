@@ -82,7 +82,7 @@ function HonorCard({ index }: { index: number }) {
 						<p className="font-semibold text-slate-900">证书关键信息</p>
 						<dl className="mt-4 space-y-3">
 							<div className="grid gap-2 md:grid-cols-[132px_minmax(0,1fr)]">
-								<dt className="text-slate-500">颁发机构 / 来源</dt>
+								<dt className="text-slate-500 leading-7">颁发机构 / 来源</dt>
 								<dd className="font-medium text-slate-900 leading-7">
 									{honor.issuer}
 								</dd>
@@ -92,7 +92,7 @@ function HonorCard({ index }: { index: number }) {
 									className="grid gap-2 md:grid-cols-[132px_minmax(0,1fr)]"
 									key={`${honor.id}-${fact.label}`}
 								>
-									<dt className="text-slate-500">{fact.label}</dt>
+									<dt className="text-slate-500 leading-7">{fact.label}</dt>
 									<dd className="text-slate-900 leading-7">{fact.value}</dd>
 								</div>
 							))}

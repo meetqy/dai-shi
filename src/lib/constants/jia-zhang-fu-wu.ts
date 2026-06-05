@@ -122,7 +122,7 @@ export type ArticleBlock =
 			kind: "guide";
 			intro: string[];
 			sections: GuideSection[];
-			relatedQuestions?: { question: string; href: string }[];
+			relatedQuestions?: { question: string; answer?: string; href: string }[];
 			bottomCta?: BottomCta;
 	  };
 
@@ -836,26 +836,38 @@ export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
 			relatedQuestions: [
 				{
 					question: "高三全日制班级采用全封闭式管理模式吗？",
+					answer:
+						"是的，采用全封闭管理。高三复读、艺考文化课统一全寄宿封闭式管理，吃住学在校一体化，隔绝外界干扰。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#feng-bi-guan-li",
 				},
 				{
 					question: "高三全日制班级完整每日作息时间表是什么？",
+					answer:
+						"从早上 6:30 到晚上 22:30。包含早读、正课、正课刷题、晚辅答疑，作息高度标准化。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#mei-ri-zuo-xi",
 				},
 				{
 					question: "学管师的主要工作职责是什么？",
+					answer:
+						"核心是统筹与协调。包括课时统筹、学情档案更新、阶段性测评规划以及课程调整协调。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#xue-guan-zhi-ze",
 				},
 				{
 					question: "机构多久向家长同步一次学生在校学习情况？",
+					answer:
+						"常规反馈每周一次。包含周反馈和月考专项汇报，重要节点会第一时间在群内同步孩子状态。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#jia-zhang-fan-kui-pin-ci",
 				},
 				{
 					question: "机构每月会出具学生成绩单同步给家长吗？",
+					answer:
+						"是的，每月同步。每月举行正规模拟考试，成绩单会直观同步给家长查看分数涨跌。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#cheng-ji-tong-bu",
 				},
 				{
 					question: "学生出现厌学情绪，机构有对应的处理方案吗？",
+					answer:
+						"有成熟的处理方案。通过心理疏导、学习方案微调以及家校联动，分层引导纠正厌学心态。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#yan-xue-gan-yu",
 				},
 			],

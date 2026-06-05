@@ -222,7 +222,7 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
                   <div className="border-slate-200 border-t">
                     {section.items.map((item, index) => (
                       <div className="grid gap-4 border-slate-200 border-b py-5 md:grid-cols-[72px_minmax(0,1fr)]" key={item}>
-                        <div className="text-primary text-sm">{String(index + 1).padStart(2, "0")}</div>
+                        <div className="font-medium text-primary text-sm leading-8">{String(index + 1).padStart(2, "0")}</div>
                         <p className="text-slate-700 leading-8">{item}</p>
                       </div>
                     ))}
@@ -242,15 +242,20 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
                   </div>
                   <div className="border-slate-200 border-t">
                     {relatedQuestions.map((item) => (
-                      <Link
-                        className="group flex items-center justify-between gap-6 border-slate-200 border-b py-5 text-slate-700 transition-colors hover:text-primary"
-                        href={item.href}
-                        key={item.href}
-                      >
-                        <span className="leading-7">{item.question}</span>
-                        <ArrowRightIcon className="size-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
-                      </Link>
+                      <div className="border-slate-200 border-b py-6" key={item.href}>
+                        <h3 className="font-bold text-slate-900 text-lg leading-7">{item.question}</h3>
+                        {item.answer && <div className="mt-3 text-slate-600 leading-8">{item.answer}</div>}
+                      </div>
                     ))}
+                    <div className="mt-8">
+                      <Link
+                        className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-6 py-2.5 font-medium text-primary transition-colors hover:bg-primary/10"
+                        href="/jia-zhang-fu-wu/jia-zhang-wen-ti"
+                      >
+                        <span>查看更多家长关心的问题</span>
+                        <ArrowRightIcon className="size-4" />
+                      </Link>
+                    </div>
                   </div>
                 </section>
               ) : null}
