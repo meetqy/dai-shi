@@ -29,10 +29,10 @@ export function ExamNews() {
 				<div className="mb-12 flex items-end justify-between">
 					<div>
 						<h2 className="mb-2 font-bold text-3xl text-slate-900 md:text-4xl">
-							考试资讯
+							高考资讯
 						</h2>
 						<p className="text-slate-600">
-							及时掌握高考政策、备考动态与升学信息。
+							为家长整理的高考政策、备考方法和升学信息，方便了解最近都在发生什么。
 						</p>
 					</div>
 					<Link

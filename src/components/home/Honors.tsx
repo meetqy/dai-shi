@@ -11,16 +11,16 @@ export function Honors() {
 			<div className="container mx-auto px-4">
 				<div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 					<div className="max-w-2xl">
-						<p className="mb-3 font-semibold text-primary text-sm">权威认证</p>
+						<p className="mb-3 font-semibold text-primary text-sm">戴氏教育获得过哪些认可</p>
 						<h2 className="mb-3 font-bold text-2xl text-slate-900 md:text-3xl">
-							用真实荣誉强化品牌可信度
+							真实荣誉，看得见的办学积累
 						</h2>
 						<p className="text-slate-600">
-							首页不做大篇幅铺陈，只精选展示最有代表性的权威认可，让家长快速建立信任感。
+							挑了一些比较重要的荣誉和资质，方便家长快速了解戴氏教育的办学实力和社会认可程度。
 						</p>
 					</div>
 					<div className="rounded-full bg-slate-50 px-4 py-2 text-slate-500 text-sm">
-						30+ 年办学积累，沉淀长期口碑与社会认可
+						30+ 年办学经验，长期口碑积累
 					</div>
 				</div>
 
@@ -61,7 +61,7 @@ export function Honors() {
 
 				<div className="mt-6 rounded-2xl border border-slate-200 border-dashed bg-slate-50 px-5 py-4 text-center text-slate-500 text-sm">
 					<span>
-						更多品牌荣誉已整理为独立展示页，首页只保留精简背书更利于转化。
+						如需进一步了解办学资质、品牌荣誉和相关证明材料，可查看完整荣誉资质页面。
 					</span>
 					<Link
 						className="ml-2 font-semibold text-primary transition-colors hover:text-primary/80"

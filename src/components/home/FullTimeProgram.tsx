@@ -7,17 +7,17 @@ export function FullTimeProgram() {
 				<div className="flex flex-col items-center gap-12 md:flex-row">
 					<div className="flex-1">
 						<h2 className="mb-6 font-bold text-3xl text-slate-900 md:text-4xl">
-							高考全日制项目介绍
+							高考全日制：住校集中备考
 						</h2>
 						<p className="mb-8 text-lg text-slate-600 leading-relaxed">
-							面向希望集中备考的学生，提供更加系统的课程安排、作息管理、学习跟踪与阶段反馈，帮助学生在稳定节奏中提升成绩。
+							针对需要全身心投入高考备考的学生，提供统一吃住、规律作息、系统上课的住校班。班主任全程跟班，老师针对每位学生的情况安排学习和练习，定期把孩子的表现同步给家长。
 						</p>
 						<ul className="space-y-4">
 							{[
-								"沉浸式备考环境",
-								"个性化学习跟踪",
-								"学科教师全程指导",
-								"心理状态支持服务",
+								"吃住学一体的备考环境",
+								"针对每位学生的学习和练习安排",
+								"学科老师每天跟班答疑",
+								"关注孩子学习和心理状态",
 							].map((item) => (
 								<li
 									className="flex items-center gap-3 text-slate-700"

@@ -8,10 +8,10 @@ export function FacultyTeam() {
 			<div className="container mx-auto px-4">
 				<div className="mb-16 text-center">
 					<h2 className="mb-4 font-bold text-3xl text-slate-900 md:text-4xl">
-						师资团队
+						孩子的老师是什么样的
 					</h2>
 					<p className="mx-auto max-w-2xl text-slate-600">
-						严选学科骨干教师与教学带头人，形成经验丰富、分工明确、长期稳定的教学团队。
+						由经验丰富的学科骨干老师和教学带头人组成，长期稳定带班，熟悉每个阶段孩子的学习问题。
 					</p>
 				</div>
 

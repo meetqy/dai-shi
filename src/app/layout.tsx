@@ -12,10 +12,10 @@ const siteUrl = new URL(`https://${env.NEXT_PUBLIC_SITE_DOMAIN}`);
 
 export const metadata: Metadata = {
   title: {
-    default: "戴氏教育高考中心总部官方网站 | 戴氏教育",
+    default: "戴氏教育官方网站 | 高考中心总部咨询入口",
     template: "%s｜戴氏教育",
   },
-  description: "戴氏教育高考全日制与升学服务官网",
+  description: "戴氏教育官方网站，提供品牌介绍、总部信息、高考中心、高考复读、高考全日制、招生简章与电话咨询入口。",
   metadataBase: siteUrl,
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };

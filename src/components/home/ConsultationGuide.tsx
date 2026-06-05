@@ -13,13 +13,13 @@ export function ConsultationGuide() {
 				<div className="grid gap-10 rounded-3xl border border-slate-200 bg-slate-50/60 p-8 md:p-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:gap-12 lg:p-12">
 					<div>
 						<div className="mb-5 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 font-medium text-primary text-sm">
-							升学规划咨询
+							帮孩子定一个清晰的备考计划
 						</div>
 						<h2 className="max-w-2xl font-bold text-3xl text-slate-900 leading-tight md:text-4xl">
-							现在就开启更清晰的升学规划
+							打一个电话，听听老师怎么说
 						</h2>
 						<p className="mt-5 max-w-2xl text-base text-slate-600 leading-7 md:text-lg">
-							结合学生当前成绩、目标院校和学习状态，提供更适合当下阶段的备考建议，帮助家长和学生更高效地制定学习节奏与提升方向。
+							根据孩子现在的成绩、想考的学校和最近的学习状态，老师会先聊清楚情况，再给家长一个更合适现阶段的具体建议：什么时候该补什么、怎么安排节奏、下一步该做什么。
 						</p>
 						<div className="mt-8 grid gap-4 text-slate-700 sm:grid-cols-2">
 							<div className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4">
