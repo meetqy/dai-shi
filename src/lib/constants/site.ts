@@ -33,22 +33,21 @@ export const PRIMARY_LINKS: HeaderNavItem[] = [
 	},
 	{
 		items: [
+			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
+			{ href: "/jia-zhang-fu-wu", label: "家长服务" },
+			{ href: "/#jia-chang-wen-da", label: "家长问答" },
+			{ href: "/#xin-wen", label: "考试资讯" },
+		],
+		label: "招生与服务",
+	},
+	{
+		items: [
 			{ href: "/lao-shi", label: "老师团队" },
 			{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
 			{ href: "/#xiao-qu", label: "校区环境" },
 		],
 		label: "关于我们",
 	},
-	{
-		items: [
-			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
-			{ href: "/#jia-chang-wen-da", label: "家长问答" },
-			{ href: "/#xin-wen", label: "考试资讯" },
-		],
-		label: "招生服务",
-	},
-	{ href: "/jia-zhang-fu-wu", label: "家长服务" },
-	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];
 
 export const MOBILE_PRIMARY_LINKS: NavLink[] = [
@@ -56,12 +55,11 @@ export const MOBILE_PRIMARY_LINKS: NavLink[] = [
 	{ href: "/#gao-kao-quan-ri-zhi", label: "高考全日制" },
 	{ href: "/#jiao-xue-jiao-yan", label: "教学教研" },
 	{ href: "/#jiao-xue-guan-li", label: "教学管理" },
+	{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
+	{ href: "/jia-zhang-fu-wu", label: "家长服务" },
+	{ href: "/#jia-chang-wen-da", label: "家长问答" },
+	{ href: "/#xin-wen", label: "考试资讯" },
 	{ href: "/lao-shi", label: "老师团队" },
 	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
 	{ href: "/#xiao-qu", label: "校区环境" },
-	{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
-	{ href: "/#jia-chang-wen-da", label: "家长问答" },
-	{ href: "/jia-zhang-fu-wu", label: "家长服务" },
-	{ href: "/#xin-wen", label: "考试资讯" },
-	{ href: SITE_HOTLINE_TEL, label: "联系我们" },
 ];

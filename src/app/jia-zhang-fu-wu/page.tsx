@@ -91,15 +91,15 @@ export default function JiaZhangFuWuPage() {
           </div>
 
           {articles.length === 0 ? (
-            <div className="rounded-2xl border border-slate-300 border-dashed bg-white py-20 text-center">
+            <div className="col-span-full rounded-2xl border border-slate-300 border-dashed bg-white py-20 text-center">
               <FileTextIcon className="mx-auto mb-3 size-10 text-slate-300" />
               <p className="text-slate-500">暂无内容，敬请期待</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="grid gap-6 md:grid-cols-2">
               {articles.map((article) => (
                 <Link
-                  className="group block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md md:p-8"
+                  className="group block rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-primary/40 hover:shadow-sm md:p-8"
                   href={`/jia-zhang-fu-wu/${article.slug}`}
                   key={article.slug}
                 >
