@@ -11,7 +11,7 @@ import { SITE_BRAND_NAME, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 const PAGE_TITLE = "2027 届高考中心总部校区（顺吉）复读优惠政策与收费标准公示";
 const PAGE_DESCRIPTION = "戴氏教育高考中心总部校区（顺吉）2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。";
 const PAGE_PATH = "/jia-ge-biao/shun-ji-gao-kao-fu-du";
-const CAMPUS_ADDRESS = "戴氏教育总部（成都市青羊区顺城大街252号顺基大厦）";
+const CAMPUS_ADDRESS = "戴氏教育总部（成都市青羊区顺城大街252号顺吉大厦）";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

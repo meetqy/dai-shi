@@ -66,8 +66,8 @@ export function Footer() {
                 <PhoneLink className="transition-colors hover:text-white">咨询热线：{SITE_HOTLINE_TEXT}</PhoneLink>
               </li>
               <li>
-                <a className="transition-colors hover:text-white" href="https://www.amap.com/search?query=戴氏教育总部（成都市青羊区顺城大街252号顺基大厦）" rel="noopener noreferrer" target="_blank">
-                  总部地址：戴氏教育总部（成都市青羊区顺城大街 252 号顺基大厦）
+                <a className="transition-colors hover:text-white" href="https://www.amap.com/search?query=戴氏教育总部（成都市青羊区顺城大街252号顺吉大厦）" rel="noopener noreferrer" target="_blank">
+                  总部地址：戴氏教育总部（成都市青羊区顺城大街 252 号顺吉大厦）
                 </a>
               </li>
             </ul>
