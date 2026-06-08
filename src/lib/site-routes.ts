@@ -37,6 +37,21 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	},
 	{
 		changeFrequency: "weekly",
+		description: "查看戴氏教育各校区各类课程价格表与优惠政策。",
+		path: "/jia-ge-biao",
+		priority: 0.9,
+		title: "价格表",
+	},
+	{
+		changeFrequency: "weekly",
+		description:
+			"戴氏教育高考中心总部校区（顺吉）2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。",
+		path: "/jia-ge-biao/shun-ji-gao-kao-fu-du",
+		priority: 0.9,
+		title: "总部校区（顺吉）高考复读优惠政策",
+	},
+	{
+		changeFrequency: "weekly",
 		description:
 			"戴氏教育家长服务中心：学管服务流程、教学管理规范、家长指南、备考攻略与高考资讯集中呈现。",
 		path: "/jia-zhang-fu-wu",
