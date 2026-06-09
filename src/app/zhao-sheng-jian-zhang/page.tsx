@@ -2,10 +2,11 @@ import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { PageTopNav } from "~/components/PageTopNav";
 import { getAllBrochures } from "~/lib/brochures";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 export const metadata = {
 	title: "招生简章列表",
-	description: "查看戴氏教育历年高考全日制招生简章",
+	description: `查看${SITE_FULL_NAME}历年高考全日制招生简章`,
 };
 
 export default function BrochuresPage() {

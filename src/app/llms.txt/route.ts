@@ -1,4 +1,5 @@
 import { getSiteOrigin, getSiteRoutes } from "~/lib/site-routes";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 function buildLlmsText() {
 	const siteOrigin = getSiteOrigin();
@@ -8,9 +9,9 @@ function buildLlmsText() {
 	});
 
 	return [
-		"# 戴氏教育",
+		`# ${SITE_FULL_NAME}`,
 		"",
-		"> 戴氏教育高考全日制与升学服务官网。",
+		`> ${SITE_FULL_NAME}高考全日制与升学服务官网。`,
 		"",
 		"## 站点信息",
 		`- 官网：${siteOrigin}`,

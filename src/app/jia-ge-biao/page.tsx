@@ -1,10 +1,11 @@
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { PageTopNav } from "~/components/PageTopNav";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 export const metadata = {
 	title: "价格表",
-	description: "查看戴氏教育各校区各类课程价格表与优惠政策",
+	description: `查看${SITE_FULL_NAME}各校区各类课程价格表与优惠政策`,
 };
 
 const priceListItems = [
@@ -27,7 +28,7 @@ export default function PriceListPage() {
 						价格表
 					</h1>
 					<p className="mx-auto max-w-2xl text-lg text-slate-600">
-						为您提供戴氏教育各校区各类课程的价格信息与优惠政策。
+						为您提供${SITE_FULL_NAME}各校区各类课程的价格信息与优惠政策。
 					</p>
 				</div>
 

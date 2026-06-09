@@ -1,6 +1,7 @@
 import { Award, ShieldCheck, Trophy } from "lucide-react";
 import Link from "next/link";
 import { HONORS } from "~/lib/constants/honors";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 export function Honors() {
 	const featuredHonors = HONORS.slice(0, 3);
@@ -12,13 +13,13 @@ export function Honors() {
 				<div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 					<div className="max-w-2xl">
 						<p className="mb-3 font-semibold text-primary text-sm">
-							戴氏教育获得过哪些认可
+							{SITE_FULL_NAME}获得过哪些认可
 						</p>
 						<h2 className="mb-3 font-bold text-2xl text-slate-900 md:text-3xl">
 							真实荣誉，看得见的办学积累
 						</h2>
 						<p className="text-slate-600">
-							挑了一些比较重要的荣誉和资质，方便家长快速了解戴氏教育的办学实力和社会认可程度。
+							挑了一些比较重要的荣誉和资质，方便家长快速了解{SITE_FULL_NAME}的办学实力和社会认可程度。
 						</p>
 					</div>
 					<div className="rounded-full bg-slate-50 px-4 py-2 text-slate-500 text-sm">

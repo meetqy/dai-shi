@@ -2,6 +2,7 @@ import { env } from "~/env";
 import { getAllBrochures } from "~/lib/brochures";
 import { TEACHERS } from "~/lib/constants/teachers";
 import { getAllJiaZhangArticles } from "~/lib/jia-zhang-fu-wu";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 export type SiteRoute = {
 	changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
@@ -16,28 +17,28 @@ const SITE_ORIGIN = `https://${env.NEXT_PUBLIC_SITE_DOMAIN}`;
 const STATIC_SITE_ROUTES: SiteRoute[] = [
 	{
 		changeFrequency: "daily",
-		description: "戴氏教育高考全日制与升学服务官网首页。",
+		description: `${SITE_FULL_NAME}高考全日制与升学服务官网首页。`,
 		path: "/",
 		priority: 1,
 		title: "首页",
 	},
 	{
 		changeFrequency: "weekly",
-		description: "查看戴氏教育高考总部荣誉证书、资质认证与品牌背书内容。",
+		description: `查看${SITE_FULL_NAME}荣誉证书、资质认证与品牌背书内容。`,
 		path: "/rong-yu-zi-zhi",
 		priority: 0.8,
 		title: "荣誉资质",
 	},
 	{
 		changeFrequency: "weekly",
-		description: "查看戴氏教育历年高考全日制招生简章列表。",
+		description: `查看${SITE_FULL_NAME}历年高考全日制招生简章列表。`,
 		path: "/zhao-sheng-jian-zhang",
 		priority: 0.9,
 		title: "招生简章",
 	},
 	{
 		changeFrequency: "weekly",
-		description: "查看戴氏教育各校区各类课程价格表与优惠政策。",
+		description: `查看${SITE_FULL_NAME}各校区各类课程价格表与优惠政策。`,
 		path: "/jia-ge-biao",
 		priority: 0.9,
 		title: "价格表",
@@ -45,7 +46,7 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	{
 		changeFrequency: "weekly",
 		description:
-			"戴氏教育高考中心总部校区（顺吉）2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。",
+			`${SITE_FULL_NAME}总部校区（顺吉）2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。`,
 		path: "/jia-ge-biao/shun-ji-gao-kao-fu-du",
 		priority: 0.9,
 		title: "总部校区（顺吉）高考复读优惠政策",
@@ -53,21 +54,21 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	{
 		changeFrequency: "weekly",
 		description:
-			"戴氏教育家长服务中心：学管服务流程、教学管理规范、家长指南、备考攻略与高考资讯集中呈现。",
+			`${SITE_FULL_NAME}家长服务中心：学管服务流程、教学管理规范、家长指南、备考攻略与高考资讯集中呈现。`,
 		path: "/jia-zhang-fu-wu",
 		priority: 0.8,
 		title: "家长服务",
 	},
 	{
 		changeFrequency: "weekly",
-		description: "查看戴氏教育成都总部电话、地址、到访说明与联系入口。",
+		description: `查看${SITE_FULL_NAME}电话、地址、到访说明与联系入口。`,
 		path: "/lian-xi-wo-men",
 		priority: 0.7,
 		title: "联系我们",
 	},
 	{
 		changeFrequency: "weekly",
-		description: "查看戴氏教育核心老师介绍、教学履历与教学成果。",
+		description: `查看${SITE_FULL_NAME}核心老师介绍、教学履历与教学成果。`,
 		path: "/lao-shi",
 		priority: 0.8,
 		title: "老师团队",
@@ -82,7 +83,7 @@ export function getSiteRoutes(): SiteRoute[] {
 	const brochureRoutes: SiteRoute[] = getAllBrochures().map(
 		(brochure, index) => ({
 			changeFrequency: "monthly",
-			description: `查看${brochure.year}届戴氏教育高考中心招生简章与备考安排。`,
+			description: `查看${brochure.year}届${SITE_FULL_NAME}招生简章与备考安排。`,
 			path: `/zhao-sheng-jian-zhang/${brochure.year}`,
 			priority: index === 0 ? 0.9 : 0.7,
 			title: brochure.title,

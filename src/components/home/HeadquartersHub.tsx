@@ -2,7 +2,7 @@ import { MapPinIcon, NavigationIcon, PhoneCallIcon, SchoolIcon } from "lucide-re
 import Image from "next/image";
 import { PhoneButton, PhoneLink } from "~/components/phone-action";
 import { CONTACT_HEADQUARTERS, CONTACT_TOPICS } from "~/lib/constants/contact";
-import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import { SITE_HOTLINE_TEXT, SITE_FULL_NAME } from "~/lib/constants/site";
 
 export function HeadquartersHub() {
   return (
@@ -10,7 +10,7 @@ export function HeadquartersHub() {
       <div className="container mx-auto px-4">
         <div className="mb-10 max-w-3xl">
           <div className="inline-flex rounded-full bg-white px-4 py-1.5 font-medium text-primary text-sm">总部在哪里</div>
-          <h2 className="mt-5 font-bold text-3xl text-slate-900 leading-tight md:text-4xl">戴氏教育总部在成都，家长可以直接打电话或预约到访了解情况。</h2>
+          <h2 className="mt-5 font-bold text-3xl text-slate-900 leading-tight md:text-4xl">{SITE_FULL_NAME}在成都，家长可以直接打电话或预约到访了解情况。</h2>
           <p className="mt-4 text-base text-slate-600 leading-8 md:text-lg">
             想看总部地址、了解怎么坐车、问课程和收费、想预约到访校区看环境，都可以从这里开始。打一个电话，老师会先听孩子的情况，再告诉您接下来可以怎么做。
           </p>
@@ -21,7 +21,7 @@ export function HeadquartersHub() {
             <Image alt="戴氏教育总部环境展示" className="object-cover" fill sizes="(min-width: 1024px) 50vw, 100vw" src="/assets/校园环境图占位.jpg" />
             <div className="absolute inset-0 bg-linear-to-t from-slate-950/75 via-slate-950/30 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
-              <p className="font-semibold text-sm tracking-wide">戴氏教育总部</p>
+              <p className="font-semibold text-sm tracking-wide">{SITE_FULL_NAME}</p>
               <p className="mt-3 max-w-xl text-slate-100 text-sm leading-7 md:text-base">欢迎家长先打总部电话咨询，或预约到访总部现场看环境和课程安排。</p>
             </div>
           </div>

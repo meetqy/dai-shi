@@ -4,6 +4,7 @@ import {
 	TargetIcon,
 	ZapIcon,
 } from "lucide-react";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 export function AIDiagnosis() {
 	const features = [
@@ -50,7 +51,7 @@ export function AIDiagnosis() {
 							</h2>
 
 							<p className="mb-12 max-w-xl text-lg text-slate-400 leading-relaxed">
-								结合戴氏教育多年的教学经验，AI
+								结合{SITE_FULL_NAME}多年的教学经验，AI
 								帮孩子分析平时的做题数据，自动告诉家长和孩子：哪些知识点还没掌握、每天应该重点练什么、进步出现在哪里。
 							</p>
 

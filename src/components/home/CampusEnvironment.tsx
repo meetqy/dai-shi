@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 const campusImages = [
 	{ src: "/assets/校区环境1.png", alt: "校区环境展示一" },
@@ -15,7 +16,7 @@ export function CampusEnvironment() {
 			<div className="container mx-auto px-4">
 				<div className="mb-16 text-center">
 					<h2 className="mb-4 font-bold text-3xl text-slate-900 md:text-4xl">
-						孩子在戴氏的学习环境
+						孩子在{SITE_FULL_NAME}的学习环境
 					</h2>
 					<p className="mx-auto max-w-2xl text-slate-600">
 						教室、宿舍、自习室和生活区统一规划，孩子在安静、专注的环境里安心备考。

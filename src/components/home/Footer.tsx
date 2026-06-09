@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PhoneLink } from "~/components/phone-action";
 import { CONTACT_CHANNELS } from "~/lib/constants/contact";
-import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import { SITE_HOTLINE_TEXT, SITE_BRAND_NAME } from "~/lib/constants/site";
 
 export function Footer() {
   return (
@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="mb-8 grid gap-8 md:grid-cols-4">
           <div className="col-span-1 md:col-span-1">
-            <h3 className="mb-6 font-bold text-2xl">戴氏教育</h3>
+            <h3 className="mb-6 font-bold text-2xl">{SITE_BRAND_NAME}</h3>
             <p className="text-slate-400 text-sm leading-relaxed">专注个性化教学与高考备考服务，围绕教学、管理、陪伴与规划，为学生提供更系统的成长支持。</p>
           </div>
 
@@ -80,7 +80,7 @@ export function Footer() {
         </div>
 
         <div className="border-white/10 border-t pt-5 text-center text-slate-500 text-xs md:text-sm">
-          <p className="mb-1.5">© 2026 戴氏教育 版权所有</p>
+          <p className="mb-1.5">© 2026 {SITE_BRAND_NAME} 版权所有</p>
           <p>
             <a className="transition-colors hover:text-slate-300" href="https://beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">
               蜀ICP备2021012513号-7

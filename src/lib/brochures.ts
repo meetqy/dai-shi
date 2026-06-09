@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 const BROCHURE_PATH_CANDIDATES = [
 	path.join(process.cwd(), "素材资源", "招生简章"),
@@ -31,7 +32,7 @@ export function getAllBrochures(): Omit<Brochure, "content">[] {
 			const year = file.replace(/\.md$/, "");
 			return {
 				year,
-				title: `${year} 届戴氏教育高考中心招生简章`,
+				title: `${year} 届${SITE_FULL_NAME}招生简章`,
 				fileName: file,
 			};
 		})
@@ -53,7 +54,7 @@ export function getBrochureByYear(year: string): Brochure | null {
 	const content = fs.readFileSync(filePath, "utf8");
 	return {
 		year,
-		title: `${year} 届戴氏教育高考中心招生简章`,
+		title: `${year} 届${SITE_FULL_NAME}招生简章`,
 		content,
 		fileName: `${year}.md`,
 	};

@@ -14,12 +14,12 @@ import {
 	CONTACT_PAGE_INTRO,
 	CONTACT_TOPICS,
 } from "~/lib/constants/contact";
-import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import { SITE_HOTLINE_TEXT, SITE_FULL_NAME } from "~/lib/constants/site";
 
 export const metadata: Metadata = {
-	title: "联系我们 - 戴氏教育高考中心",
+	title: `联系我们 - ${SITE_FULL_NAME}`,
 	description:
-		"查看戴氏教育成都总部联系方式、总部地址、到访说明与电话咨询方式。未提供的信息不单独展示，方便家长快速联系戴氏教育。",
+		`查看${SITE_FULL_NAME}联系方式、总部地址、到访说明与电话咨询方式。未提供的信息不单独展示，方便家长快速联系${SITE_FULL_NAME}。`,
 };
 
 const CONTACT_ICONS = {

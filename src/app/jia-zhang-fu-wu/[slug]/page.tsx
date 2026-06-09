@@ -16,7 +16,7 @@ import type {
 	BottomCta,
 	JiaZhangArticle,
 } from "~/lib/constants/jia-zhang-fu-wu";
-import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import { SITE_HOTLINE_TEXT, SITE_FULL_NAME } from "~/lib/constants/site";
 import {
 	getAllJiaZhangArticles,
 	getJiaZhangArticleBySlug,
@@ -41,7 +41,7 @@ export async function generateMetadata({
 	}
 	return {
 		description: article.summary,
-		title: `${article.title} - 戴氏教育家长服务`,
+		title: `${article.title} - ${SITE_FULL_NAME}家长服务`,
 	};
 }
 

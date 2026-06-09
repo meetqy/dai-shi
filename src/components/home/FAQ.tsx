@@ -8,13 +8,14 @@ import {
 } from "~/components/ui/accordion";
 import { Button } from "~/components/ui/button";
 import { getAllJiaZhangFaqItems } from "~/lib/constants/jia-zhang-fu-wu";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 const HOME_FAQ_QUESTIONS = [
-	"成都戴氏教育办学多少年了？",
-	"成都戴氏教育主要做哪些年级的辅导？",
-	"成都戴氏教育的老师都有教师资格证吗？",
-	"成都戴氏教育高三全日制是封闭式管理吗？",
-	"成都戴氏教育有真实提分案例吗？",
+	`${SITE_FULL_NAME}办学多少年了？`,
+	`${SITE_FULL_NAME}主要做哪些年级的辅导？`,
+	`${SITE_FULL_NAME}的老师都有教师资格证吗？`,
+	`${SITE_FULL_NAME}高三全日制是封闭式管理吗？`,
+	`${SITE_FULL_NAME}有真实提分案例吗？`,
 ];
 
 const HOME_FAQS = getAllJiaZhangFaqItems().filter((item) =>

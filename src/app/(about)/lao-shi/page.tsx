@@ -3,13 +3,13 @@ import { Footer } from "~/components/home/Footer";
 import { PageTopNav } from "~/components/PageTopNav";
 import { PhoneButton } from "~/components/phone-action";
 import { TeacherCard } from "~/components/teachers/TeacherCard";
-import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import { SITE_HOTLINE_TEXT, SITE_FULL_NAME } from "~/lib/constants/site";
 import { TEACHERS } from "~/lib/constants/teachers";
 
 export const metadata: Metadata = {
 	title: "老师团队",
 	description:
-		"查看戴氏教育高考团队核心老师介绍，了解老师履历、教学成果与教研方向。",
+		`查看${SITE_FULL_NAME}核心老师介绍，了解老师履历、教学成果与教研方向。`,
 };
 
 export default function TeachersPage() {
@@ -24,7 +24,7 @@ export default function TeachersPage() {
 							核心老师介绍与教学履历
 						</h1>
 						<p className="mt-5 max-w-4xl text-lg text-slate-600 leading-8">
-							这里集中展示戴氏教育核心老师的教学背景、教研方向与代表性成果，方便家长和学生更直观了解师资实力。
+							这里集中展示{SITE_FULL_NAME}核心老师的教学背景、教研方向与代表性成果，方便家长和学生更直观了解师资实力。
 						</p>
 						<div className="mt-8">
 							<PhoneButton className="h-12 rounded-xl px-6 font-semibold">

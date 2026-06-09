@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { PhoneButton } from "~/components/phone-action";
+import { SITE_BRAND_NAME } from "~/lib/constants/site";
 
 export function MainHeader() {
 	return (
 		<header className="sticky top-0 z-50 border-slate-200 border-b bg-white/80 backdrop-blur-md">
 			<div className="container mx-auto flex items-center justify-between px-4 py-4">
 				<Link className="font-bold text-2xl text-primary" href="/">
-					戴氏教育
+					{SITE_BRAND_NAME}
 				</Link>
 
 				<nav className="hidden items-center gap-8 font-medium md:flex">
