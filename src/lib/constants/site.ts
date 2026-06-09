@@ -19,6 +19,7 @@ export const UTILITY_LINKS: NavLink[] = [
 	{ href: "/#xin-wen", label: "考试资讯" },
 	{ href: "/#xiao-qu", label: "校区查询" },
 	{ href: "/#jia-chang-wen-da", label: "家长问答" },
+	{ href: "/lian-xi-wo-men", label: "联系我们" },
 ];
 
 export const PRIMARY_LINKS: HeaderNavItem[] = [
@@ -46,6 +47,7 @@ export const PRIMARY_LINKS: HeaderNavItem[] = [
       { href: "/lao-shi", label: "老师团队" },
       { href: "/rong-yu-zi-zhi", label: "荣誉资质" },
       { href: "/#xiao-qu", label: "校区环境" },
+      { href: "/lian-xi-wo-men", label: "联系我们" },
     ],
     label: "关于我们",
   },
@@ -64,4 +66,5 @@ export const MOBILE_PRIMARY_LINKS: NavLink[] = [
 	{ href: "/lao-shi", label: "老师团队" },
 	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
 	{ href: "/#xiao-qu", label: "校区环境" },
+	{ href: "/lian-xi-wo-men", label: "联系我们" },
 ];

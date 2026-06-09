@@ -1,9 +1,8 @@
 import { MapPinIcon, NavigationIcon, PhoneCallIcon, SchoolIcon } from "lucide-react";
 import Image from "next/image";
 import { PhoneButton, PhoneLink } from "~/components/phone-action";
+import { CONTACT_HEADQUARTERS, CONTACT_TOPICS } from "~/lib/constants/contact";
 import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
-
-const SERVICE_ITEMS = ["解答高考中心、复读和全日制相关的咨询问题", "预约到访总部，现场看教室、宿舍和管理安排", "根据孩子成绩情况，沟通现阶段适合的备考方向"];
 
 export function HeadquartersHub() {
   return (
@@ -34,29 +33,33 @@ export function HeadquartersHub() {
               </div>
               <div>
                 <div className="text-slate-500 text-sm">总部名称</div>
-                <div className="mt-1 font-semibold text-lg text-slate-900">戴氏教育成都总部</div>
+                <div className="mt-1 font-semibold text-lg text-slate-900">{CONTACT_HEADQUARTERS.name}</div>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-slate-700">
-                <MapPinIcon className="size-5" />
+            {CONTACT_HEADQUARTERS.address ? (
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-slate-700">
+                  <MapPinIcon className="size-5" />
+                </div>
+                <div>
+                  <div className="text-slate-500 text-sm">总部地址</div>
+                  <div className="mt-1 font-semibold text-slate-900">{CONTACT_HEADQUARTERS.address}</div>
+                </div>
               </div>
-              <div>
-                <div className="text-slate-500 text-sm">总部地址</div>
-                <div className="mt-1 font-semibold text-slate-900">成都市青羊区顺城大街 252 号顺吉大厦</div>
-              </div>
-            </div>
+            ) : null}
 
-            <div className="flex items-start gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-slate-700">
-                <NavigationIcon className="size-5" />
+            {CONTACT_HEADQUARTERS.navigationNote ? (
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-slate-700">
+                  <NavigationIcon className="size-5" />
+                </div>
+                <div>
+                  <div className="text-slate-500 text-sm">怎么到总部</div>
+                  <div className="mt-1 text-slate-700 leading-7">{CONTACT_HEADQUARTERS.navigationNote}</div>
+                </div>
               </div>
-              <div>
-                <div className="text-slate-500 text-sm">怎么到总部</div>
-                <div className="mt-1 text-slate-700 leading-7">欢迎家长预约到访总部，现场看教室、宿舍和管理方式，了解孩子入学后的真实生活与学习节奏。</div>
-              </div>
-            </div>
+            ) : null}
 
             <div className="flex items-start gap-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-slate-700">
@@ -65,32 +68,36 @@ export function HeadquartersHub() {
               <div>
                 <div className="text-slate-500 text-sm">咨询电话</div>
                 <PhoneLink className="mt-1 inline-block font-bold text-2xl text-slate-900">{SITE_HOTLINE_TEXT}</PhoneLink>
-                <div className="mt-1 text-slate-500 text-sm">工作时间内可直接拨打，老师会先听孩子情况再回答问题</div>
+                <div className="mt-1 text-slate-500 text-sm">{CONTACT_HEADQUARTERS.phoneDescription}</div>
               </div>
             </div>
 
-            <div className="pt-2">
-              <h3 className="font-semibold text-slate-900">打总部电话，老师会帮您解答这些事</h3>
-              <div className="mt-4 space-y-3">
-                {SERVICE_ITEMS.map((item) => (
-                  <div className="flex items-start gap-3 text-slate-700" key={item}>
-                    <div className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
-                    <span className="leading-7">{item}</span>
-                  </div>
-                ))}
+            {CONTACT_TOPICS.length > 0 ? (
+              <div className="pt-2">
+                <h3 className="font-semibold text-slate-900">打总部电话，老师会帮您解答这些事</h3>
+                <div className="mt-4 space-y-3">
+                  {CONTACT_TOPICS.map((item) => (
+                    <div className="flex items-start gap-3 text-slate-700" key={item}>
+                      <div className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                      <span className="leading-7">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : null}
 
             <div className="flex flex-col gap-3 pt-2 sm:flex-row">
               <PhoneButton className="h-12 rounded-full px-7 text-base">立即电话咨询</PhoneButton>
-              <a
-                className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-7 font-medium text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950"
-                href="https://www.amap.com/search?query=戴氏教育总部（成都市青羊区顺城大街252号顺吉大厦）"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                一键导航到总部
-              </a>
+              {CONTACT_HEADQUARTERS.mapHref ? (
+                <a
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-7 font-medium text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950"
+                  href={CONTACT_HEADQUARTERS.mapHref}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  一键导航到总部
+                </a>
+              ) : null}
             </div>
           </div>
         </div>

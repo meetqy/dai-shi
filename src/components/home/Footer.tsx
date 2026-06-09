@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PhoneLink } from "~/components/phone-action";
+import { CONTACT_CHANNELS } from "~/lib/constants/contact";
 import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 
 export function Footer() {
@@ -62,14 +63,18 @@ export function Footer() {
           <div>
             <h4 className="mb-6 font-bold text-slate-500 text-sm uppercase tracking-widest">联系我们</h4>
             <ul className="space-y-4 text-slate-400">
-              <li>
-                <PhoneLink className="transition-colors hover:text-white">咨询热线：{SITE_HOTLINE_TEXT}</PhoneLink>
-              </li>
-              <li>
-                <a className="transition-colors hover:text-white" href="https://www.amap.com/search?query=戴氏教育总部（成都市青羊区顺城大街252号顺吉大厦）" rel="noopener noreferrer" target="_blank">
-                  总部地址：戴氏教育总部（成都市青羊区顺城大街 252 号顺吉大厦）
-                </a>
-              </li>
+              {CONTACT_CHANNELS.some((item) => item.label === "咨询热线") ? (
+                <li>
+                  <PhoneLink className="transition-colors hover:text-white">咨询热线：{SITE_HOTLINE_TEXT}</PhoneLink>
+                </li>
+              ) : null}
+              {CONTACT_CHANNELS.filter((item) => item.label !== "咨询热线" && item.href).map((item) => (
+                <li key={item.label}>
+                  <a className="transition-colors hover:text-white" href={item.href} rel="noopener noreferrer" target="_blank">
+                    {item.label}：{item.value}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

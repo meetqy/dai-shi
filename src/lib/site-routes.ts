@@ -60,6 +60,13 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	},
 	{
 		changeFrequency: "weekly",
+		description: "查看戴氏教育成都总部电话、地址、到访说明与联系入口。",
+		path: "/lian-xi-wo-men",
+		priority: 0.7,
+		title: "联系我们",
+	},
+	{
+		changeFrequency: "weekly",
 		description: "查看戴氏教育核心老师介绍、教学履历与教学成果。",
 		path: "/lao-shi",
 		priority: 0.8,
