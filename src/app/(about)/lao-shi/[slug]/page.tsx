@@ -6,7 +6,11 @@ import { PageTopNav } from "~/components/PageTopNav";
 import { PhoneButton } from "~/components/phone-action";
 import { env } from "~/env";
 import { SITE_BRAND_NAME, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
-import { getTeacherBySlug, TEACHERS } from "~/lib/constants/teachers";
+import {
+	getTeacherBySlug,
+	getTeacherDisplayTitle,
+	TEACHERS,
+} from "~/lib/constants/teachers";
 
 type PageProps = {
 	params: Promise<{ slug: string }>;
@@ -71,7 +75,7 @@ function TeacherStructuredData({
 		"@context": "https://schema.org",
 		"@type": "Person",
 		name: teacher.name,
-		jobTitle: teacher.title,
+		jobTitle: getTeacherDisplayTitle(teacher),
 		description: teacher.summary,
 		image: imageUrl,
 		url: pageUrl,
@@ -102,6 +106,8 @@ export default async function TeacherDetailPage({ params }: PageProps) {
 	}
 
 	const profileFacts = [
+		teacher.campus ? { label: "所在校区", value: teacher.campus } : null,
+		teacher.subject ? { label: "学科方向", value: teacher.subject } : null,
 		teacher.education ? { label: "毕业院校", value: teacher.education } : null,
 		teacher.experience
 			? { label: "教学经历", value: teacher.experience }
@@ -140,9 +146,16 @@ export default async function TeacherDetailPage({ params }: PageProps) {
 									<h1 className="mt-3 font-bold text-4xl text-slate-950 leading-tight md:text-5xl">
 										{teacher.name}
 									</h1>
-									<p className="mt-3 font-medium text-primary text-xl">
-										{teacher.title}
-									</p>
+									<div className="mt-3 flex flex-wrap items-center gap-3">
+										{teacher.campus ? (
+											<span className="rounded-full bg-white px-3 py-1.5 text-slate-600 text-sm">
+												{teacher.campus}
+											</span>
+										) : null}
+										<p className="font-medium text-primary text-xl">
+											{getTeacherDisplayTitle(teacher)}
+										</p>
+									</div>
 									<p className="mt-6 max-w-3xl text-lg text-slate-600 leading-8">
 										{teacher.summary}
 									</p>

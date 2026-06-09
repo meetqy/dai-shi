@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { TeacherProfile } from "~/lib/constants/teachers";
+import {
+	getTeacherDisplayTitle,
+	type TeacherProfile,
+} from "~/lib/constants/teachers";
 
 type TeacherCardProps = {
 	teacher: TeacherProfile;
@@ -24,7 +27,16 @@ export function TeacherCard({ teacher }: TeacherCardProps) {
 
 			<div className="border-slate-100 border-t px-5 py-5">
 				<h3 className="font-bold text-lg text-slate-950">{teacher.name}</h3>
-				<p className="mt-1 font-medium text-primary text-sm">{teacher.title}</p>
+				<div className="mt-2 flex flex-wrap items-center gap-2">
+					{teacher.campus ? (
+						<span className="rounded-full bg-slate-100 px-2.5 py-1 text-slate-600 text-xs">
+							{teacher.campus}
+						</span>
+					) : null}
+					<p className="font-medium text-primary text-sm">
+						{getTeacherDisplayTitle(teacher)}
+					</p>
+				</div>
 				<p className="mt-3 line-clamp-2 text-slate-600 text-sm leading-7">
 					{teacher.summary}
 				</p>
