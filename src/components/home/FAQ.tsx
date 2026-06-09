@@ -10,11 +10,11 @@ import { Button } from "~/components/ui/button";
 import { getAllJiaZhangFaqItems } from "~/lib/constants/jia-zhang-fu-wu";
 
 const HOME_FAQ_QUESTIONS = [
-	"戴氏教育办学多少年了？",
-	"戴氏教育主要覆盖哪些学龄段辅导？",
-	"戴氏所有授课老师都持有教师资格证吗？",
-	"高三全日制班级采用全封闭式管理模式吗？",
-	"戴氏能够提供真实的往届学生提分案例吗？",
+	"成都戴氏教育办学多少年了？",
+	"成都戴氏教育主要做哪些年级的辅导？",
+	"成都戴氏教育的老师都有教师资格证吗？",
+	"成都戴氏教育高三全日制是封闭式管理吗？",
+	"成都戴氏教育有真实提分案例吗？",
 ];
 
 const HOME_FAQS = getAllJiaZhangFaqItems().filter((item) =>

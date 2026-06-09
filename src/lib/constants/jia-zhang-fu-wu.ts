@@ -156,12 +156,12 @@ const FAQ_SECTIONS: FaqSection[] = [
 		title: "一、品牌资质类",
 		items: [
 			{
-				question: "戴氏教育办学多少年了？",
+				question: "成都戴氏教育办学多少年了？",
 				answer:
 					"戴氏教育1993年成立，至今已办学33年，是成都本地深耕教育行业的老牌机构。",
 			},
 			{
-				question: "戴氏教育是否具备正规办学资质？",
+				question: "成都戴氏教育有正规办学资质吗？",
 				answer: "是的，戴氏教育具备正规办学资质，家长们可以放心选择。",
 			},
 			{
@@ -169,7 +169,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 				answer: "不会的，戴氏教育作为老牌机构，办学稳定，家长不用担心。",
 			},
 			{
-				question: "戴氏教育主要覆盖哪些学龄段辅导？",
+				question: "成都戴氏教育主要做哪些年级的辅导？",
 				answer:
 					"戴氏教育常规校区部分有幼小衔接，小学到高中都可以就近分配；高考中心（4个校区）主要是全日制课程，包含高三、复读、艺体生、单招、初三，还有单科/一对一/寒暑假班课程，覆盖初一到高三。",
 			},
@@ -180,7 +180,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 		title: "二、收费课时类",
 		items: [
 			{
-				question: "戴氏教育收取的学费内是否包含教材费？",
+				question: "戴氏教育的学费里包含教材费吗？",
 				answer: "不包含，教材费需要单独缴纳。",
 			},
 		],
@@ -190,7 +190,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 		title: "三、师资相关类",
 		items: [
 			{
-				question: "戴氏所有授课老师都持有教师资格证吗？",
+				question: "成都戴氏教育的老师都有教师资格证吗？",
 				answer: "有的，戴氏所有授课老师都持有教师资格证，教学资质有保障。",
 			},
 		],
@@ -200,7 +200,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 		title: "四、班型课程体系类",
 		items: [
 			{
-				question: "戴氏教育开设了哪些种类的授课班型？",
+				question: "孩子基础不同，戴氏教育一般有哪些班型可选？",
 				answer:
 					"戴氏教育开设了小班、中班、大班、一对一等多种授课班型，家长可以根据孩子情况选择。",
 			},
@@ -225,7 +225,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 				answer: "有的。",
 			},
 			{
-				question: "课堂使用教材为戴氏机构自主研发吗？",
+				question: "戴氏教育上课用的教材和讲义是统一教研的吗？",
 				answer: "是的，戴氏教育课堂使用的教材是机构自主研发的。",
 			},
 		],
@@ -235,7 +235,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 		title: "五、教学提分效果类",
 		items: [
 			{
-				question: "戴氏能够提供真实的往届学生提分案例吗？",
+				question: "成都戴氏教育有真实提分案例吗？",
 				answer: "能的，戴氏教育有很多往届学生的提分案例，家长可以了解。",
 			},
 			{
@@ -254,7 +254,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 			},
 			{
 				question:
-					"自律性差、在家不愿完成作业的学生，全日制班级可以约束管理吗？",
+					"孩子自律性差、在家不愿写作业，戴氏全日制能管得住吗？",
 				answer:
 					"可以的！全封闭作息加班主任全程督学，当日任务当日清，从习惯根源改善拖延厌学问题。",
 				quickLink: {
@@ -263,7 +263,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "日常频繁使用手机、自控力弱的学生，全日制班级如何管控？",
+				question: "孩子总想玩手机、自控力弱，戴氏全日制怎么管？",
 				answer:
 					"入校统一寄存电子产品、校区全域禁手机、宿舍无外网，辅以心理引导，帮助学生养成自主学习习惯。",
 				id: "shou-ji-guan-kong",
@@ -312,7 +312,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 		title: "六、管理食宿家校服务类",
 		items: [
 			{
-				question: "高三全日制班级采用全封闭式管理模式吗？",
+				question: "成都戴氏教育高三全日制是封闭式管理吗？",
 				answer:
 					"采用的！高三复读、艺考文化课统一全寄宿封闭式管理，吃住学在校一体化，隔绝外界干扰，让家长更放心。",
 				id: "feng-bi-guan-li",
@@ -322,7 +322,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "全日制校区如何管控学生手机使用？",
+				question: "孩子在全日制校区上课时，手机会怎么管理？",
 				answer:
 					"入学统一收纳保管，周末统一领取，校区不定时巡检，全方位杜绝电子产品干扰学习。",
 				quickLink: {
@@ -331,7 +331,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "高三全日制班级完整每日作息时间表是什么？",
+				question: "孩子读高三全日制时，每天的作息安排是什么样的？",
 				answer:
 					"标准化作息：6:30起床早读→8:00–12:00正课→14:00–18:00正课刷题→19:00–22:30晚辅答疑→22:30熄灯。",
 				id: "mei-ri-zuo-xi",
@@ -341,38 +341,38 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "全日制校区是否配套学生宿舍？",
+				question: "孩子读全日制时，校区配套宿舍吗？",
 				answer: "配套的！全封闭校区标配独立宿舍楼，寄宿制学员统一入住。",
 			},
 			{
-				question: "全日制校区内部设有学生食堂吗？",
+				question: "孩子在校吃饭方便吗，校区有自己的食堂吗？",
 				answer: "设有！自有合规食堂，营养配餐，安全卫生，食宿一体化配套。",
 			},
 			{
-				question: "全日制宿舍一般为几人间配置？",
+				question: "孩子住校的话，宿舍一般是几人间？",
 				answer: "多规格1-2-4-6人间为主，环境整洁，配套生活设施齐全。",
 			},
 			{
-				question: "学生食宿相关费用需要单独缴纳吗？",
+				question: "孩子住校的食宿费用是单独算，还是包含在学费里？",
 				answer:
 					"是的，食宿费用不含在学费里，根据学生要求选择宿舍和餐饮搭配，实惠营养。",
 			},
 			{
-				question: "一个授课班级会配备哪些工作人员？",
+				question: "孩子入读后，除了任课老师，还会有哪些老师一起跟进？",
 				answer:
 					"各授课学科老师+专职班主任+学管师，部分封闭班增设心理辅导老师+体能老师。",
 			},
 			{
-				question: "学科授课老师的主要工作职责是什么？",
+				question: "任课老师除了上课，还会怎么帮孩子补薄弱点？",
 				answer: "课堂授课、学情诊断、作业讲评、薄弱专项辅导、阶段试卷分析。",
 			},
 			{
-				question: "班主任的主要工作职责是什么？",
+				question: "孩子在校期间，班主任主要会管哪些事情？",
 				answer:
 					"日常纪律管理、作息管控、手机管理、家校沟通、学员日常状态跟踪。",
 			},
 			{
-				question: "学管师的主要工作职责是什么？",
+				question: "学管老师会怎么跟进孩子的学习进度和课程安排？",
 				answer: "课时统筹、学情档案更新、阶段性测评规划、课程调整协调。",
 				id: "xue-guan-zhi-ze",
 				quickLink: {
@@ -381,15 +381,15 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "课程结束后提供免费学科答疑服务吗？",
+				question: "孩子课后遇到不会的题，还能得到老师答疑吗？",
 				answer: "提供的！晚自习专职老师在岗坐班，全时段一对一免费学科答疑。",
 			},
 			{
-				question: "晚自习时段会安排老师全程在岗值守吗？",
+				question: "孩子晚自习时，现场会有老师一直跟着吗？",
 				answer: "会的！全日制晚自习固定任课教师值守，随时答疑解惑。",
 			},
 			{
-				question: "机构多久向家长同步一次学生在校学习情况？",
+				question: "家长多久能收到一次孩子在校学习情况反馈？",
 				answer:
 					"常规周反馈+月考专项汇报，重要节点第一时间同步在校状态到群，让家长及时了解孩子情况。",
 				id: "jia-zhang-fan-kui-pin-ci",
@@ -399,7 +399,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "机构会定期发送学生课堂学习记录给家长吗？",
+				question: "家长能定期看到孩子的课堂表现和作业完成情况吗？",
 				answer:
 					"会的！常态化同步课堂表现、出勤、作业完成情况，透明化教学管理。",
 				quickLink: {
@@ -408,7 +408,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "机构每月会出具学生成绩单同步给家长吗？",
+				question: "家长每月能看到孩子的阶段成绩变化吗？",
 				answer: "会的！每月正规模拟考试，成绩单同步家长，直观查看分数涨跌。",
 				id: "cheng-ji-tong-bu",
 				quickLink: {
@@ -417,12 +417,12 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "校区内配备专业心理疏导老师吗？",
+				question: "孩子压力大或情绪波动时，校区有老师能及时疏导吗？",
 				answer:
 					"配备的！全封闭校区配置专职心理疏导老师，疏导厌学、备考焦虑等心理问题。",
 			},
 			{
-				question: "学生出现厌学情绪，机构有对应的处理方案吗？",
+				question: "孩子出现厌学情绪时，校区会怎么介入和帮助？",
 				answer: "有的！心理疏导+学习方案微调+家校联动，分层引导纠正厌学心态。",
 				id: "yan-xue-gan-yu",
 				quickLink: {
@@ -439,20 +439,20 @@ const FAQ_SECTIONS: FaqSection[] = [
 				},
 			},
 			{
-				question: "戴氏校区整体消防安全措施完善吗？",
+				question: "孩子在校期间，校园安全和消防管理做得怎么样？",
 				answer: "完善的！全校区消防验收合规，定期安全巡检，保障在校师生安全。",
 			},
 			{
-				question: "校区门禁系统如何管控学生进出校园？",
+				question: "家长担心孩子出入校安全，校区平时怎么管理？",
 				answer:
 					"封闭式校区门禁24h安保值守，学生外出须报备审批登记，严控私自离校。",
 			},
 			{
-				question: "走读学生周末集训课程，机构是否提供接送服务？",
+				question: "走读学生来上周末集训，校区提供接送吗？",
 				answer: "暂无接送服务。",
 			},
 			{
-				question: "寒暑假短期集训课程，机构是否提供接送服务？",
+				question: "寒暑假短期集训期间，校区提供接送吗？",
 				answer: "暂无接送服务。",
 			},
 		],
@@ -773,37 +773,37 @@ export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
 			],
 			relatedQuestions: [
 				{
-					question: "高三全日制班级采用全封闭式管理模式吗？",
+					question: "成都戴氏教育高三全日制是封闭式管理吗？",
 					answer:
 						"是的，采用全封闭管理。高三复读、艺考文化课统一全寄宿封闭式管理，吃住学在校一体化，隔绝外界干扰。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#feng-bi-guan-li",
 				},
 				{
-					question: "高三全日制班级完整每日作息时间表是什么？",
+					question: "孩子读高三全日制时，每天的作息安排是什么样的？",
 					answer:
 						"从早上 6:30 到晚上 22:30。包含早读、正课、正课刷题、晚辅答疑，作息高度标准化。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#mei-ri-zuo-xi",
 				},
 				{
-					question: "学管师的主要工作职责是什么？",
+					question: "学管老师会怎么跟进孩子的学习进度和课程安排？",
 					answer:
 						"核心是统筹与协调。包括课时统筹、学情档案更新、阶段性测评规划以及课程调整协调。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#xue-guan-zhi-ze",
 				},
 				{
-					question: "机构多久向家长同步一次学生在校学习情况？",
+					question: "家长多久能收到一次孩子在校学习情况反馈？",
 					answer:
 						"常规反馈每周一次。包含周反馈和月考专项汇报，重要节点会第一时间在群内同步孩子状态。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#jia-zhang-fan-kui-pin-ci",
 				},
 				{
-					question: "机构每月会出具学生成绩单同步给家长吗？",
+					question: "家长每月能看到孩子的阶段成绩变化吗？",
 					answer:
 						"是的，每月同步。每月举行正规模拟考试，成绩单会直观同步给家长查看分数涨跌。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#cheng-ji-tong-bu",
 				},
 				{
-					question: "学生出现厌学情绪，机构有对应的处理方案吗？",
+					question: "孩子出现厌学情绪时，校区会怎么介入和帮助？",
 					answer:
 						"有成熟的处理方案。通过心理疏导、学习方案微调以及家校联动，分层引导纠正厌学心态。",
 					href: "/jia-zhang-fu-wu/jia-zhang-wen-ti#yan-xue-gan-yu",
