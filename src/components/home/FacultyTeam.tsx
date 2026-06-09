@@ -2,6 +2,8 @@ import Link from "next/link";
 import { TeacherCard } from "~/components/teachers/TeacherCard";
 import { TEACHERS } from "~/lib/constants/teachers";
 
+const HOME_TEACHERS = TEACHERS.slice(0, 8);
+
 export function FacultyTeam() {
 	return (
 		<section className="bg-slate-50 py-20" id="lao-shi-tuan-dui">
@@ -16,7 +18,7 @@ export function FacultyTeam() {
 				</div>
 
 				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-					{TEACHERS.map((teacher) => (
+					{HOME_TEACHERS.map((teacher) => (
 						<TeacherCard key={teacher.slug} teacher={teacher} />
 					))}
 				</div>

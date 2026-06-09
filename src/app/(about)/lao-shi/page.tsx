@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Footer } from "~/components/home/Footer";
 import { PageTopNav } from "~/components/PageTopNav";
 import { PhoneButton } from "~/components/phone-action";
 import { TeacherCard } from "~/components/teachers/TeacherCard";
@@ -42,7 +41,6 @@ export default function TeachersPage() {
 					</div>
 				</section>
 			</main>
-			<Footer />
 		</div>
 	);
 }
