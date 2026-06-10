@@ -17,6 +17,12 @@ import { ManagementSystem } from "~/components/home/ManagementSystem";
 import { StudentParentFeedback } from "~/components/home/StudentParentFeedback";
 import { TeachingSystem } from "~/components/home/TeachingSystem";
 
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.dai-shi.cn",
+  },
+};
+
 export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col">
