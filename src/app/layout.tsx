@@ -14,10 +14,10 @@ const siteUrl = new URL(`https://${env.NEXT_PUBLIC_SITE_DOMAIN}`);
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_FULL_NAME}官方网站`,
-    template: `%s | ${SITE_FULL_NAME}官方网站`,
+    default: `${SITE_FULL_NAME}官网`,
+    template: `%s | ${SITE_FULL_NAME}官网`,
   },
-  description: `${SITE_FULL_NAME}官方网站，提供品牌介绍、总部信息、高考中心、高考复读、高考全日制、招生简章与电话咨询入口。`,
+  description: `${SITE_FULL_NAME}官网，提供品牌介绍、总部信息、高考中心、高考复读、高考全日制、招生简章与电话咨询入口。`,
   metadataBase: siteUrl,
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };

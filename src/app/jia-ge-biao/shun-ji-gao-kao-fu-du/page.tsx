@@ -155,8 +155,8 @@ export default function ShunJiGaoKaoFuDuPage() {
               <div className="mb-4 text-primary text-sm tracking-[0.24em]">2027 官方优惠政策公示</div>
               <h1 className="max-w-4xl font-black text-4xl leading-tight tracking-tight md:text-6xl">2027 届高考中心总部校区（顺吉）暑期报名优惠政策公示</h1>
               <p className="mt-6 max-w-3xl text-lg text-slate-300 leading-8">
-                为助力 2027 届高考学子高效备考，${SITE_FULL_NAME}
-                总部校区（顺吉）现正式公示本年度优惠政策。涵盖暑期提前批优惠、分数专项减免、团报福利及老生续报专项。政策透明，保障每一位学子的升学之路。
+                为助力 2027 届高考学子高效备考，{SITE_FULL_NAME}
+                （顺吉校区）现正式公示本年度优惠政策。涵盖暑期提前批优惠、分数专项减免、团报福利及老生续报专项。政策透明，保障每一位学子的升学之路。
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <PhoneButton className="h-11 px-6 text-base">

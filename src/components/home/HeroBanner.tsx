@@ -14,9 +14,9 @@ export function HeroBanner() {
         <div className="container mx-auto flex h-full items-center justify-end px-4">
           <div className="max-w-3xl text-white">
             <div className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-1.5 font-medium text-sm backdrop-blur-sm">{SITE_FULL_NAME}</div>
-            <h1 className="mt-6 font-bold text-4xl leading-tight md:text-6xl">{SITE_FULL_NAME}官网</h1>
+            <h1 className="mt-6 font-bold text-4xl leading-tight md:text-6xl">{SITE_FULL_NAME.replace("成都", "")}官网</h1>
             <p className="mt-5 max-w-2xl text-lg text-slate-100 leading-8 md:text-2xl md:leading-10">
-              {SITE_FULL_NAME}官方网站入口，主要为高考生、复读生及家长提供品牌介绍、总部地址、招生简章和电话咨询服务。
+              {SITE_FULL_NAME}官网入口，主要为高考生、复读生及家长提供品牌介绍、总部地址、招生简章和电话咨询服务。
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

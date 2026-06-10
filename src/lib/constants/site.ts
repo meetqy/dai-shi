@@ -10,8 +10,8 @@ export type DropdownNavLink = {
 
 export type HeaderNavItem = NavLink | DropdownNavLink;
 
-export const SITE_BRAND_NAME = "成都戴氏教育高考中心（戴氏总部）";
-export const SITE_FULL_NAME = "成都戴氏教育高考中心（戴氏总部）";
+export const SITE_BRAND_NAME = "成都戴氏高考";
+export const SITE_FULL_NAME = "成都戴氏教育高考中心总部";
 export const SITE_HOTLINE_TEXT = "400-9875-211";
 export const SITE_HOTLINE_TEL = "tel:4009875211";
 
