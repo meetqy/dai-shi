@@ -19,7 +19,7 @@ import { TeachingSystem } from "~/components/home/TeachingSystem";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://www.dai-shi.cn",
+    canonical: "/",
   },
 };
 
