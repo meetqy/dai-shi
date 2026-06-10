@@ -355,7 +355,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
                 <p>页面文案已按 2026 招生简章目录顺序重排，并补回当前页面遗漏的目录项。</p>
               </div>
               <div className="mt-6 flex items-center text-primary text-sm">继续下滑查看</div>
-              <ImagePlaceholder align="left" className="mt-8" label="主视觉" notes="可放品牌主视觉 / 校区航拍 / 视频主视觉" tag="主视觉" tone="dark" />
+              <ImagePlaceholder align="left" className="mt-8" label="专注高考冲刺" notes="32年教学沉淀，用心成就每一份热爱" tag="品牌愿景" tone="dark" />
             </div>
           </div>
         </div>
@@ -406,7 +406,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
                     ))}
                   </div>
                 </div>
-                <ImagePlaceholder label="师资展示" notes="可放名师合影 / 教研现场 / 讲课实拍" ratioClass="aspect-[4/5]" tag="师资实拍" />
+                <ImagePlaceholder label="名师领衔" notes="高三教学经验丰富的教研核心成员" ratioClass="aspect-[4/5]" tag="师资力量" />
               </div>
             </section>
 
@@ -488,7 +488,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
             <section className="scroll-mt-48 bg-slate-50/70 px-6 py-10 md:px-8" id="ming-ti">
               <SectionHeading icon={BookOpenCheckIcon} label="命题研究与内部资料" title="32 年命题研究，更懂新高考每 1 分的价值" />
               <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-                <ImagePlaceholder align="left" label="命题研究" notes="可放内部资料、教研会议、命题研究过程" ratioClass="aspect-[4/5]" tag="教研资料" />
+                <ImagePlaceholder align="left" label="深耕教研" notes="依托32年真题研究数据，提炼高频考点" ratioClass="aspect-[4/5]" tag="教研实力" />
                 <div>
                   <p className="mb-8 text-slate-600 leading-8">命题研究中心依托 32 年真题研究数据，通过 APOE 标准体系提炼高频考点与易错题型，并通过 TCI 模型形成针对性的全套学习方案。</p>
                   <div className="space-y-6">
@@ -542,7 +542,7 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
                   </div>
                   <p className="mt-6 text-slate-600 leading-8">每周同步学习诊断报告、学习状态报告、教情问卷报告；每月举办高考战略解码直播间，用更透明的方式缓解家长信息焦虑。</p>
                 </div>
-                <ImagePlaceholder label="家校沟通" notes="可放家长群播报截图 / 直播间海报 / 学习反馈图" ratioClass="aspect-[4/5]" tag="沟通反馈" />
+                <ImagePlaceholder label="家校共育" notes="透明化管理，缓解家长信息焦虑" ratioClass="aspect-[4/5]" tag="家校沟通" />
               </div>
             </section>
 
@@ -550,10 +550,10 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
               <SectionHeading icon={Building2Icon} label="四大全日制校区" title="智慧教育成长基地，支撑高强度备考生活" />
               <div className="space-y-8">
                 <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                  <ImagePlaceholder label="教室实景" notes="明亮教室 / 上课场景" ratioClass="aspect-[3/2]" tag="校区实景" />
-                  <ImagePlaceholder label="食堂实景" notes="餐食陈列 / 用餐环境" ratioClass="aspect-[3/2]" tag="校区实景" />
-                  <ImagePlaceholder label="住宿实景" notes="宿舍环境 / 生活空间" ratioClass="aspect-[3/2]" tag="校区实景" />
-                  <ImagePlaceholder label="校区总览" notes="校区外立面 / 校园航拍" ratioClass="aspect-[3/2]" tag="校区实景" />
+                  <ImagePlaceholder label="明亮教室" notes="提供一流的教学设施与学习空间" ratioClass="aspect-[3/2]" tag="校区实景" />
+                  <ImagePlaceholder label="营养食堂" notes="定制营养均衡的餐食方案" ratioClass="aspect-[3/2]" tag="校区实景" />
+                  <ImagePlaceholder label="舒适住宿" notes="安全整洁的宿舍环境，保障充足休息" ratioClass="aspect-[3/2]" tag="校区实景" />
+                  <ImagePlaceholder label="多校区协同" notes="成熟稳定的全日制学习支持体系" ratioClass="aspect-[3/2]" tag="校区实景" />
                 </div>
                 <div className="space-y-6">
                   {campusScenes.map((item) => (
@@ -570,10 +570,10 @@ export function BrochureTemplate2026({ brochure }: { brochure: Brochure }) {
               <SectionHeading icon={Building2Icon} label="阳光学习 四馆赋能" title="多场馆协同，促进学生全面健康成长" />
               <div className="space-y-8">
                 <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                  <ImagePlaceholder label="图书馆" notes="资料墙 / 阅览区" ratioClass="aspect-[3/2]" tag="学习空间" />
-                  <ImagePlaceholder label="自习馆" notes="自习座位 / 督导场景" ratioClass="aspect-[3/2]" tag="学习空间" />
-                  <ImagePlaceholder label="体能馆" notes="运动训练 / 体能课程" ratioClass="aspect-[3/2]" tag="学习空间" />
-                  <ImagePlaceholder label="心能馆" notes="心理课程 / 减压活动" ratioClass="aspect-[3/2]" tag="学习空间" />
+                  <ImagePlaceholder label="沉浸式图书馆" notes="学习资源完整覆盖，随时查阅" ratioClass="aspect-[3/2]" tag="学习空间" />
+                  <ImagePlaceholder label="专属自习馆" notes="督导老师全程陪伴，高效学习" ratioClass="aspect-[3/2]" tag="学习空间" />
+                  <ImagePlaceholder label="专业体能馆" notes="科学运动训练，增强备考体能" ratioClass="aspect-[3/2]" tag="学习空间" />
+                  <ImagePlaceholder label="阳光心能馆" notes="联合心理专家，培养抗压能力" ratioClass="aspect-[3/2]" tag="学习空间" />
                 </div>
                 <div className="space-y-6">
                   {growthSpaces.map((item) => (

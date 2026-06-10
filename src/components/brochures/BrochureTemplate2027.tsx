@@ -282,11 +282,11 @@ export function BrochureTemplate2027({ brochure }: { brochure: Brochure }) {
               </div>
               <ImagePlaceholder
                 alt="2027 招生简章主视觉"
-                label="主视觉"
-                notes="可放品牌主视觉 / 校区航拍 / 教学场景合成海报"
+                label="专注高考冲刺"
+                notes="33年教学沉淀，用心成就每一份热爱"
                 ratioClass="aspect-[5/4]"
                 src="/assets/2027招生简章封面主视觉占位.jpg"
-                tag="主视觉"
+                tag="品牌愿景"
                 tone="dark"
               />
             </div>
@@ -426,8 +426,8 @@ export function BrochureTemplate2027({ brochure }: { brochure: Brochure }) {
                   ))}
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
-                  <ImagePlaceholder alt="校园环境实拍" label="校园环境" notes="可放教室 / 食堂 / 宿舍 / 校区实拍" src="/assets/校园环境图占位.jpg" tag="校区实景" />
-                  <ImagePlaceholder alt="四馆场景实拍" label="四馆场景" notes="可放图书馆 / 自习馆 / 体能馆 / 心能馆" src="/assets/四馆场景图占位.jpg" tag="学习空间" />
+                  <ImagePlaceholder alt="校园环境实拍" label="一流校园环境" notes="宽敞明亮的教室与舒适的住宿环境，为高效备考提供坚实保障" src="/assets/校园环境图占位.jpg" tag="校区实景" />
+                  <ImagePlaceholder alt="四馆场景实拍" label="四馆一体空间" notes="图书馆、自习馆、体能馆与心能馆，全方位护航高强度备考" src="/assets/四馆场景图占位.jpg" tag="学习空间" />
                 </div>
               </div>
             </section>
