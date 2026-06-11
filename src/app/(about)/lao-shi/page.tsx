@@ -1,7 +1,4 @@
-"use client";
-
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import Link from "next/link";
 import { PageTopNav } from "~/components/PageTopNav";
 import { PhoneButton } from "~/components/phone-action";
 import { TeacherCard } from "~/components/teachers/TeacherCard";
@@ -15,40 +12,38 @@ const campuses = Array.from(
 const allCampuses = ["全部", ...campuses];
 const CAMPUS_PARAM_KEY = "xiaoqu";
 
-export default function TeachersPage() {
-	const router = useRouter();
-	const pathname = usePathname();
-	const searchParams = useSearchParams();
+type PageProps = {
+	searchParams?: Promise<{
+		[CAMPUS_PARAM_KEY]?: string | string[];
+	}>;
+};
 
-	const selectedCampus = useMemo(() => {
-		const campusFromParams = searchParams.get(CAMPUS_PARAM_KEY);
-		if (campusFromParams && campuses.includes(campusFromParams)) {
-			return campusFromParams;
-		}
+function getCampusHref(campus: string) {
+	if (campus === "全部") {
+		return "/lao-shi";
+	}
 
-		return "全部";
-	}, [searchParams]);
+	return {
+		pathname: "/lao-shi",
+		query: {
+			[CAMPUS_PARAM_KEY]: campus,
+		},
+	};
+}
+
+export default async function TeachersPage({ searchParams }: PageProps) {
+	const resolvedSearchParams = await searchParams;
+	const campusFromParams = resolvedSearchParams?.[CAMPUS_PARAM_KEY];
+	const currentCampus =
+		typeof campusFromParams === "string" ? campusFromParams : campusFromParams?.[0];
+	const selectedCampus =
+		currentCampus && campuses.includes(currentCampus) ? currentCampus : "全部";
 
 	// 筛选老师
 	const filteredTeachers = TEACHERS.filter((teacher) => {
 		if (selectedCampus === "全部") return true;
 		return teacher.campus === selectedCampus;
 	});
-
-	const handleCampusChange = (campus: string) => {
-		const nextSearchParams = new URLSearchParams(searchParams.toString());
-
-		if (campus === "全部") {
-			nextSearchParams.delete(CAMPUS_PARAM_KEY);
-		} else {
-			nextSearchParams.set(CAMPUS_PARAM_KEY, campus);
-		}
-
-		const nextQuery = nextSearchParams.toString();
-		router.replace(nextQuery ? `${pathname}?${nextQuery}` : pathname, {
-			scroll: false,
-		});
-	};
 
 	return (
 		<div className="min-h-screen bg-slate-50">
@@ -76,19 +71,18 @@ export default function TeachersPage() {
 					{/* 校区筛选标签 */}
 					<div className="mb-8 flex flex-wrap gap-3">
 						{allCampuses.map((campus) => (
-							<button
-								aria-pressed={selectedCampus === campus}
+							<Link
+								aria-current={selectedCampus === campus ? "page" : undefined}
 								className={`rounded-full px-5 py-2 font-medium text-sm transition-colors ${
 									selectedCampus === campus
 										? "bg-primary text-white"
 										: "border border-slate-200 bg-white text-slate-700 hover:border-primary/30"
 								}`}
+								href={getCampusHref(campus)}
 								key={campus}
-								onClick={() => handleCampusChange(campus)}
-								type="button"
 							>
 								{campus}
-							</button>
+							</Link>
 						))}
 					</div>
 

@@ -1,3 +1,5 @@
+import { SHUNJI_TEACHERS } from "./teachers-shunji";
+
 export type TeacherProfile = {
 	slug: string;
 	name: string;
@@ -867,6 +869,7 @@ export const TEACHERS: TeacherProfile[] = [
 			"教学成果方面，班级均涨25+；25届均分74；培养多名985/211学生。",
 		],
 	},
+	...SHUNJI_TEACHERS,
 ];
 
 export function getTeacherBySlug(slug: string) {
