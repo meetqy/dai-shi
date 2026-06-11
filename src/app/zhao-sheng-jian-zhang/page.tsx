@@ -1,6 +1,5 @@
-import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
 import { PageTopNav } from "~/components/PageTopNav";
+import { SimpleCard } from "~/components/ui/simple-card";
 import { getAllBrochures } from "~/lib/brochures";
 import { SITE_FULL_NAME } from "~/lib/constants/site";
 
@@ -25,28 +24,15 @@ export default function BrochuresPage() {
 					</p>
 				</div>
 
-				<div className="grid gap-6 md:grid-cols-2">
+				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 					{brochures.map((brochure) => (
-						<Link
-							className="group flex items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-primary/30 hover:shadow-sm md:items-center md:p-8"
+						<SimpleCard
+							description={`查看 ${brochure.year} 届高考全日制与复读班招生简章、班型介绍及备考安排。`}
 							href={`/zhao-sheng-jian-zhang/${brochure.year}`}
 							key={brochure.year}
-						>
-							<div className="flex min-w-0 items-start gap-4 md:items-center md:gap-6">
-								<div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-primary/10 font-bold text-2xl text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-									{brochure.year.slice(-2)}
-								</div>
-								<div className="min-w-0 flex-1">
-									<h2 className="wrap-break-word mb-1 font-bold text-slate-900 text-xl md:text-2xl">
-										{brochure.title}
-									</h2>
-									<p className="text-slate-500">
-										发布日期：{Number(brochure.year) - 1}-01-01
-									</p>
-								</div>
-							</div>
-							<ChevronRightIcon className="size-6 shrink-0 text-slate-300 transition-all group-hover:translate-x-1 group-hover:text-primary" />
-						</Link>
+							meta={`发布日期：${Number(brochure.year) - 1}-01-01`}
+							title={brochure.title}
+						/>
 					))}
 
 					{brochures.length === 0 && (

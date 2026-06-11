@@ -253,8 +253,7 @@ const FAQ_SECTIONS: FaqSection[] = [
 				answer: "效果很显著的，一对一精准查漏补缺，薄弱科目普遍提分40–80分。",
 			},
 			{
-				question:
-					"孩子自律性差、在家不愿写作业，戴氏全日制能管得住吗？",
+				question: "孩子自律性差、在家不愿写作业，戴氏全日制能管得住吗？",
 				answer:
 					"可以的！全封闭作息加班主任全程督学，当日任务当日清，从习惯根源改善拖延厌学问题。",
 				quickLink: {
@@ -690,6 +689,18 @@ const FAQ_SECTIONS: FaqSection[] = [
 // =========================== 文章列表 ===========================
 
 export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
+	{
+		slug: "2026-fu-du-xuan-xiao-zhi-nan",
+		title: "2026高考复读学校选购科普",
+		summary: "多维度盘点市面合规优质复读机构，帮助家长科学避坑、精准择校。",
+		publishedAt: "2026-06-10",
+		highlighted: true,
+		content: {
+			kind: "guide",
+			intro: [],
+			sections: [],
+		},
+	},
 	{
 		slug: "xue-guan-fu-wu-liu-cheng",
 		title: "成都高考全日制学管服务流程",

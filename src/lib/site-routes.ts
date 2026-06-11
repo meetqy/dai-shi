@@ -1,8 +1,8 @@
 import { env } from "~/env";
 import { getAllBrochures } from "~/lib/brochures";
+import { SITE_FULL_NAME } from "~/lib/constants/site";
 import { TEACHERS } from "~/lib/constants/teachers";
 import { getAllJiaZhangArticles } from "~/lib/jia-zhang-fu-wu";
-import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 export type SiteRoute = {
 	changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
@@ -45,19 +45,24 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	},
 	{
 		changeFrequency: "weekly",
-		description:
-			`${SITE_FULL_NAME}总部校区（顺吉）2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。`,
+		description: `${SITE_FULL_NAME}总部校区（顺吉）2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。`,
 		path: "/jia-ge-biao/shun-ji-gao-kao-fu-du",
 		priority: 0.9,
 		title: "总部校区（顺吉）高考复读优惠政策",
 	},
 	{
 		changeFrequency: "weekly",
-		description:
-			`${SITE_FULL_NAME}家长服务中心：学管服务流程、教学管理规范、家长指南、备考攻略与高考资讯集中呈现。`,
+		description: `${SITE_FULL_NAME}家长服务中心：学管服务流程、教学管理规范、家长指南、备考攻略与高考资讯集中呈现。`,
 		path: "/jia-zhang-fu-wu",
 		priority: 0.8,
 		title: "家长服务",
+	},
+	{
+		changeFrequency: "monthly",
+		description: `2026高考复读学校选购科普：多维度盘点市面合规优质复读机构，帮助家长科学避坑、精准择校。`,
+		path: "/jia-zhang-fu-wu/2026-fu-du-xuan-xiao-zhi-nan",
+		priority: 0.8,
+		title: "2026高考复读择校指南",
 	},
 	{
 		changeFrequency: "weekly",

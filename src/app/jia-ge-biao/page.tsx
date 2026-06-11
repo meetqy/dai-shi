@@ -1,6 +1,5 @@
-import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
 import { PageTopNav } from "~/components/PageTopNav";
+import { SimpleCard } from "~/components/ui/simple-card";
 import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 export const metadata = {
@@ -12,7 +11,8 @@ const priceListItems = [
 	{
 		slug: "shun-ji-gao-kao-fu-du",
 		title: "总部校区（顺吉）2027届高考复读优惠政策",
-		description: "高考中心总部校区（顺吉）2027届高考复读、高三全日制全科班最新优惠政策与收费标准",
+		description:
+			"高考中心总部校区（顺吉）2027届高考复读、高三全日制全科班最新优惠政策与收费标准",
 		category: "高考复读",
 		campus: "总部校区（顺吉）",
 	},
@@ -32,31 +32,15 @@ export default function PriceListPage() {
 					</p>
 				</div>
 
-				<div className="grid gap-6 md:grid-cols-2">
+				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 					{priceListItems.map((item) => (
-						<Link
-							className="group flex items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-primary/30 hover:shadow-sm md:items-center md:p-8"
+						<SimpleCard
+							description={item.description}
 							href={`/jia-ge-biao/${item.slug}`}
 							key={item.slug}
-						>
-							<div className="flex min-w-0 items-start gap-4 md:items-center md:gap-6">
-								<div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-									<span className="text-xs font-medium">{item.campus}</span>
-								</div>
-								<div className="min-w-0 flex-1">
-									<div className="mb-1 inline-flex rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600">
-										{item.category}
-									</div>
-									<h2 className="wrap-break-word mb-2 font-bold text-slate-900 text-lg md:text-xl">
-										{item.title}
-									</h2>
-									<p className="text-slate-500 text-sm">
-										{item.description}
-									</p>
-								</div>
-							</div>
-							<ChevronRightIcon className="size-6 shrink-0 text-slate-300 transition-all group-hover:translate-x-1 group-hover:text-primary" />
-						</Link>
+							meta={`${item.campus} · ${item.category}`}
+							title={item.title}
+						/>
 					))}
 
 					{priceListItems.length === 0 && (
