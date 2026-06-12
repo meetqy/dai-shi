@@ -46,10 +46,10 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	},
 	{
 		changeFrequency: "weekly",
-		description: `${SITE_FULL_NAME}总部校区（顺吉）2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。`,
-		path: "/jia-ge-biao/shun-ji-gao-kao-fu-du",
+		description: `${SITE_FULL_NAME}总部校区（世茂）2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。`,
+		path: "/jia-ge-biao/shi-mao-gao-kao-fu-du",
 		priority: 0.9,
-		title: "总部校区（顺吉）高考复读优惠政策",
+		title: "总部校区（世茂）高考复读优惠政策",
 	},
 	{
 		changeFrequency: "weekly",
