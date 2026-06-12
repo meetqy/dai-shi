@@ -10,10 +10,10 @@ export const metadata = {
 const priceListItems = [
   {
     slug: "shi-mao-gao-kao-fu-du",
-    title: "总部校区（世茂）2027届高考复读优惠政策",
-    description: "高考中心总部校区（世茂）2027届高考复读、高三全日制全科班最新优惠政策与收费标准",
+    title: "总部校区（世贸）2027届高考复读优惠政策",
+    description: "高考中心总部校区（世贸）2027届高考复读、高三全日制全科班最新优惠政策与收费标准",
     category: "高考复读",
-    campus: "总部校区（世茂）",
+    campus: "总部校区（世贸）",
   },
 ];
 

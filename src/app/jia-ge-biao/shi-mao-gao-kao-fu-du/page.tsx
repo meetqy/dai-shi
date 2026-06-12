@@ -8,7 +8,7 @@ import { Button } from "~/components/ui/button";
 import { env } from "~/env";
 import { SITE_BRAND_NAME, SITE_HOTLINE_TEXT, SITE_FULL_NAME } from "~/lib/constants/site";
 
-const PAGE_TITLE = "2027 届高考中心总部校区（世茂）复读优惠政策与收费标准公示";
+const PAGE_TITLE = "2027 届高考中心总部校区（世贸）复读优惠政策与收费标准公示";
 const PAGE_DESCRIPTION = `${SITE_FULL_NAME}2027 届高考复读、高三全日制全科班最新优惠政策与收费标准官方公示。`;
 const PAGE_PATH = "/jia-ge-biao/shi-mao-gao-kao-fu-du";
 const CAMPUS_ADDRESS = "戴氏教育总部（成都市青羊区顺城大街252号顺吉大厦）";
@@ -145,7 +145,7 @@ export default function ShunJiGaoKaoFuDuPage() {
   return (
     <div className="min-h-screen bg-white">
       <PageStructuredData />
-      <PageTopNav backHref="/jia-ge-biao" backLabel="返回价格表" title="2027 届高考中心总部校区（世茂）复读优惠政策公示" />
+      <PageTopNav backHref="/jia-ge-biao" backLabel="返回价格表" title="2027 届高考中心总部校区（世贸）复读优惠政策公示" />
 
       {/* Hero Section */}
       <section className="border-slate-800 border-b bg-slate-950 py-16 text-white md:py-24">
@@ -153,7 +153,7 @@ export default function ShunJiGaoKaoFuDuPage() {
           <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.15fr)_340px]">
             <div>
               <div className="mb-4 text-primary text-sm tracking-[0.24em]">2027 官方优惠政策公示</div>
-              <h1 className="max-w-4xl font-black text-4xl leading-tight tracking-tight md:text-6xl">2027 届高考中心总部校区（世茂）暑期报名优惠政策公示</h1>
+              <h1 className="max-w-4xl font-black text-4xl leading-tight tracking-tight md:text-6xl">2027 届高考中心总部校区（世贸）暑期报名优惠政策公示</h1>
               <p className="mt-6 max-w-3xl text-lg text-slate-300 leading-8">
                 为助力 2027 届高考学子高效备考，{SITE_FULL_NAME}
                 （顺吉校区）现正式公示本年度优惠政策。涵盖暑期提前批优惠、分数专项减免、团报福利及老生续报专项。政策透明，保障每一位学子的升学之路。
@@ -190,7 +190,7 @@ export default function ShunJiGaoKaoFuDuPage() {
                 <div className="mt-2 text-lg leading-8 text-slate-200">本政策执行周期为 2026 年 6 月 1 日 — 2026 年 7 月 31 日</div>
               </div>
               <div className="space-y-3 pt-4 text-slate-300 text-sm">
-                <p>1. 本页公示口径仅适用于高考中心总部校区（世茂）。</p>
+                <p>1. 本页公示口径仅适用于高考中心总部校区（世贸）。</p>
                 <p>2. 复读生分数优惠与暑期优惠不可叠加，取最高值使用。</p>
               </div>
               <div className="mt-6 flex items-center gap-2 text-primary text-sm">
@@ -210,7 +210,7 @@ export default function ShunJiGaoKaoFuDuPage() {
             {/* 暑期报名优惠 */}
             <section className="scroll-mt-48 py-2" id="you-hui-zheng-ce">
               <SectionHeading
-                description="针对 2027 届高三全科班（含复读生）的暑期提前批报名优惠，以下内容仅按高考中心总部校区（世茂）口径公示，越早报名优惠力度越大。"
+                description="针对 2027 届高三全科班（含复读生）的暑期提前批报名优惠，以下内容仅按高考中心总部校区（世贸）口径公示，越早报名优惠力度越大。"
                 icon={TagIcon}
                 index="01"
                 label="暑期报名优惠"
@@ -242,7 +242,7 @@ export default function ShunJiGaoKaoFuDuPage() {
                   ],
                   [
                     "7 月 1 日 - 7 月 31 日",
-                    "总部校区（世茂）全部班型",
+                    "总部校区（世贸）全部班型",
                     <span className="font-bold text-primary" key="price">
                       总价统一优惠 1000 元
                     </span>,
@@ -399,11 +399,11 @@ export default function ShunJiGaoKaoFuDuPage() {
             {/* 收费标准详情 */}
             <section className="scroll-mt-48 py-2" id="shou-fei-biao-zhun">
               <SectionHeading
-                description="本页仅公示高考中心总部校区（世茂）收费标准，价格透明，无隐形消费。"
+                description="本页仅公示高考中心总部校区（世贸）收费标准，价格透明，无隐形消费。"
                 icon={ReceiptIcon}
                 index="05"
                 label="收费标准详情"
-                title="2027 届高考中心总部校区（世茂）收费公示"
+                title="2027 届高考中心总部校区（世贸）收费公示"
               />
               <InfoTable
                 headers={["班型", "月度标准", "常规月度优惠", "常规优惠后总价"]}
@@ -471,7 +471,7 @@ export default function ShunJiGaoKaoFuDuPage() {
               <div className="px-5 py-4">
                 <div className="flex items-center gap-2 text-primary text-sm">
                   <MapPinIcon className="size-4" />
-                  <span>总部校区（世茂）到校咨询地址</span>
+                  <span>总部校区（世贸）到校咨询地址</span>
                 </div>
                 <div className="mt-3 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                   <div className="min-w-0">

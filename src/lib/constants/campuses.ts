@@ -119,17 +119,17 @@ export const CAMPUSES: CampusProfile[] = [
 	},
 	{
 		slug: "shi-mao",
-		name: "世茂校区",
-		title: "戴氏教育世茂校区",
+		name: "世贸校区",
+		title: "戴氏教育世贸校区",
 		subtitle: "教学型校区",
 		hidden: true,
 		address: "龙泉驿区天鹅湖南路333号25-2栋3层1号",
 		intro:
-			"世茂校区以学科教学与日常学习陪伴为核心，已公开较完整的老师信息，适合希望优先了解具体学科老师、课堂风格和学习环境的家长。",
+			"世贸校区以学科教学与日常学习陪伴为核心，已公开较完整的老师信息，适合希望优先了解具体学科老师、课堂风格和学习环境的家长。",
 		listSummary:
-			"世茂校区公开老师信息较完整，便于家长从学科方向、课堂风格和学习氛围角度先做校区了解。",
+			"世贸校区公开老师信息较完整，便于家长从学科方向、课堂风格和学习氛围角度先做校区了解。",
 		coverImage: "/assets/校区环境5.jpg",
-		campusTeacherName: "世茂校区",
+		campusTeacherName: "世贸校区",
 		serviceTags: ["学科辅导", "高考冲刺", "日常提分", "老师团队公开"],
 		highlights: [
 			"公开师资覆盖学科较多，方便家长快速匹配孩子薄弱科目。",
@@ -161,10 +161,10 @@ export const CAMPUSES: CampusProfile[] = [
 			"如果孩子薄弱科目明确，家长更容易快速定位合适的咨询方向。",
 		],
 		gallery: [
-			{ src: "/assets/校区环境3.jpg", alt: "世茂校区学习环境展示一" },
-			{ src: "/assets/校区环境4.jpg", alt: "世茂校区学习环境展示二" },
-			{ src: "/assets/校区环境5.jpg", alt: "世茂校区学习环境展示三" },
-			{ src: "/assets/校区环境6.png", alt: "世茂校区学习环境展示四" },
+			{ src: "/assets/校区环境3.jpg", alt: "世贸校区学习环境展示一" },
+			{ src: "/assets/校区环境4.jpg", alt: "世贸校区学习环境展示二" },
+			{ src: "/assets/校区环境5.jpg", alt: "世贸校区学习环境展示三" },
+			{ src: "/assets/校区环境6.png", alt: "世贸校区学习环境展示四" },
 		],
 	},
 	{
