@@ -1,5 +1,6 @@
 import { env } from "~/env";
 import { getAllBrochures } from "~/lib/brochures";
+import { getVisibleCampuses } from "~/lib/constants/campuses";
 import { SITE_FULL_NAME } from "~/lib/constants/site";
 import { TEACHERS } from "~/lib/constants/teachers";
 import { getAllJiaZhangArticles } from "~/lib/jia-zhang-fu-wu";
@@ -73,6 +74,13 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	},
 	{
 		changeFrequency: "weekly",
+		description: `查看${SITE_FULL_NAME}全部校区信息，快速了解各校区地址、学习环境与到校咨询入口。`,
+		path: "/xiao-qu-cha-xun",
+		priority: 0.8,
+		title: "校区查询",
+	},
+	{
+		changeFrequency: "weekly",
 		description: `查看${SITE_FULL_NAME}核心老师介绍、教学履历与教学成果。`,
 		path: "/lao-shi",
 		priority: 0.8,
@@ -113,10 +121,19 @@ export function getSiteRoutes(): SiteRoute[] {
 		}),
 	);
 
+	const campusRoutes: SiteRoute[] = getVisibleCampuses().map((campus) => ({
+		changeFrequency: "monthly",
+		description: campus.listSummary,
+		path: `/xiao-qu-cha-xun/${campus.slug}`,
+		priority: 0.7,
+		title: `${campus.name}详情`,
+	}));
+
 	return [
 		...STATIC_SITE_ROUTES,
 		...brochureRoutes,
 		...teacherRoutes,
+		...campusRoutes,
 		...jiaZhangRoutes,
 	];
 }

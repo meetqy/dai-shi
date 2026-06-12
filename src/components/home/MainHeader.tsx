@@ -37,9 +37,9 @@ export function MainHeader() {
 					</Link>
 					<Link
 						className="text-slate-600 transition-colors hover:text-primary"
-						href="#xiao-qu"
+						href="/xiao-qu-cha-xun"
 					>
-						校区环境
+						校区查询
 					</Link>
 				</nav>
 

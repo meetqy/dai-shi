@@ -14,7 +14,7 @@ export function TopUtilityBar() {
 					</Link>
 					<Link
 						className="transition-colors hover:text-primary"
-						href="/#xiao-qu"
+						href="/xiao-qu-cha-xun"
 					>
 						校区查询
 					</Link>

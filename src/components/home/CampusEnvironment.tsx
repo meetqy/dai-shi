@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "~/components/ui/button";
 import { SITE_FULL_NAME } from "~/lib/constants/site";
 
 const campusImages = [
@@ -19,8 +21,13 @@ export function CampusEnvironment() {
 						孩子在{SITE_FULL_NAME}的学习环境
 					</h2>
 					<p className="mx-auto max-w-2xl text-slate-600">
-						教室、宿舍、自习室和生活区统一规划，孩子在安静、专注的环境里安心备考。
+						先看学习环境，再结合校区地址、课程方向和到校安排做进一步判断，会更方便家长筛选合适校区。
 					</p>
+					<div className="mt-6 flex justify-center">
+						<Button asChild className="rounded-xl px-6">
+							<Link href="/xiao-qu-cha-xun">查看校区查询</Link>
+						</Button>
+					</div>
 				</div>
 
 				<div className="grid grid-cols-2 gap-4 md:grid-cols-3">
