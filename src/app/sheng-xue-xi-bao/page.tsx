@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 export default async function ShengXueXiBaoPage() {
   const celebrationYears = await getAdmissionCelebrationYears();
   const pageUrl = new URL("/sheng-xue-xi-bao", getSiteOrigin()).toString();
-  const totalImages = celebrationYears.reduce((sum, year) => sum + year.images.length, 0);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -48,20 +47,6 @@ export default async function ShengXueXiBaoPage() {
             <div className="inline-flex rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 font-medium text-primary text-sm">{SITE_FULL_NAME} · 升学喜报</div>
             <h1 className="mt-5 text-balance font-bold text-3xl text-slate-900 leading-tight md:text-5xl">历年大学录取喜报展示</h1>
             <p className="mt-5 max-w-4xl text-base text-slate-600 leading-8 md:text-lg">这里集中展示戴氏教育学生考入大学的历年喜报图片，按年份整理，方便家长快速查看各年度升学成果。</p>
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              <div className="rounded-2xl bg-slate-50 p-5">
-                <div className="text-slate-500 text-sm">已收录年份</div>
-                <div className="mt-2 font-bold text-2xl text-slate-900">{celebrationYears.length} 年</div>
-              </div>
-              <div className="rounded-2xl bg-slate-50 p-5">
-                <div className="text-slate-500 text-sm">喜报总数</div>
-                <div className="mt-2 font-bold text-2xl text-slate-900">{totalImages} 张</div>
-              </div>
-              <div className="rounded-2xl bg-slate-50 p-5">
-                <div className="text-slate-500 text-sm">查看方式</div>
-                <div className="mt-2 font-bold text-2xl text-slate-900">按年份分页</div>
-              </div>
-            </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PhoneButton className="h-12 rounded-xl px-8 font-semibold" size="lg">
                 立即电话咨询：{SITE_HOTLINE_TEXT}

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import type { AdmissionCelebrationYear } from "~/lib/admission-celebrations";
 
-const IMAGES_PER_PAGE = 6;
+const IMAGES_PER_PAGE = 12;
 
 type AdmissionCelebrationGalleryProps = {
   sectionId?: string;
