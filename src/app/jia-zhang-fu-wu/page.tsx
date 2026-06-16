@@ -8,7 +8,7 @@ import { SITE_FULL_NAME, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 import { getAllJiaZhangArticles } from "~/lib/jia-zhang-fu-wu";
 
 export const metadata: Metadata = {
-	title: `家长服务 - ${SITE_FULL_NAME}`,
+	title: "家长服务",
 	description: `${SITE_FULL_NAME}家长服务中心：学管服务流程、教学管理规范、家长指南、学习方法、备考攻略与高考资讯集中呈现，帮助家长系统性解决高三备考中的各类问题。`,
 };
 

@@ -8,7 +8,7 @@ import { SITE_FULL_NAME, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 import { getSiteOrigin } from "~/lib/site-routes";
 
 export const metadata: Metadata = {
-  title: `升学喜报 - ${SITE_FULL_NAME}`,
+  title: "升学喜报",
   description: `查看${SITE_FULL_NAME}历年大学录取喜报图片展示，支持按年份查看与分页浏览，方便家长快速了解升学成果。`,
 };
 
