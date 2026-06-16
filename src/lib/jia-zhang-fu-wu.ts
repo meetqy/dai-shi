@@ -9,9 +9,9 @@ export type JiaZhangArticleSummary = Omit<JiaZhangArticle, "content">;
  * 获取所有家长服务文章列表（不含 content 字段，用于列表页与 sitemap）
  */
 export function getAllJiaZhangArticles(): JiaZhangArticleSummary[] {
-	return JIA_ZHANG_ARTICLES.map(({ content: _content, ...rest }) => rest).sort(
-		(a, b) => (a.publishedAt < b.publishedAt ? 1 : -1),
-	);
+	return JIA_ZHANG_ARTICLES
+		.map(({ content: _content, ...rest }) => rest)
+		.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }
 
 /**

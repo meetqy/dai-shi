@@ -124,7 +124,7 @@ function FaqBlock({ article }: { article: JiaZhangArticle }) {
 
 function GuideBlock({ article }: { article: JiaZhangArticle }) {
   if (article.content.kind !== "guide") return null;
-  const { intro, sections, relatedQuestions, bottomCta } = article.content;
+  const { hero, intro, sections, relatedQuestions, bottomCta } = article.content;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -143,6 +143,21 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
     "yu-jing-gan-yu": "预警干预",
   };
 
+  const heroBadge = hero?.badge ?? "家长服务专题";
+  const heroButtonText = hero?.primaryButtonText ?? "立即电话咨询";
+  const heroStats = hero?.stats ?? [
+    { label: "服务节点", value: `${sections.length} 个` },
+    { label: "家校反馈", value: "常规反馈" },
+    { label: "重点支持", value: "习惯与情绪" },
+    { label: "适用阶段", value: "全日制 / 复读" },
+  ];
+  const tocTitle = hero?.tocTitle ?? "服务流程目录";
+  const tocDescription = hero?.tocDescription ?? [
+    "从入学建档到预警干预，按节点说明学管如何持续跟进孩子。",
+    "家长可以结合左侧目录，快速定位自己当前最关心的环节。",
+  ];
+  const tocFootnote = hero?.tocFootnote ?? "继续下滑查看完整流程";
+
   return (
     <>
       <script dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} type="application/ld+json" />
@@ -151,7 +166,7 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
           <div className="container mx-auto px-4">
             <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.15fr)_340px]">
               <div>
-                <div className="mb-4 text-primary text-sm tracking-[0.24em]">家长服务专题</div>
+                <div className="mb-4 text-primary text-sm tracking-[0.24em]">{heroBadge}</div>
                 <h1 className="max-w-4xl font-black text-4xl leading-tight tracking-tight md:text-6xl">{article.title}</h1>
                 <p className="mt-6 max-w-3xl text-lg text-slate-300 leading-8">{article.summary}</p>
                 <div className="mt-8 max-w-3xl space-y-4">
@@ -162,18 +177,13 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
                   ))}
                 </div>
                 <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                  <PhoneButton className="h-11 px-6 text-base">立即电话咨询</PhoneButton>
+                  <PhoneButton className="h-11 px-6 text-base">{heroButtonText}</PhoneButton>
                   <Button asChild className="h-11 border-white/20 bg-transparent px-6 text-white hover:border-white/35 hover:bg-white/10 hover:text-white" variant="outline">
                     <PhoneLink>咨询热线：{SITE_HOTLINE_TEXT}</PhoneLink>
                   </Button>
                 </div>
                 <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
-                  {[
-                    ["服务节点", `${sections.length} 个`],
-                    ["家校反馈", "常规反馈"],
-                    ["重点支持", "习惯与情绪"],
-                    ["适用阶段", "全日制 / 复读"],
-                  ].map(([label, value]) => (
+                  {heroStats.map(({ label, value }) => (
                     <div className="py-2" key={label}>
                       <div className="text-slate-400 text-xs">{label}</div>
                       <div className="mt-2 font-bold text-2xl text-primary md:text-3xl">{value}</div>
@@ -184,16 +194,17 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
 
               <div className="rounded-2xl bg-white/6 p-6 backdrop-blur">
                 <div className="pb-4">
-                  <div className="text-slate-400 text-xs">服务流程目录</div>
+                  <div className="text-slate-400 text-xs">{tocTitle}</div>
                   <div className="mt-2 text-lg leading-8">{sections.map((section) => section.title).join("、")}</div>
                 </div>
                 <div className="space-y-3 border-white/10 border-t pt-4 text-slate-300 text-sm">
-                  <p>从入学建档到预警干预，按节点说明学管如何持续跟进孩子。</p>
-                  <p>家长可以结合左侧目录，快速定位自己当前最关心的环节。</p>
+                  {tocDescription.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
                 </div>
                 <div className="mt-6 flex items-center gap-2 text-primary text-sm">
                   <span className="size-1.5 rounded-full bg-primary" />
-                  继续下滑查看完整流程
+                  {tocFootnote}
                 </div>
               </div>
             </div>
@@ -205,7 +216,7 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
             <TableOfContents
               extraItems={relatedQuestions && relatedQuestions.length > 0 ? [{ id: "xiang-guan-wen-da", title: "相关家长问答" }] : undefined}
               items={sections.map((s) => ({ id: s.id, title: s.title }))}
-              title="服务流程目录"
+              title={tocTitle}
             />
 
             <div className="space-y-20">
@@ -214,7 +225,7 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
                   <div className="relative mb-10 overflow-hidden">
                     <div className="pointer-events-none absolute -top-4 right-0 font-black text-[72px] text-slate-200 leading-none md:text-[96px]">{String(sectionIndex + 1).padStart(2, "0")}</div>
                     <div className="relative max-w-3xl">
-                      <div className="mb-4 inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-slate-600 text-sm">{guideLabels[section.id] ?? "服务流程"}</div>
+                      <div className="mb-4 inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-slate-600 text-sm">{section.label ?? guideLabels[section.id] ?? "内容要点"}</div>
                       <h2 className="font-bold text-3xl text-slate-900 leading-tight md:text-[2rem]">{section.title}</h2>
                       <p className="mt-4 max-w-2xl text-slate-500 leading-7">{section.description}</p>
                     </div>

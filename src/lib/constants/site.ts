@@ -38,14 +38,14 @@ export const PRIMARY_LINKS: HeaderNavItem[] = [
 		items: [
 			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
 			{ href: "/jia-ge-biao", label: "价格表" },
-			{ href: "/jia-zhang-fu-wu", label: "家长服务" },
+			{ href: "/xiao-qu-cha-xun", label: "校区查询" },
 			{ href: "/sheng-xue-xi-bao", label: "升学喜报" },
 			{ href: "/#jia-chang-wen-da", label: "家长问答" },
 			{ href: "/#xin-wen", label: "考试资讯" },
 		],
 		label: "招生与服务",
 	},
-	{ href: "/xiao-qu-cha-xun", label: "校区查询" },
+	{ href: "/jia-zhang-fu-wu", label: "家长服务" },
 	{
 		items: [
 			{ href: "/lao-shi", label: "老师团队" },
