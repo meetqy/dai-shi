@@ -17,6 +17,7 @@ export const SITE_HOTLINE_TEL = "tel:4009875211";
 
 export const UTILITY_LINKS: NavLink[] = [
 	{ href: "/rong-yu-zi-zhi", label: "荣誉资质" },
+	{ href: "/sheng-xue-xi-bao", label: "升学喜报" },
 	{ href: "/#xin-wen", label: "考试资讯" },
 	{ href: "/xiao-qu-cha-xun", label: "校区查询" },
 	{ href: "/#jia-chang-wen-da", label: "家长问答" },
@@ -38,6 +39,7 @@ export const PRIMARY_LINKS: HeaderNavItem[] = [
 			{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
 			{ href: "/jia-ge-biao", label: "价格表" },
 			{ href: "/jia-zhang-fu-wu", label: "家长服务" },
+			{ href: "/sheng-xue-xi-bao", label: "升学喜报" },
 			{ href: "/#jia-chang-wen-da", label: "家长问答" },
 			{ href: "/#xin-wen", label: "考试资讯" },
 		],
@@ -63,6 +65,7 @@ export const MOBILE_PRIMARY_LINKS: NavLink[] = [
 	{ href: "/zhao-sheng-jian-zhang", label: "招生简章" },
 	{ href: "/jia-ge-biao", label: "价格表" },
 	{ href: "/jia-zhang-fu-wu", label: "家长服务" },
+	{ href: "/sheng-xue-xi-bao", label: "升学喜报" },
 	{ href: "/xiao-qu-cha-xun", label: "校区查询" },
 	{ href: "/#jia-chang-wen-da", label: "家长问答" },
 	{ href: "/#xin-wen", label: "考试资讯" },

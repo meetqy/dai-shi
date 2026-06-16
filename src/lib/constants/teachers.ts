@@ -7,7 +7,7 @@ export type TeacherProfile = {
 	campus?: string;
 	subject?: string;
 	summary: string;
-	image: string;
+	image: string | null;
 	experience?: string;
 	education?: string;
 	honors: string[];

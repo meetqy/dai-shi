@@ -32,6 +32,13 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 	},
 	{
 		changeFrequency: "weekly",
+		description: `查看${SITE_FULL_NAME}历年大学录取喜报图片，支持按年份浏览与分页查看。`,
+		path: "/sheng-xue-xi-bao",
+		priority: 0.8,
+		title: "升学喜报",
+	},
+	{
+		changeFrequency: "weekly",
 		description: `查看${SITE_FULL_NAME}历年高考全日制招生简章列表。`,
 		path: "/zhao-sheng-jian-zhang",
 		priority: 0.9,
