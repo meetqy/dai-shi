@@ -67,6 +67,23 @@ export type GuideSection = {
 	items: string[];
 };
 
+export type CampusDirectoryRow = {
+	city: string;
+	district: string;
+	campusName: string;
+	attribute: string;
+	address: string;
+};
+
+export type CampusDirectorySection = {
+	id: string;
+	label?: string;
+	title: string;
+	description: string;
+	note?: string;
+	rows: CampusDirectoryRow[];
+};
+
 // =========================== 文章内容块 ===========================
 
 export type ArticleBlock =
@@ -77,6 +94,13 @@ export type ArticleBlock =
 			sections: GuideSection[];
 			hero?: GuideHero;
 			relatedQuestions?: { question: string; answer?: string; href: string }[];
+			bottomCta?: BottomCta;
+	  }
+	| {
+			kind: "campus-directory";
+			intro: string[];
+			sections: CampusDirectorySection[];
+			hero?: GuideHero;
 			bottomCta?: BottomCta;
 	  };
 
@@ -776,6 +800,286 @@ const BU_XI_TI_FEN_FAQ_SECTIONS: FaqSection[] = [
 // =========================== 文章列表 ===========================
 
 export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
+	{
+		slug: "dai-shi-jiao-yu-ge-ge-xiao-qu-hui-zong",
+		title: "戴氏教育各个校区汇总",
+		summary:
+			"按全日制校区、常规校区、新开常规校区三类整理戴氏教育现有校区名称与地址，方便家长按区域快速查找就近咨询点。",
+		publishedAt: "2026-06-17",
+		highlighted: true,
+		content: {
+			kind: "campus-directory",
+			intro: [
+				"这份校区汇总主要帮助家长快速查看戴氏教育当前各校区的名称、所在城区和具体地址。若您已经明确孩子的年级、班型或是否需要全日制管理，可以先按下方分类筛选，再结合距离与需求做进一步咨询。",
+				"文中校区按“全日制校区”“常规校区”“新开常规校区”三类整理。其中 Z 表示直营校区，T 表示加盟校区；如原始资料未单独标注，则按对应业务类型展示。",
+			],
+			hero: {
+				badge: "家长服务专题",
+				primaryButtonText: "咨询就近校区",
+				stats: [
+					{ label: "校区总数", value: "30 个" },
+					{ label: "全日制校区", value: "4 个" },
+					{ label: "常规校区", value: "26 个" },
+					{ label: "覆盖城市", value: "2 座" },
+				],
+				tocTitle: "校区目录",
+				tocDescription: [
+					"先看是否需要高考中心全日制，再看常规校区与新开校区分布，找起来会更快。",
+					"如果您不确定该选哪一类校区，也可以直接电话沟通，我们会结合孩子情况帮您判断。",
+				],
+				tocFootnote: "继续下滑查看完整校区表格",
+			},
+			sections: [
+				{
+					id: "quan-ri-zhi-xiao-qu",
+					label: "全日制校区",
+					title: "高考中心全日制校区",
+					description:
+						"如果家长更关注高三全日制、复读、艺考文化课或强管理备考环境，可以优先看这一组高考中心校区，便于先筛选更适合全年系统备考的咨询点。",
+					note: "以下为原始资料中的全日制校区名单。",
+					rows: [
+						{
+							city: "成都市",
+							district: "青羊区",
+							campusName: "高考中心世贸校区",
+							attribute: "高考中心全日制",
+							address: "顺城街青羊区鼓楼南街117号",
+						},
+						{
+							city: "成都市",
+							district: "青羊区",
+							campusName: "高考中心顺吉校区",
+							attribute: "高考中心全日制",
+							address: "顺城大街252号顺吉大厦6楼",
+						},
+						{
+							city: "成都市",
+							district: "金牛区",
+							campusName: "高考中心基地校区",
+							attribute: "高考中心全日制",
+							address: "解放路一段168号柚米国际社区1栋4楼",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "高考中心顺风校区",
+							attribute: "高考中心全日制",
+							address: "四川省成都市双流区西航港街道希望路117-119号",
+						},
+					],
+				},
+				{
+					id: "chang-gui-xiao-qu",
+					label: "常规校区",
+					title: "常规校区名单",
+					description:
+						"如果孩子是小学、初中或高中阶段的日常补习、周末班、一对一或就近学习需求，家长可以重点看这一组常规校区，按城区和通勤距离优先筛选。",
+					note: "Z 为直营校区，T 为加盟校区。",
+					rows: [
+						{
+							city: "成都市",
+							district: "天府新区",
+							campusName: "天府新区总部校区",
+							attribute: "常规校区直营",
+							address: "正西街88号成南领寓3楼5号",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戛纳校区",
+							attribute: "常规校区直营",
+							address: "滨河路二段360号2层",
+						},
+						{
+							city: "成都市",
+							district: "武侯区",
+							campusName: "紫荆校区",
+							attribute: "常规校区直营",
+							address: "紫竹北街85号大世界商业广场F2",
+						},
+						{
+							city: "成都市",
+							district: "青羊区",
+							campusName: "鼓楼校区",
+							attribute: "常规校区直营",
+							address: "顺城大街252号顺吉大厦9楼（设为默认）",
+						},
+						{
+							city: "成都市",
+							district: "武侯区",
+							campusName: "蓝天校区",
+							attribute: "常规校区直营",
+							address: "新义路3号附9号中房润新花园B期",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "中和校区",
+							attribute: "常规校区直营",
+							address: "仁和路288号喜港城购物中心2楼212",
+						},
+						{
+							city: "成都市",
+							district: "新都区",
+							campusName: "大丰崇义校区",
+							attribute: "常规校区加盟",
+							address: "崇义桥街195号2楼",
+						},
+						{
+							city: "成都市",
+							district: "新都区",
+							campusName: "大丰花都校区",
+							attribute: "常规校区加盟",
+							address: "花都大道708号3楼",
+						},
+						{
+							city: "成都市",
+							district: "郫都区",
+							campusName: "红光校区",
+							attribute: "常规校区加盟",
+							address: "红光镇银润北二路123号附4号",
+						},
+						{
+							city: "成都市",
+							district: "郫都区",
+							campusName: "犀浦校区",
+							attribute: "常规校区加盟",
+							address: "兴业南街西区花园187号",
+						},
+						{
+							city: "成都市",
+							district: "温江区",
+							campusName: "温江校区",
+							attribute: "常规校区加盟",
+							address: "文化路138号2楼大好河山酒店旁边",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "双流万达校区",
+							attribute: "常规校区直营",
+							address: "棠湖中学实验学校正门对面2楼",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "西航港校区",
+							attribute: "常规校区直营",
+							address: "长城路二段389号",
+						},
+						{
+							city: "雅安市",
+							district: "雨城区",
+							campusName: "雅安校区",
+							attribute: "常规校区加盟",
+							address: "熊猫大道383号西康商业广场2楼",
+						},
+					],
+				},
+				{
+					id: "xin-kai-chang-gui-xiao-qu",
+					label: "新开校区",
+					title: "新开常规校区名单",
+					description:
+						"如果家长正在关注近期开设的新校区，这一组可以帮助您直接查看双流、武侯、郫都等区域新增咨询点的位置分布，便于判断是否更方便到访。",
+					note: "Z 为直营校区，T 为加盟校区。",
+					rows: [
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏精品1对1中心（双流棠外旗舰校）",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市双流区福通路51-53号",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育（怡心湖旗舰校区）",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市双流区瑞祥东街611号",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育（新川校区）",
+							attribute: "新开常规校区直营",
+							address: "成都市双流区吉龙二街39号",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育（元音校区）",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市双流区天府新区正兴街隆祥街1208号1栋2楼（广汇御园1期东门）",
+						},
+						{
+							city: "成都市",
+							district: "郫都区",
+							campusName: "戴氏教育（溪地湾校区）",
+							attribute: "新开常规校区加盟",
+							address: "四川省成都市郫都区犀安路266-3041号",
+						},
+						{
+							city: "成都市",
+							district: "武侯区",
+							campusName: "天府长城校区",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市武侯区石羊街道天顺路260号",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育（广都校区）",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市双流区新裕路466号",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育（麓湖旗舰校区）",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市双流区天津路西段",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育君越旗舰校区",
+							attribute: "新开常规校区直营",
+							address: "双流区东升街道佳居路155号（君越一号门旁二楼）",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育（天西旗舰校区）",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市双流区正兴街道田家寺社区5组333号15栋2层3号",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育（南湖总校）",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市双流区南湖路143号，长冶·南阳锦城3期，二江路一段275号",
+						},
+						{
+							city: "成都市",
+							district: "双流区",
+							campusName: "戴氏教育（双流广场总校）",
+							attribute: "新开常规校区直营",
+							address: "四川省成都市双流区藏卫路南一段",
+						},
+					],
+				},
+			],
+			bottomCta: {
+				badge: "还没确定该去哪个校区？",
+				title: "先按孩子需求筛选，再预约就近咨询",
+				description:
+					"如果您还不确定孩子更适合全日制校区还是常规校区，或者想结合所在区域、年级和班型来判断，欢迎直接电话咨询。我们会先帮您筛选更合适的校区，再安排就近到访。",
+				buttonText: "立即电话咨询",
+			},
+		},
+	},
 	{
 		slug: "cheng-du-gao-san-fu-du-shou-xu",
 		title: "成都高三复读需要什么手续？",
