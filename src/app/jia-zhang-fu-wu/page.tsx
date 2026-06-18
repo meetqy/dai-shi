@@ -18,11 +18,7 @@ function formatDate(iso: string) {
 }
 
 export default function JiaZhangFuWuPage() {
-  const articles = getAllJiaZhangArticles().sort((a, b) => {
-    if (a.slug === "fu-du-ji-gou-duo-wei-du-dui-bi") return -1;
-    if (b.slug === "fu-du-ji-gou-duo-wei-du-dui-bi") return 1;
-    return 0;
-  });
+  const articles = getAllJiaZhangArticles();
 
   return (
     <div className="min-h-screen bg-slate-50 pb-16 md:pb-24">

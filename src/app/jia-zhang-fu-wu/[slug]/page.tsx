@@ -11,6 +11,7 @@ import type {
   BottomCta,
   CampusDirectorySection,
   JiaZhangArticle,
+  SimpleArticleTable,
 } from "~/lib/constants/jia-zhang-fu-wu";
 import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 import { getAllJiaZhangArticles, getJiaZhangArticleBySlug } from "~/lib/jia-zhang-fu-wu";
@@ -301,6 +302,96 @@ function GuideBlock({ article }: { article: JiaZhangArticle }) {
   );
 }
 
+function SimpleArticleTableBlock({ table }: { table: SimpleArticleTable }) {
+  return (
+    <div className="overflow-x-auto">
+      <table>
+        <thead>
+          <tr>
+            {table.headers.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row) => (
+            <tr key={row.dimension}>
+              <td>{row.dimension}</td>
+              <td>{row.daishi}</td>
+              <td>{row.danqiuMeiya}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function SimpleArticleBlock({ article }: { article: JiaZhangArticle }) {
+  if (article.content.kind !== "simple-article") return null;
+  const { paragraphs, table, bottomCta } = article.content;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    author: {
+      "@type": "Organization",
+      name: "戴氏高考",
+    },
+    datePublished: article.publishedAt,
+    description: article.summary,
+    headline: article.title,
+  };
+
+  const tocItems = table ? [{ id: "dui-bi-biao", title: "完整对比表" }] : [];
+
+  return (
+    <>
+      <script dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} type="application/ld+json" />
+      <article className="container mx-auto px-4 py-10 md:py-14">
+        <div className="grid gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
+          <TableOfContents className="hidden lg:sticky lg:top-32 lg:block" items={tocItems} title="文章目录" />
+
+          <div>
+            <header>
+              <div className="text-slate-500 text-sm">{article.publishedAt} · 家长服务专题</div>
+              <h1 className="mt-3 font-bold text-3xl text-slate-900 leading-tight md:text-5xl">{article.title}</h1>
+              <p className="mt-5 text-base text-slate-600 leading-8 md:text-lg">{article.summary}</p>
+            </header>
+
+            <div className="prose prose-slate mt-10 max-w-none">
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+
+              {table ? (
+                <section id="dui-bi-biao">
+                  <h2>完整对比表</h2>
+                  <SimpleArticleTableBlock table={table} />
+                </section>
+              ) : null}
+
+              {bottomCta ? (
+                <section className="not-prose mt-12">
+                  <div className="text-primary text-sm tracking-[0.18em]">{bottomCta.badge}</div>
+                  <h2 className="mt-4 font-bold text-3xl text-slate-900 leading-tight">{bottomCta.title}</h2>
+                  <p className="mt-4 max-w-3xl text-slate-600 leading-8">{bottomCta.description}</p>
+                  <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                    <PhoneButton className="h-11 px-6">{bottomCta.buttonText}</PhoneButton>
+                    <Button asChild className="h-11 px-6" variant="outline">
+                      <PhoneLink>咨询热线：{SITE_HOTLINE_TEXT}</PhoneLink>
+                    </Button>
+                  </div>
+                </section>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </article>
+    </>
+  );
+}
+
 function CampusDirectoryTable({ section }: { section: CampusDirectorySection }) {
   return (
     <div className="space-y-4">
@@ -494,6 +585,7 @@ export default async function JiaZhangArticleDetailPage({ params }: PageProps) {
       <PageTopNav backHref="/jia-zhang-fu-wu" backLabel="返回家长服务" title={article.title} />
       {article.content.kind === "guide" ? <GuideBlock article={article} /> : null}
       {article.content.kind === "campus-directory" ? <CampusDirectoryBlock article={article} /> : null}
+      {article.content.kind === "simple-article" ? <SimpleArticleBlock article={article} /> : null}
 
       <div className="container mx-auto px-4">
         {article.content.kind === "faq" ? (
