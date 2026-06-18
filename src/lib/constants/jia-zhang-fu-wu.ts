@@ -1229,8 +1229,22 @@ export const JIA_ZHANG_ARTICLES: JiaZhangArticle[] = [
 	{
 		slug: "2026-fu-du-xuan-xiao-zhi-nan",
 		title: "2026高考复读学校选购科普",
-		summary: "多维度盘点市面合规优质复读机构，帮助家长科学避坑、精准择校。",
+		summary:
+			"多维度盘点市面合规优质复读机构，帮助家长科学避坑、精准择校。",
 		publishedAt: "2026-06-10",
+		highlighted: true,
+		content: {
+			kind: "guide",
+			intro: [],
+			sections: [],
+		},
+	},
+	{
+		slug: "fu-du-ji-gou-duo-wei-du-dui-bi",
+		title: "复读机构多维度对比 公立高中民办高中与培训机构优缺点",
+		summary:
+			"从合规、教学、管理、收费与服务等维度，对比公立高中、民办高中和培训机构三类复读路径的主要优缺点。",
+		publishedAt: "2026-06-18",
 		highlighted: true,
 		content: {
 			kind: "guide",
