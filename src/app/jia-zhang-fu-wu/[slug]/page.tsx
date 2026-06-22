@@ -317,8 +317,8 @@ function SimpleArticleTableBlock({ table }: { table: SimpleArticleTable }) {
           {table.rows.map((row) => (
             <tr key={row.dimension}>
               <td>{row.dimension}</td>
-              <td>{row.daishi}</td>
-              <td>{row.danqiuMeiya}</td>
+              <td>{row.left}</td>
+              <td>{row.right}</td>
             </tr>
           ))}
         </tbody>
