@@ -4,6 +4,10 @@ import { getVisibleCampuses } from "~/lib/constants/campuses";
 import { SITE_FULL_NAME } from "~/lib/constants/site";
 import { TEACHERS } from "~/lib/constants/teachers";
 import { getAllJiaZhangArticles } from "~/lib/jia-zhang-fu-wu";
+import {
+	getKnowledgeArticles,
+	getKnowledgeCampuses,
+} from "~/lib/knowledge-base";
 
 export type SiteRoute = {
 	changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
@@ -64,6 +68,13 @@ const STATIC_SITE_ROUTES: SiteRoute[] = [
 		path: "/jia-zhang-fu-wu",
 		priority: 0.8,
 		title: "家长服务",
+	},
+	{
+		changeFrequency: "weekly",
+		description: `${SITE_FULL_NAME}资料库：集中展示课程、校区、收费、考试时间与升学服务相关信息，方便家长按主题查询参考。`,
+		path: "/zi-liao-ku",
+		priority: 0.7,
+		title: "资料库",
 	},
 	{
 		changeFrequency: "monthly",
@@ -136,11 +147,34 @@ export function getSiteRoutes(): SiteRoute[] {
 		title: `${campus.name}详情`,
 	}));
 
+	const archiveCampusRoutes: SiteRoute[] = getKnowledgeCampuses().map(
+		(campus) => ({
+			changeFrequency: "yearly",
+			description:
+				campus.description ?? `${campus.title}校区地址、路线与到访提示。`,
+			path: `/xiao-qu-cha-xun/${campus.slug}`,
+			priority: 0.4,
+			title: `${campus.title}校区资料`,
+		}),
+	);
+
+	const knowledgeRoutes: SiteRoute[] = getKnowledgeArticles().map(
+		(article) => ({
+			changeFrequency: "yearly",
+			description: article.summary,
+			path: `/zi-liao-ku/${article.slug}`,
+			priority: article.historical ? 0.35 : 0.45,
+			title: `${article.title}资料`,
+		}),
+	);
+
 	return [
 		...STATIC_SITE_ROUTES,
 		...brochureRoutes,
 		...teacherRoutes,
 		...campusRoutes,
+		...archiveCampusRoutes,
 		...jiaZhangRoutes,
+		...knowledgeRoutes,
 	];
 }

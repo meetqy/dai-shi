@@ -136,7 +136,7 @@ const comparisonGroups: ComparisonGroup[] = [
         title: "课后答疑辅导保障",
         privateSchool: "有固定答疑时段，复读班老师针对性更强，辅导保障优于公立插班。",
         publicSchool: "有固定在校答疑时间，可课后找老师答疑辅导，但老师精力向应届生倾斜。",
-        trainingOrg: "需确认是否有固定教师坐班答疑时间，兼职教师占比高的机构辅导保障弱。",
+        trainingOrg: "建议了解是否有固定教师坐班答疑时间，兼职教师占比高的机构辅导保障弱。",
       },
       {
         title: "教学与师资变动保障机制",

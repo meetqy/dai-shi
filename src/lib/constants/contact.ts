@@ -1,4 +1,4 @@
-import { SITE_HOTLINE_TEXT, SITE_FULL_NAME } from "~/lib/constants/site";
+import { SITE_FULL_NAME, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 
 export type ContactChannel = {
 	label: string;
@@ -9,15 +9,19 @@ export type ContactChannel = {
 
 export const CONTACT_PAGE_INTRO = {
 	badge: `${SITE_FULL_NAME} · 联系我们`,
-	description:
-		`如果您想咨询高考全日制、高三复读、艺考文化课、价格安排或校区来访事宜，可以直接联系${SITE_FULL_NAME}。页面仅展示当前已经确认的信息，未提供的内容将不单独显示。`,
+	description: `如果您想咨询高考全日制、高三复读、艺考文化课、价格安排或校区来访事宜，可以直接联系${SITE_FULL_NAME}。页面仅展示当前已经确认的信息，未提供的内容将不单独显示。`,
 	title: "联系我们",
 };
 
+export function createAmapSearchHref(query: string) {
+	return `https://www.amap.com/search?query=${query.replace(/\s+/g, "")}`;
+}
+
 export const CONTACT_HEADQUARTERS = {
 	address: "成都市青羊区顺城大街 252 号顺吉大厦",
-	mapHref:
-		"https://www.amap.com/search?query=戴氏教育总部（成都市青羊区顺城大街252号顺吉大厦）",
+	mapHref: createAmapSearchHref(
+		"戴氏教育总部（成都市青羊区顺城大街252号顺吉大厦）",
+	),
 	name: SITE_FULL_NAME,
 	navigationNote:
 		"欢迎家长提前电话预约到访，现场查看教室、宿舍、学习环境与课程安排。",

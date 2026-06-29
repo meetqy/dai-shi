@@ -10,7 +10,8 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { MarkdownContent } from "~/components/MarkdownContent";
 import { PageTopNav } from "~/components/PageTopNav";
 import { PhoneButton, PhoneLink } from "~/components/phone-action";
 import { TableOfContents, type TocItem } from "~/components/TableOfContents";
@@ -22,16 +23,27 @@ import {
 	getCampusTeacherStats,
 	getVisibleCampuses,
 } from "~/lib/constants/campuses";
+import { createAmapSearchHref } from "~/lib/constants/contact";
 import { SITE_BRAND_NAME, SITE_HOTLINE_TEXT } from "~/lib/constants/site";
+import {
+	getKnowledgeCampusByAnySlug,
+	getKnowledgeCampuses,
+	resolveKnowledgeHref,
+} from "~/lib/knowledge-base";
 
 type PageProps = {
 	params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
-	return getVisibleCampuses().map((campus) => ({
+	const projectCampuses = getVisibleCampuses().map((campus) => ({
 		slug: campus.slug,
 	}));
+	const archiveCampuses = getKnowledgeCampuses().map((campus) => ({
+		slug: campus.slug,
+	}));
+
+	return [...projectCampuses, ...archiveCampuses];
 }
 
 export async function generateMetadata({
@@ -39,8 +51,17 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const campus = getCampusBySlug(slug);
+	const archiveCampusResult = getKnowledgeCampusByAnySlug(slug);
+	const archiveCampus = archiveCampusResult?.campus ?? null;
 
 	if (!campus) {
+		if (archiveCampus) {
+			return {
+				title: `${archiveCampus.title}详情`,
+				description: archiveCampus.description ?? archiveCampus.address,
+			};
+		}
+
 		return {
 			title: "未找到校区",
 		};
@@ -127,12 +148,127 @@ function CampusStructuredData({
 	);
 }
 
+function AddressLink({
+	address,
+	className,
+	href,
+}: {
+	address: string;
+	className?: string;
+	href?: string;
+}) {
+	if (!href) {
+		return <>{address}</>;
+	}
+
+	return (
+		<a
+			className={className ?? "transition-colors hover:text-primary"}
+			href={href}
+			rel="noopener noreferrer"
+			target="_blank"
+		>
+			{address}
+		</a>
+	);
+}
+
 export default async function CampusDetailPage({ params }: PageProps) {
 	const { slug } = await params;
 	const campus = getCampusBySlug(slug);
+	const archiveCampusResult = getKnowledgeCampusByAnySlug(slug);
+	const archiveCampus = archiveCampusResult?.campus ?? null;
+
+	if (!campus && archiveCampusResult && !archiveCampusResult.isCanonical) {
+		redirect(encodeURI(`/xiao-qu-cha-xun/${archiveCampusResult.campus.slug}`));
+	}
 
 	if (!campus) {
-		notFound();
+		if (!archiveCampus) {
+			notFound();
+		}
+		const archiveMapHref = createAmapSearchHref(
+			`${archiveCampus.title}（${archiveCampus.address}）`,
+		);
+
+		return (
+			<div className="min-h-screen bg-white">
+				<PageTopNav
+					backHref="/xiao-qu-cha-xun"
+					backLabel="返回校区查询"
+					title={archiveCampus.title}
+				/>
+				<main className="container mx-auto px-4 py-10 md:py-14">
+					<div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
+						<article>
+							<header className="border-slate-200 border-b pb-8">
+								<div className="flex flex-wrap gap-2">
+									<span className="rounded-full bg-slate-100 px-3 py-1 text-slate-600 text-sm">
+										{archiveCampus.city}校区
+									</span>
+								</div>
+								<h1 className="mt-5 font-bold text-4xl text-slate-950 leading-tight md:text-5xl">
+									{archiveCampus.title}
+								</h1>
+								<p className="mt-5 text-slate-600 leading-8">
+									校区地址：
+									<AddressLink
+										address={archiveCampus.address}
+										className="font-medium text-slate-900 transition-colors hover:text-primary"
+										href={archiveMapHref}
+									/>
+								</p>
+							</header>
+
+							<div className="my-8 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-900 leading-8">
+								如需了解校区路线、课程和到访安排，可以先拨打统一咨询电话：
+								{SITE_HOTLINE_TEXT}
+								{archiveCampus.legacyPhones.length > 0
+									? `，${archiveCampus.legacyPhones
+											.map(
+												(phone) => `${SITE_HOTLINE_TEXT}(原 ${phone}，已弃用)`,
+											)
+											.join("、")}`
+									: null}
+							</div>
+
+							<MarkdownContent
+								content={archiveCampus.content}
+								resolveHref={resolveKnowledgeHref}
+							/>
+						</article>
+
+						<aside className="lg:sticky lg:top-32 lg:self-start">
+							<div className="rounded-2xl bg-slate-50 p-6">
+								<h2 className="font-semibold text-slate-950">到访提示</h2>
+								<div className="mt-4 space-y-4 text-slate-600 text-sm leading-7">
+									<p>城市：{archiveCampus.city}</p>
+									<p>
+										地址：
+										<AddressLink
+											address={archiveCampus.address}
+											href={archiveMapHref}
+										/>
+									</p>
+									{archiveCampus.route ? (
+										<p>路线：{archiveCampus.route}</p>
+									) : null}
+									<p>统一咨询电话：{SITE_HOTLINE_TEXT}</p>
+								</div>
+								<div className="mt-6 flex flex-col gap-3">
+									<PhoneButton className="h-11 rounded-xl">
+										电话咨询校区安排
+									</PhoneButton>
+									<Button asChild className="h-11 rounded-xl" variant="outline">
+										<Link href="/xiao-qu-cha-xun">返回全部校区</Link>
+									</Button>
+								</div>
+							</div>
+						</aside>
+					</div>
+				</main>
+			</div>
+		);
 	}
 
 	const tocItems = buildTocItems(campus);
@@ -170,7 +306,10 @@ export default async function CampusDetailPage({ params }: PageProps) {
 									</p>
 									<div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-slate-600 text-sm">
 										<MapPinIcon className="size-4 text-primary" />
-										<span>{campus.address}</span>
+										<AddressLink
+											address={campus.address}
+											href={campus.mapHref}
+										/>
 									</div>
 
 									<div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -179,7 +318,7 @@ export default async function CampusDetailPage({ params }: PageProps) {
 											<p className="mt-2 font-bold text-2xl text-slate-950">
 												{campus.serviceTags.length}
 											</p>
-											<p className="mt-1 text-slate-500 text-sm">项已整理</p>
+											<p className="mt-1 text-slate-500 text-sm">项服务</p>
 										</div>
 										<div className="rounded-2xl bg-white px-4 py-4">
 											<p className="text-slate-500 text-sm">重点课程</p>
@@ -256,7 +395,7 @@ export default async function CampusDetailPage({ params }: PageProps) {
 								<SectionHeading
 									description="先看这所校区的定位、地址和适合咨询的人群，家长能更快判断是否值得安排到校了解。"
 									label="基本信息"
-									title="先确认校区定位，再决定下一步咨询方向"
+									title="先了解校区定位，再决定下一步咨询方向"
 								/>
 								<div className="grid gap-4 md:grid-cols-2">
 									<div className="rounded-2xl bg-slate-50 p-6">
@@ -281,7 +420,11 @@ export default async function CampusDetailPage({ params }: PageProps) {
 												<span className="font-medium text-slate-900">
 													咨询地址：
 												</span>
-												{campus.address}
+												<AddressLink
+													address={campus.address}
+													className="font-medium text-slate-900 transition-colors hover:text-primary"
+													href={campus.mapHref}
+												/>
 											</p>
 										</div>
 									</div>
@@ -378,7 +521,7 @@ export default async function CampusDetailPage({ params }: PageProps) {
 							{campus.review ? (
 								<section className="scroll-mt-48 py-2" id="hao-ping-fan-kui">
 									<SectionHeading
-										description="除了官方整理的信息外，很多家长还会特别在意到校后的真实感受，这类直接反馈能帮助家长更快建立第一印象。"
+										description="除了页面展示的信息外，很多家长还会特别在意到校后的真实感受，这类直接反馈能帮助家长更快建立第一印象。"
 										label="家长反馈"
 										title="先看看已经到访过的家长怎么评价"
 									/>
@@ -419,7 +562,7 @@ export default async function CampusDetailPage({ params }: PageProps) {
 										</div>
 										<div className="mt-5 space-y-4 text-slate-600 leading-8">
 											<p>
-												已整理{" "}
+												展示{" "}
 												<span className="font-semibold text-slate-950">
 													{campus.programs.length}
 												</span>{" "}
@@ -467,10 +610,13 @@ export default async function CampusDetailPage({ params }: PageProps) {
 													<span>校区地址</span>
 												</div>
 												<p className="mt-3 font-medium text-slate-950 leading-8">
-													{campus.address}
+													<AddressLink
+														address={campus.address}
+														href={campus.mapHref}
+													/>
 												</p>
 												<p className="mt-2 text-slate-600 text-sm leading-7">
-													如需确认路线、停车、来访时间或试听安排，可直接拨打热线，我们会根据孩子情况协助您安排。
+													如需了解路线、停车、来访时间或试听安排，可直接拨打热线，我们会根据孩子情况协助您安排。
 												</p>
 											</div>
 											<div className="flex flex-col gap-3 sm:flex-row">
@@ -503,17 +649,6 @@ export default async function CampusDetailPage({ params }: PageProps) {
 											</div>
 										</div>
 									</div>
-									{campus.mapImage ? (
-										<div className="relative aspect-video w-full bg-slate-200">
-											<Image
-												alt={campus.mapAlt ?? `${campus.name}地址示意`}
-												className="object-cover"
-												fill
-												sizes="(min-width: 1024px) 1024px, 100vw"
-												src={campus.mapImage}
-											/>
-										</div>
-									) : null}
 								</div>
 							</section>
 

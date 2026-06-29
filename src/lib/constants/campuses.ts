@@ -1,4 +1,4 @@
-import { CONTACT_HEADQUARTERS } from "./contact";
+import { CONTACT_HEADQUARTERS, createAmapSearchHref } from "./contact";
 import { TEACHERS } from "./teachers";
 
 export type CampusGalleryImage = {
@@ -25,9 +25,7 @@ export type CampusProfile = {
 	hidden?: boolean;
 	intro: string;
 	listSummary: string;
-	mapAlt?: string;
 	mapHref?: string;
-	mapImage?: string;
 	name: string;
 	parentReasons: string[];
 	programs: CampusProgram[];
@@ -67,15 +65,12 @@ export const CAMPUSES: CampusProfile[] = [
 		name: "顺吉校区",
 		title: "戴氏教育高考中心总部（顺吉校区）",
 		subtitle: "总部校区",
-		hidden: true,
 		address: CONTACT_HEADQUARTERS.address,
 		intro:
 			"顺吉校区作为总部校区，围绕高考全日制、复读、冲刺与家长到校咨询场景提供更完整的教学与来访配套，方便家长系统了解课程、管理与学习安排。",
 		listSummary:
 			"总部校区重点承接高考全日制、复读与到校咨询需求，适合希望先了解整体教学体系、班型安排与学习管理方式的家庭。",
 		coverImage: "/assets/校区环境1.png",
-		mapImage: "/address/戴氏教育高考中心总部（顺吉）.png",
-		mapAlt: "顺吉校区地址示意",
 		mapHref: CONTACT_HEADQUARTERS.mapHref,
 		campusTeacherName: "顺吉校区",
 		serviceTags: ["高考全日制", "高考复读", "升学规划咨询", "家长到校考察"],
@@ -122,13 +117,15 @@ export const CAMPUSES: CampusProfile[] = [
 		name: "世贸校区",
 		title: "戴氏教育世贸校区",
 		subtitle: "教学型校区",
-		hidden: true,
 		address: "龙泉驿区天鹅湖南路333号25-2栋3层1号",
 		intro:
 			"世贸校区以学科教学与日常学习陪伴为核心，已公开较完整的老师信息，适合希望优先了解具体学科老师、课堂风格和学习环境的家长。",
 		listSummary:
 			"世贸校区公开老师信息较完整，便于家长从学科方向、课堂风格和学习氛围角度先做校区了解。",
 		coverImage: "/assets/校区环境5.jpg",
+		mapHref: createAmapSearchHref(
+			"戴氏教育世贸校区（龙泉驿区天鹅湖南路333号25-2栋3层1号）",
+		),
 		campusTeacherName: "世贸校区",
 		serviceTags: ["学科辅导", "高考冲刺", "日常提分", "老师团队公开"],
 		highlights: [
@@ -178,8 +175,9 @@ export const CAMPUSES: CampusProfile[] = [
 		listSummary:
 			"新开直营旗舰校，覆盖小学到高中、多类精品班与中高考集训，适合关注学习环境、英语课程和暑期衔接安排的家庭。",
 		coverImage: "/校区/花千集/门头 1.JPG",
-		mapImage: "/校区/花千集/地图.jpg",
-		mapAlt: "花千集校区地图与地址示意",
+		mapHref: createAmapSearchHref(
+			"戴氏教育花千集直营旗舰校（金牛区一环路北二段9号4栋2层附210号）",
+		),
 		campusTeacherName: "花千集校区",
 		serviceTags: [
 			"KET 报名点",
