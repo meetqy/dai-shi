@@ -379,16 +379,30 @@ function normalizeMarkdownImages(markdown: string) {
 
 const MARKDOWN_IMAGE_PATTERN = /!\[[^\]]*]\([^)]+\)/g;
 const RESOURCE_PATH_PATTERN =
-	/(?:\/|public\/)?(?:assets|老师|校区|honors|address|daishi-site\/uploads)\/[^\s`，。；、）)\]]+\.(?:jpg|jpeg|png|webp|gif)/gi;
+	/(?:\/|public\/)?(?:assets|老师|校区|honors|address|daishi-site\/uploads)\/[^`，。；、\]]+\.(?:jpg|jpeg|png|webp|gif)/gi;
+
+function containsResourcePath(text: string) {
+	RESOURCE_PATH_PATTERN.lastIndex = 0;
+	return RESOURCE_PATH_PATTERN.test(text);
+}
 
 function isResourceReferenceLine(trimmed: string) {
+	const hasResourcePath = containsResourcePath(trimmed);
+	const lineWithoutResources = stripResourceReferences(trimmed)
+		.replace(/^[-*+]\s*/, "")
+		.trim();
+
 	return (
 		/^[-*+]?\s*(?:图片|封面图|.*图片|素材|当前素材|image|src)[：:]/i.test(
 			trimmed,
 		) ||
 		/^[-*+]?\s*(?:\/|public\/)?(?:assets|老师|校区|honors|address|daishi-site\/uploads)\//i.test(
 			trimmed,
-		)
+		) ||
+		(hasResourcePath &&
+			(/^[-*+]\s+/.test(trimmed) ||
+				/(?:图片|素材|封面图|路径|文件)/.test(trimmed) ||
+				lineWithoutResources.length <= 30))
 	);
 }
 
@@ -532,6 +546,12 @@ function normalizePublicMarkdown(markdown: string, title: string) {
 			const cleanHeading = cleanVisibleTitle(heading, heading);
 
 			if (cleanHeading === title) {
+				continue;
+			}
+
+			if (
+				/^(?:图片素材|素材|素材索引|public\s*素材索引)$/i.test(cleanHeading)
+			) {
 				continue;
 			}
 
