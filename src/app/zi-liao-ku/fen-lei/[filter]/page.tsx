@@ -4,10 +4,17 @@ import {
 	getKnowledgeArticleFilterById,
 	getKnowledgeArticleFilters,
 } from "~/lib/knowledge-base";
-import { KnowledgeBaseContent } from "../../KnowledgeBaseContent";
+import {
+	KNOWLEDGE_PAGE_PARAM,
+	KnowledgeBaseContent,
+	resolveKnowledgePage,
+} from "../../KnowledgeBaseContent";
 
 type PageProps = {
 	params: Promise<{ filter: string }>;
+	searchParams?: Promise<{
+		[KNOWLEDGE_PAGE_PARAM]?: string | string[];
+	}>;
 };
 
 export function generateStaticParams() {
@@ -34,12 +41,21 @@ export async function generateMetadata({
 	};
 }
 
-export default async function KnowledgeFilterPage({ params }: PageProps) {
+export default async function KnowledgeFilterPage({
+	params,
+	searchParams,
+}: PageProps) {
 	const { filter } = await params;
+	const resolvedSearchParams = await searchParams;
+	const currentPage = resolveKnowledgePage(
+		resolvedSearchParams?.[KNOWLEDGE_PAGE_PARAM],
+	);
 
 	if (!getKnowledgeArticleFilterById(filter)) {
 		notFound();
 	}
 
-	return <KnowledgeBaseContent activeFilterId={filter} />;
+	return (
+		<KnowledgeBaseContent activeFilterId={filter} currentPage={currentPage} />
+	);
 }

@@ -287,6 +287,18 @@ function createPublicSlug(title: string, fallback: string) {
 	return slug || "zi-liao";
 }
 
+function createFrontmatterSlug(slug?: string) {
+	const normalizedSlug = slug
+		?.toLowerCase()
+		.replace(/[^a-z0-9-]+/g, "-")
+		.replace(/^-+|-+$/g, "")
+		.replace(/-{2,}/g, "-")
+		.slice(0, 80)
+		.replace(/-+$/g, "");
+
+	return normalizedSlug || undefined;
+}
+
 function extractSummary(body: string, description?: string) {
 	if (description) {
 		return normalizeText(description).slice(0, 160);
@@ -736,7 +748,9 @@ function parseKnowledgeArticle(filePath: string): KnowledgeArticle | null {
 		originalPath: relativePath,
 		publishedAt,
 		relatedLatestHref: relatedLatestHref(title),
-		slug: createPublicSlug(title, relativePath),
+		slug:
+			createFrontmatterSlug(frontmatter.slug) ??
+			createPublicSlug(title, relativePath),
 		sourceUrl: frontmatter.url,
 		summary: extractSummary(content, description),
 		title,
@@ -793,7 +807,9 @@ function parseTopLevelKnowledgeArticle(
 		originalPath: relativePath,
 		publishedAt,
 		relatedLatestHref: relatedLatestHref(title),
-		slug: createPublicSlug(title, relativePath),
+		slug:
+			createFrontmatterSlug(frontmatter.slug) ??
+			createPublicSlug(title, relativePath),
 		sourceUrl: frontmatter.url,
 		summary: extractSummary(content, description),
 		title,
