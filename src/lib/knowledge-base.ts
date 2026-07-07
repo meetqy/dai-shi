@@ -23,42 +23,42 @@ const CATEGORY_FILTER_META: Record<
 	about: {
 		description: "查看品牌介绍、办学信息和戴氏相关内容。",
 		id: "guan-yu-dai-shi",
-		title: CATEGORY_LABELS.about,
+		title: "关于戴氏",
 	},
 	activity: {
 		description: "查看课程活动、阶段安排和学习服务内容。",
 		id: "ke-cheng-huo-dong",
-		title: CATEGORY_LABELS.activity,
+		title: "课程活动",
 	},
 	campus: {
 		description: "查看校区地址、路线、环境和到访信息。",
 		id: "xiao-qu-zi-liao",
-		title: CATEGORY_LABELS.campus,
+		title: "校区资料",
 	},
 	course: {
 		description: "查看课程体系、班型设置和教学安排。",
 		id: "ke-cheng-ti-xi",
-		title: CATEGORY_LABELS.course,
+		title: "课程体系",
 	},
 	hot: {
 		description: "查看家长关注较多的热点问题和升学话题。",
 		id: "re-dian-guan-zhu",
-		title: CATEGORY_LABELS.hot,
+		title: "热点关注",
 	},
 	knowledge: {
 		description: "查看课程、服务和升学相关资料。",
 		id: "zhi-shi-ku-wen-dang",
-		title: CATEGORY_LABELS.knowledge,
+		title: "知识库文档",
 	},
 	news: {
 		description: "查看考试资讯、政策时间和学习动态。",
 		id: "zi-xun-dong-tai",
-		title: CATEGORY_LABELS.news,
+		title: "资讯动态",
 	},
 	teacher: {
 		description: "查看教师团队、教学特色和师资相关内容。",
 		id: "jiao-shi-zi-liao",
-		title: CATEGORY_LABELS.teacher,
+		title: "教师资料",
 	},
 };
 
@@ -797,7 +797,7 @@ function parseTopLevelKnowledgeArticle(
 
 	return {
 		category: "knowledge",
-		categoryLabel: CATEGORY_LABELS.knowledge,
+		categoryLabel: "知识库文档",
 		content,
 		crawledAt: frontmatter.crawledAt,
 		description,
@@ -853,7 +853,16 @@ function withUniqueArticleSlugs(articles: KnowledgeArticle[]) {
 	});
 }
 
+let allKnowledgeArticleRecordsCache: KnowledgeArticle[] | null = null;
+let knowledgeArticleSummariesCache: KnowledgeArticleSummary[] | null = null;
+let knowledgeTopicGroupsCache: KnowledgeTopicGroup[] | null = null;
+let knowledgeArticleFiltersCache: KnowledgeArticleFilter[] | null = null;
+
 function getAllKnowledgeArticleRecords() {
+	if (allKnowledgeArticleRecordsCache) {
+		return allKnowledgeArticleRecordsCache;
+	}
+
 	const crawledArticles = walkMarkdownFiles(CRAWLED_CONTENT_DIR)
 		.map(parseKnowledgeArticle)
 		.filter((article): article is KnowledgeArticle => Boolean(article));
@@ -861,11 +870,20 @@ function getAllKnowledgeArticleRecords() {
 		.map(parseTopLevelKnowledgeArticle)
 		.filter((article): article is KnowledgeArticle => Boolean(article));
 
-	return withUniqueArticleSlugs([...topLevelArticles, ...crawledArticles]);
+	allKnowledgeArticleRecordsCache = withUniqueArticleSlugs([
+		...topLevelArticles,
+		...crawledArticles,
+	]);
+
+	return allKnowledgeArticleRecordsCache;
 }
 
 export function getKnowledgeArticles(): KnowledgeArticleSummary[] {
-	return getAllKnowledgeArticleRecords()
+	if (knowledgeArticleSummariesCache) {
+		return knowledgeArticleSummariesCache;
+	}
+
+	knowledgeArticleSummariesCache = getAllKnowledgeArticleRecords()
 		.map(({ content: _content, ...article }) => article)
 		.sort((a, b) => {
 			const dateA = a.publishedAt || a.crawledAt || "";
@@ -874,6 +892,8 @@ export function getKnowledgeArticles(): KnowledgeArticleSummary[] {
 				dateB.localeCompare(dateA) || a.title.localeCompare(b.title, "zh-CN")
 			);
 		});
+
+	return knowledgeArticleSummariesCache;
 }
 
 export function getKnowledgeArticleBySlug(slug: string) {
@@ -991,6 +1011,10 @@ const TOPIC_GROUP_META: Record<string, Omit<KnowledgeTopicGroup, "count">> = {
 };
 
 export function getKnowledgeTopicGroups(): KnowledgeTopicGroup[] {
+	if (knowledgeTopicGroupsCache) {
+		return knowledgeTopicGroupsCache;
+	}
+
 	const counts = new Map<string, number>();
 
 	for (const article of getKnowledgeArticles()) {
@@ -998,7 +1022,7 @@ export function getKnowledgeTopicGroups(): KnowledgeTopicGroup[] {
 		counts.set(groupId, (counts.get(groupId) ?? 0) + 1);
 	}
 
-	return [...counts.entries()]
+	knowledgeTopicGroupsCache = [...counts.entries()]
 		.map(([id, count]) => ({
 			...TOPIC_GROUP_META[id],
 			count,
@@ -1006,6 +1030,8 @@ export function getKnowledgeTopicGroups(): KnowledgeTopicGroup[] {
 		}))
 		.filter((group): group is KnowledgeTopicGroup => Boolean(group.title))
 		.sort((a, b) => b.count - a.count);
+
+	return knowledgeTopicGroupsCache;
 }
 
 export function getKnowledgeArticleCategoryStats() {
@@ -1055,6 +1081,10 @@ function getCategoryFilterById(id: string) {
 }
 
 export function getKnowledgeArticleFilters(): KnowledgeArticleFilter[] {
+	if (knowledgeArticleFiltersCache) {
+		return knowledgeArticleFiltersCache;
+	}
+
 	const topicFilters = getKnowledgeTopicGroups().map((group) => ({
 		count: group.count,
 		description: group.description,
@@ -1082,7 +1112,9 @@ export function getKnowledgeArticleFilters(): KnowledgeArticleFilter[] {
 		(a, b) => b.count - a.count || a.title.localeCompare(b.title, "zh-CN"),
 	);
 
-	return [...topicFilters, ...categoryFilters];
+	knowledgeArticleFiltersCache = [...topicFilters, ...categoryFilters];
+
+	return knowledgeArticleFiltersCache;
 }
 
 export function getKnowledgeArticleFilterById(id: string) {
