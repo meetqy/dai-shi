@@ -294,6 +294,43 @@ export function MarkdownContent({
 			continue;
 		}
 
+		if (/^\d+[.)、]\s+/.test(line.trim())) {
+			const items: string[] = [];
+			while (
+				index < lines.length &&
+				/^\d+[.)、]\s+/.test(lines[index]?.trim() ?? "")
+			) {
+				const item = cleanInlineText(
+					(lines[index] ?? "").trim().replace(/^\d+[.)、]\s+/, ""),
+				);
+				if (item) {
+					items.push(item);
+				}
+				index += 1;
+			}
+
+			if (items.length === 0) {
+				continue;
+			}
+
+			elements.push(
+				<ol
+					className="my-6 list-decimal space-y-3 border-slate-200 border-t pl-5"
+					key={`ordered-list-${index}`}
+				>
+					{items.map((item) => (
+						<li
+							className="border-slate-200 border-b py-3 pl-1 text-slate-700 leading-8"
+							key={item}
+						>
+							{parseInline(item, resolveHref)}
+						</li>
+					))}
+				</ol>,
+			);
+			continue;
+		}
+
 		const headingMatch = line.match(/^(#{1,4})\s+(.+)$/);
 		if (headingMatch) {
 			const [, marks = "", heading = ""] = headingMatch;
@@ -321,6 +358,7 @@ export function MarkdownContent({
 			lines[index]?.trim() &&
 			!lines[index]?.trim().startsWith("#") &&
 			!lines[index]?.trim().startsWith("- ") &&
+			!/^\d+[.)、]\s+/.test(lines[index]?.trim() ?? "") &&
 			!lines[index]?.trim().startsWith("|") &&
 			!lines[index]?.trim().startsWith("![")
 		) {

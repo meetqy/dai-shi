@@ -357,7 +357,7 @@ function normalizeLegacyPhoneText(text: string, legacyPhones: string[]) {
 	for (const phone of [...legacyPhones].sort((a, b) => b.length - a.length)) {
 		const replacement = `${SITE_HOTLINE_TEXT}(原 ${phone}，已弃用)`;
 		const existingFormatPattern = new RegExp(
-			`${escapeRegExp(SITE_HOTLINE_TEXT)}[（(]原[：:\\s]*${escapeRegExp(phone)}[，,]已(?:弃用|作废)[）)]`,
+			`${escapeRegExp(SITE_HOTLINE_TEXT)}[（(]原[：:\\s]*${escapeRegExp(phone)}[，,]已(?:弃用|作废|废弃)[）)]`,
 			"g",
 		);
 		const protectedToken = `__LEGACY_PHONE_${phone.replace(/\D/g, "")}__`;
