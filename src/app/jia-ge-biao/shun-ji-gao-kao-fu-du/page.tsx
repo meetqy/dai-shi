@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function Page() {
-  redirect("/jia-ge-biao/shun-ji-gao-kao-fu-du", "replace");
+  redirect("/jia-ge-biao/shi-mao-gao-kao-fu-du", "replace");
 }
