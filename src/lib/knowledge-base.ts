@@ -2,7 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { SITE_HOTLINE_TEXT } from "~/lib/constants/site";
 
-const KNOWLEDGE_CONTENT_DIR = path.join(process.cwd(), "content");
+const KNOWLEDGE_CONTENT_DIR =
+	[
+		path.join(process.cwd(), "content"),
+		path.join(process.cwd(), ".next", "content"),
+	].find((directory) => fs.existsSync(directory)) ??
+	path.join(process.cwd(), "content");
 const CRAWLED_CONTENT_DIR = path.join(KNOWLEDGE_CONTENT_DIR, "抓取页面");
 
 const CATEGORY_LABELS: Record<string, string> = {
