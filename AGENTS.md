@@ -20,6 +20,7 @@
 - **路由同步**：新增、删除或调整页面路由时，必须同步更新 `llms.txt` 与 `sitemap.xml`
 - **IndexNow 推送**：新增或更新页面上线后执行 `pnpm submit:indexnow` 主动推送，默认读取线上 `sitemap.xml` 全量提交；只推指定页面时用 `pnpm submit:indexnow --file 文件路径`，不确定推送范围时先加 `--dry-run` 试运行
 - **IndexNow key 文件**：`public/3c30063d78c64f2484825ad8eb726a7e.txt` 是搜索引擎校验归属的凭证文件，禁止改名或删除，内容必须与文件名的 key 保持一致
+- **IndexNow 首次推送**：key 文件刚上线时推送可能返回 `403 SiteVerificationNotCompleted`，这是搜索引擎侧校验还没跑完，不是配置错误；确认 key 文件能正常访问后等几分钟重试即可，不要改 key 或改脚本
 - **链接排查**：新增 slug、替换 slug 或拆分新旧页面后，必须检查项目中所有硬编码旧链接，确保入口指向正确
 - **家长服务同步**：新增独立文章页面时，必须在 `src/lib/constants/jia-zhang-fu-wu.ts` 的 `JIA_ZHANG_ARTICLES` 数组中同步数据，确保列表页正常展示
 - **列表数量校验**：新增家长服务文章后，必须核对 `JIA_ZHANG_ARTICLES` 的文章总数、列表页展示数量和入口跳转是否一致
