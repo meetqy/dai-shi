@@ -1293,3 +1293,84 @@ export function getKnowledgeCampusByAnySlug(slug: string) {
 
 	return null;
 }
+
+export function formatKnowledgeArticleDate(
+	article: Pick<KnowledgeArticleSummary, "crawledAt" | "publishedAt" | "year">,
+) {
+	const dateText = article.publishedAt ?? article.crawledAt ?? article.year;
+
+	if (!dateText) {
+		return "时间待更新";
+	}
+
+	const normalizedDate = dateText.match(/\d{4}[-/]\d{1,2}[-/]\d{1,2}/)?.[0];
+	if (normalizedDate) {
+		return normalizedDate.replaceAll("/", "-");
+	}
+
+	if (/^20\d{2}$/.test(dateText)) {
+		return `${dateText} 年`;
+	}
+
+	return dateText;
+}
+
+export function getKnowledgeArticleSiblings(slug: string) {
+	const articles = getKnowledgeArticles();
+	const currentIndex = articles.findIndex((article) => article.slug === slug);
+
+	if (currentIndex === -1) {
+		return { next: null, previous: null };
+	}
+
+	return {
+		next: articles[currentIndex + 1] ?? null,
+		previous: articles[currentIndex - 1] ?? null,
+	};
+}
+
+function getTitleKeywords(title: string) {
+	const keywords = new Set<string>();
+
+	for (const match of title.matchAll(/[一-龥]{2,}/g)) {
+		const segment = match[0];
+		for (let start = 0; start + 2 <= segment.length; start += 1) {
+			keywords.add(segment.slice(start, start + 2));
+		}
+	}
+
+	return keywords;
+}
+
+export function getRelatedKnowledgeArticles(
+	article: Pick<KnowledgeArticleSummary, "category" | "slug" | "title">,
+	limit = 9,
+) {
+	const baseKeywords = getTitleKeywords(article.title);
+
+	return getKnowledgeArticles()
+		.filter((candidate) => candidate.slug !== article.slug)
+		.map((candidate) => {
+			let score = 0;
+
+			for (const keyword of getTitleKeywords(candidate.title)) {
+				if (baseKeywords.has(keyword)) {
+					score += 1;
+				}
+			}
+
+			if (candidate.category === article.category) {
+				score += 1;
+			}
+
+			return { candidate, score };
+		})
+		.filter((item) => item.score > 1)
+		.sort(
+			(a, b) =>
+				b.score - a.score ||
+				a.candidate.title.localeCompare(b.candidate.title, "zh-CN"),
+		)
+		.slice(0, limit)
+		.map((item) => item.candidate);
+}

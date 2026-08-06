@@ -12,6 +12,8 @@
 - **语言要求**：所有文案必须用中文
 - **路由命名**：所有路由都用拼音，包括页面路径与页面内锚点 ID
 - **UI 风格**：全站禁止使用大量 CARD 风格，不可点击元素不要添加 hover 效果或交互反馈
+- **文章正文排版**：所有文章、资料、长文正文统一使用 shadcn typeset（`src/styles/typeset.css`），容器加 `typeset typeset-article` 两个类，正文内部只输出语义标签（`p`、`h2`、`ul`、`table` 等），禁止给正文标签逐个写字号、行高、间距等自定义样式；需要微调时改 `globals.css` 里的 `.typeset-article` 变量（`--typeset-size`、`--typeset-leading`、`--typeset-flow`），不要在页面上堆 class
+- **正文渲染组件**：Markdown 正文一律走 `MarkdownContent` 组件，该组件已内置 typeset 容器；宽表格用 `typeset-scroll` 包裹，需要脱离 typeset 的区块加 `not-typeset`
 
 ## 技术与数据同步规范
 

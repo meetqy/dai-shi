@@ -2,8 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "~/lib/utils";
 
 type MarkdownContentProps = {
+	className?: string;
 	content: string;
 	resolveHref?: (href: string) => string | null;
 };
@@ -64,7 +66,6 @@ function parseInline(
 				if (resolvedHref.startsWith("http")) {
 					return (
 						<a
-							className="font-semibold text-primary underline-offset-4 hover:underline"
 							href={resolvedHref}
 							key={key}
 							rel="noopener noreferrer"
@@ -76,21 +77,13 @@ function parseInline(
 				}
 
 				return (
-					<Link
-						className="font-semibold text-primary underline-offset-4 hover:underline"
-						href={resolvedHref}
-						key={key}
-					>
+					<Link href={resolvedHref} key={key}>
 						{label}
 					</Link>
 				);
 			}
 
-			return (
-				<strong className="font-semibold text-slate-950" key={key}>
-					{strongText}
-				</strong>
-			);
+			return <strong key={key}>{strongText}</strong>;
 		}
 
 		const linkMatch = part.match(/^\[([^\]]+)]\(([^)]+)\)$/);
@@ -101,7 +94,6 @@ function parseInline(
 			if (resolvedHref.startsWith("http")) {
 				return (
 					<a
-						className="font-medium text-primary underline-offset-4 hover:underline"
 						href={resolvedHref}
 						key={key}
 						rel="noopener noreferrer"
@@ -113,11 +105,7 @@ function parseInline(
 			}
 
 			return (
-				<Link
-					className="font-medium text-primary underline-offset-4 hover:underline"
-					href={resolvedHref}
-					key={key}
-				>
+				<Link href={resolvedHref} key={key}>
 					{label}
 				</Link>
 			);
@@ -148,31 +136,20 @@ function MarkdownTable({
 	const [headers = [], ...bodyRows] = rows;
 
 	return (
-		<div className="my-8 overflow-x-auto rounded-2xl border border-slate-200">
-			<table className="min-w-full border-collapse text-left text-sm">
-				<thead className="bg-slate-50 text-slate-700">
+		<div className="typeset-scroll">
+			<table>
+				<thead>
 					<tr>
 						{headers.map((header) => (
-							<th
-								className="border-slate-200 border-b px-4 py-3 font-semibold"
-								key={header}
-							>
-								{header}
-							</th>
+							<th key={header}>{header}</th>
 						))}
 					</tr>
 				</thead>
 				<tbody>
 					{bodyRows.map((row) => (
-						<tr
-							className="border-slate-100 border-b last:border-b-0"
-							key={row.join("|")}
-						>
+						<tr key={row.join("|")}>
 							{row.map((cell) => (
-								<td
-									className="px-4 py-4 text-slate-700 leading-7"
-									key={`${row.join("|")}-${cell}`}
-								>
+								<td key={`${row.join("|")}-${cell}`}>
 									{parseInline(cell, resolveHref)}
 								</td>
 							))}
@@ -185,6 +162,7 @@ function MarkdownTable({
 }
 
 export function MarkdownContent({
+	className,
 	content,
 	resolveHref,
 }: MarkdownContentProps) {
@@ -201,9 +179,7 @@ export function MarkdownContent({
 		}
 
 		if (/^-{3,}$/.test(line.trim())) {
-			elements.push(
-				<hr className="my-8 border-slate-200" key={`divider-${index}`} />,
-			);
+			elements.push(<hr key={`divider-${index}`} />);
 			index += 1;
 			continue;
 		}
@@ -217,23 +193,16 @@ export function MarkdownContent({
 			}
 
 			elements.push(
-				<figure
-					className="my-8 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50"
-					key={`image-${index}`}
-				>
+				<figure key={`image-${index}`}>
 					<Image
 						alt={alt}
-						className="h-auto max-h-[520px] w-full object-contain"
+						className="h-auto max-h-130 w-full object-contain"
 						height={900}
 						src={src}
 						unoptimized
 						width={1200}
 					/>
-					{alt ? (
-						<figcaption className="border-slate-200 border-t px-4 py-3 text-slate-500 text-sm">
-							{alt}
-						</figcaption>
-					) : null}
+					{alt ? <figcaption>{alt}</figcaption> : null}
 				</figure>,
 			);
 			index += 1;
@@ -277,17 +246,9 @@ export function MarkdownContent({
 			}
 
 			elements.push(
-				<ul
-					className="my-6 space-y-3 border-slate-200 border-t"
-					key={`list-${index}`}
-				>
+				<ul key={`list-${index}`}>
 					{items.map((item) => (
-						<li
-							className="border-slate-200 border-b py-3 text-slate-700 leading-8"
-							key={item}
-						>
-							{parseInline(item, resolveHref)}
-						</li>
+						<li key={item}>{parseInline(item, resolveHref)}</li>
 					))}
 				</ul>,
 			);
@@ -314,17 +275,9 @@ export function MarkdownContent({
 			}
 
 			elements.push(
-				<ol
-					className="my-6 list-decimal space-y-3 border-slate-200 border-t pl-5"
-					key={`ordered-list-${index}`}
-				>
+				<ol key={`ordered-list-${index}`}>
 					{items.map((item) => (
-						<li
-							className="border-slate-200 border-b py-3 pl-1 text-slate-700 leading-8"
-							key={item}
-						>
-							{parseInline(item, resolveHref)}
-						</li>
+						<li key={item}>{parseInline(item, resolveHref)}</li>
 					))}
 				</ol>,
 			);
@@ -335,15 +288,9 @@ export function MarkdownContent({
 		if (headingMatch) {
 			const [, marks = "", heading = ""] = headingMatch;
 			const level = marks.length;
-			const className =
-				level === 1
-					? "mt-2 mb-6 font-bold text-4xl text-slate-950 leading-tight"
-					: level === 2
-						? "mt-12 mb-5 font-bold text-3xl text-slate-950 leading-tight"
-						: "mt-8 mb-4 font-semibold text-2xl text-slate-900 leading-tight";
-			const Heading = `h${Math.min(level, 3)}` as "h1" | "h2" | "h3";
+			const Heading = `h${Math.min(level, 4)}` as "h1" | "h2" | "h3" | "h4";
 			elements.push(
-				<Heading className={className} key={`heading-${index}`}>
+				<Heading key={`heading-${index}`}>
 					{parseInline(cleanHeadingText(heading), resolveHref)}
 				</Heading>,
 			);
@@ -372,11 +319,13 @@ export function MarkdownContent({
 			continue;
 		}
 		elements.push(
-			<p className="my-5 text-slate-700 leading-8" key={`paragraph-${index}`}>
+			<p key={`paragraph-${index}`}>
 				{parseInline(cleanParagraph, resolveHref)}
 			</p>,
 		);
 	}
 
-	return <div className="max-w-none">{elements}</div>;
+	return (
+		<div className={cn("typeset typeset-article", className)}>{elements}</div>
+	);
 }
